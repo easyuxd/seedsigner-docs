@@ -8,10 +8,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
   <meta name="theme-color" content="#f6851b">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsify-themeable@0/dist/css/theme-simple.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsify-sidebar-collapse/dist/sidebar.min.css">
   <link rel="icon" type="image/png" sizes="32x32" href="./favicon-32x32.png">
   <style>
     :root {
       --theme-color: #f6851b;
+      --sidebar-background: #fff;
+      --sidebar-nav-background: #fff;
       --sidebar-nav-link-color--active: #f6851b;
       --sidebar-nav-link-border-color--active: #f6851b;
       --sidebar-name-color: #f6851b;
@@ -19,6 +22,31 @@
       --link-color--hover: #d4710f;
       --blockquote-border-color: #f6851b;
       --notice-tip-border-color: #f6851b;
+    }
+    /*
+      Active L1 (top-level section): orange for section title + chevron.
+      Docsify often puts .active on the leaf li only; :has(> ul li.active) styles the open section row.
+    */
+    .sidebar-nav > ul > li.active > a,
+    .sidebar-nav > ul > li:has(> ul li.active) > a {
+      color: var(--theme-color, #f6851b) !important;
+    }
+    .sidebar-nav > ul > li.active > p,
+    .sidebar-nav > ul > li.active > p strong,
+    .sidebar-nav > ul > li.active > strong,
+    .sidebar-nav > ul > li:has(> ul li.active) > p,
+    .sidebar-nav > ul > li:has(> ul li.active) > p strong,
+    .sidebar-nav > ul > li:has(> ul li.active) > strong {
+      color: var(--theme-color, #f6851b) !important;
+    }
+    .sidebar-nav > ul > li.active.folder::before,
+    .sidebar-nav > ul > li.active.folder.open::before,
+    .sidebar-nav > ul > li.active.folder.collapse::before,
+    .sidebar-nav > ul > li:has(> ul li.active).folder::before,
+    .sidebar-nav > ul > li:has(> ul li.active).folder.open::before,
+    .sidebar-nav > ul > li:has(> ul li.active).folder.collapse::before {
+      border-right-color: var(--theme-color, #f6851b) !important;
+      border-bottom-color: var(--theme-color, #f6851b) !important;
     }
     .sidebar .app-name {
       text-align: center;
@@ -56,6 +84,130 @@
       margin: 16px 0;
       border-radius: 4px;
     }
+    /* Nested sidebar labels (no page link): heading only, no chevron, links always visible */
+    .sidebar-nav li.sidebar-subheading {
+      cursor: default;
+      margin-bottom: 0 !important;
+    }
+    .sidebar-nav li.sidebar-subheading::before {
+      display: none !important;
+    }
+    .sidebar-nav li.sidebar-subheading > ul {
+      display: block !important;
+      margin-left: 0 !important;
+    }
+    .sidebar-nav > ul > li > ul > li.sidebar-subheading > p {
+      margin-top: 0.5em !important;
+    }
+    .sidebar-nav > ul > li > ul > li.sidebar-subheading > strong {
+      margin-top: 1.5em !important;
+    }
+    .sidebar-nav > ul > li > ul > li.sidebar-subheading p strong {
+      margin-top: 0 !important;
+    }
+    /* L2 subheads: no underline (theme uses border-bottom on strong) */
+    .sidebar-nav li.sidebar-subheading > p,
+    .sidebar-nav li.sidebar-subheading > strong,
+    .sidebar-nav li.sidebar-subheading p,
+    .sidebar-nav li.sidebar-subheading strong {
+      border: none !important;
+      border-bottom: none !important;
+      text-decoration: none !important;
+      margin-bottom: 0 !important;
+    }
+    /*
+      L2 under a top-level section: same left inset for direct links (Quick-start checklist)
+      and subheadings (SEEDS, BUILD YOUR DEVICE). Section list stays flush; each L2 li indents.
+    */
+    .sidebar-nav > ul > li > ul {
+      margin-left: 0 !important;
+      padding-left: 0 !important;
+    }
+    .sidebar-nav > ul > li > ul > li {
+      margin-left: var(--sidebar-nav-indent, 1em) !important;
+    }
+    .sidebar-nav > ul > li > ul ul {
+      margin-left: var(--sidebar-nav-indent, 1em) !important;
+    }
+    /* Direct L2 page links only (not links inside a subheading’s nested ul) */
+    .sidebar-nav > ul > li > ul > li > a[href^="#/"]:not([href*="?id="]),
+    .sidebar-nav > ul > li > ul > li > a[href^="/"]:not([href*="?id="]) {
+      padding-left: var(--sidebar-nav-link-padding, 0.25em 0) !important;
+      font-size: 0.9rem !important;
+    }
+    /* Top-level section chevron (docsify-sidebar-collapse): align to the right, mirror so open/closed still read correctly */
+    .sidebar-nav > ul > li.folder:not(.sidebar-subheading) {
+      padding-right: 1.1rem;
+    }
+    .sidebar-nav > ul > li.folder:not(.sidebar-subheading)::before {
+      left: auto !important;
+      right: 0.15rem;
+      border-right-color: var(--sidebar-nav-link-color, var(--base-color, #505d6b)) !important;
+      border-bottom-color: var(--sidebar-nav-link-color, var(--base-color, #505d6b)) !important;
+      transform: scaleX(-1) rotate(135deg) !important;
+    }
+    .sidebar-nav > ul > li.folder:not(.sidebar-subheading).open::before {
+      transform: scaleX(-1) rotate(45deg) !important;
+    }
+    .sidebar-nav > ul > li.folder:not(.sidebar-subheading).collapse::before {
+      transform: scaleX(-1) rotate(135deg) !important;
+    }
+    /*
+      Two sources of nested “chevrons”:
+      1) docsify-sidebar-collapse: li::before triangle
+      2) docsify-themeable: --sidebar-nav-pagelink-* backgrounds on any a:not(:only-child)
+      Keep expand affordance only on top-level section rows (.sidebar-nav > ul > li).
+    */
+    .sidebar-nav > ul > li ul li::before,
+    .sidebar-nav > ul > li ul li.open::before,
+    .sidebar-nav > ul > li ul li.collapse::before {
+      content: none !important;
+      display: none !important;
+      border: none !important;
+      width: 0 !important;
+      height: 0 !important;
+      transform: none !important;
+    }
+    .sidebar-nav > ul > li ul a[href^="#/"]:not([href*="?id="]),
+    .sidebar-nav > ul > li ul a[href^="/"]:not([href*="?id="]) {
+      background: var(--sidebar-nav-link-background, transparent) !important;
+    }
+    /* Under an L2 subheading: no extra ul margin (above) and no theme pagelink left padding */
+    .sidebar-nav li.sidebar-subheading ul a[href^="#/"]:not([href*="?id="]),
+    .sidebar-nav li.sidebar-subheading ul a[href^="/"]:not([href*="?id="]) {
+      padding: var(--sidebar-nav-link-padding, 0.25em 0) !important;
+      font-size: 0.9rem !important;
+    }
+    .sidebar-nav li.sidebar-subheading ul a[href^="#/"]:not([href*="?id="]):hover,
+    .sidebar-nav li.sidebar-subheading ul a[href^="/"]:not([href*="?id="]):hover {
+      padding: var(--sidebar-nav-link-padding, 0.25em 0) !important;
+    }
+    .sidebar-nav li.sidebar-subheading ul li.active > a[href^="#/"]:not([href*="?id="]),
+    .sidebar-nav li.sidebar-subheading ul li.active > a[href^="/"]:not([href*="?id="]),
+    .sidebar-nav li.sidebar-subheading ul li.active > a[href^="#/"]:not([href*="?id="]):hover,
+    .sidebar-nav li.sidebar-subheading ul li.active > a[href^="/"]:not([href*="?id="]):hover {
+      padding: var(--sidebar-nav-link-padding, 0.25em 0) !important;
+    }
+    .sidebar-nav li.sidebar-subheading ul li.collapse > a[href^="#/"]:not([href*="?id="]),
+    .sidebar-nav li.sidebar-subheading ul li.collapse > a[href^="/"]:not([href*="?id="]) {
+      padding: var(--sidebar-nav-link-padding, 0.25em 0) !important;
+    }
+    .sidebar-nav > ul > li ul a[href^="#/"]:not([href*="?id="]):hover,
+    .sidebar-nav > ul > li ul a[href^="/"]:not([href*="?id="]):hover {
+      background: var(--sidebar-nav-link-background--hover, var(--sidebar-nav-link-background, transparent)) !important;
+    }
+    .sidebar-nav > ul > li ul li.active > a[href^="#/"]:not([href*="?id="]),
+    .sidebar-nav > ul > li ul li.active > a[href^="/"]:not([href*="?id="]) {
+      background: var(--sidebar-nav-link-background--active, var(--sidebar-nav-link-background, transparent)) !important;
+    }
+    .sidebar-nav > ul > li ul li.active > a[href^="#/"]:not([href*="?id="]):hover,
+    .sidebar-nav > ul > li ul li.active > a[href^="/"]:not([href*="?id="]):hover {
+      background: var(--sidebar-nav-link-background--active, var(--sidebar-nav-link-background, transparent)) !important;
+    }
+    .sidebar-nav > ul > li ul li.collapse > a[href^="#/"]:not([href*="?id="]),
+    .sidebar-nav > ul > li ul li.collapse > a[href^="/"]:not([href*="?id="]) {
+      background: var(--sidebar-nav-link-background--active, var(--sidebar-nav-link-background, transparent)) !important;
+    }
   </style>
 </head>
 <body>
@@ -67,7 +219,8 @@
       //repo: 'https://github.com/SeedSigner/seedsigner',
       loadNavbar: true,
       loadSidebar: true,
-      subMaxLevel: 3,
+      /* 0 = do not inject in-page heading anchors under the active sidebar link */
+      subMaxLevel: 0,
       auto2top: true,
       search: {
         placeholder: 'Search docs...',
@@ -87,7 +240,37 @@
       },
       themeColor: '#f6851b',
       notFoundPage: true,
-      sidebarDisplayLevel: 1,  // Only show top-level by defaul
+      /* 0 = top-level sections start collapsed; active route is still expanded by the plugin */
+      sidebarDisplayLevel: 0,
+      plugins: [
+        function sidebarSubheadingHeadings(hook) {
+          hook.ready(function () {
+            var nav = document.querySelector('.sidebar-nav');
+            if (!nav) return;
+            nav.addEventListener('click', function (e) {
+              var li = e.target.closest('li.sidebar-subheading');
+              if (li && !e.target.closest('a')) {
+                e.stopImmediatePropagation();
+              }
+            }, true);
+          });
+          hook.doneEach(function () {
+            var rootUl = document.querySelector('.sidebar-nav > ul');
+            if (!rootUl) return;
+            document.querySelectorAll('.sidebar-nav li').forEach(function (li) {
+              var nested = li.querySelector(':scope > ul:not(.app-sub-sidebar)');
+              if (!nested) return;
+              if (li.parentElement === rootUl) return;
+              var hasDirectLink = Array.from(li.children).some(function (el) {
+                return el.tagName === 'A' && el.getAttribute('href');
+              });
+              if (hasDirectLink) return;
+              li.classList.remove('folder');
+              li.classList.add('sidebar-subheading');
+            });
+          });
+        }
+      ]
     }
   </script>
   <!-- Docsify v4 -->
