@@ -27,7 +27,7 @@ This repository contains the **documentation website** for [SeedSigner](https://
 
 A [Docsify](https://docsify.js.org/) single-page documentation site. Docsify has **no build step**: it ships a static `index.html` that loads the Docsify runtime from a CDN, then fetches and renders the Markdown files in `docs/` client-side at request time. You edit Markdown, reload, and the site updates.
 
-- **44** Markdown files (content pages plus the `_sidebar`/`_navbar`/`_404` partials) and **143** images under `docs/`.
+- **45** Markdown files (content pages plus the `_sidebar`/`_navbar`/`_404` partials) and **143** images under `docs/`.
 - Hash-based client-side routing (e.g. `/#/hardware-build/assembly`).
 - Theming, search, code-copy, pagination, image zoom, collapsible sidebar, and a scroll progress bar — all via Docsify plugins (see below).
 
@@ -181,7 +181,7 @@ Full guide: [docs/development/contributing-docs.md](docs/development/contributin
 | Getting Started | `getting-started/` | Quick-start checklist, first boot, navigation, power off |
 | Hardware Build | `hardware-build/` | Components list, sourcing, assembly, enclosures |
 | Software Setup | `software-setup/` | Download & verify, write SD card, first-run config |
-| Using SeedSigner | `using-seedsigner/` | Create/load/back-up/view/discard seeds, xpub export, addresses, signing PSBTs |
+| Using SeedSigner | `using-seedsigner/` | Beginner single-sig walkthrough, create/load/back-up/view/discard seeds, xpub export, addresses, signing PSBTs |
 | Security & Multi-sig | `security/` | Security model, physical security, key storage, trade-offs, multi-sig setup/spend/descriptor |
 | Configuration | `configuration/` | Basic, advanced, and hardware settings |
 | Troubleshooting | `troubleshooting/` | Common issues, error messages |

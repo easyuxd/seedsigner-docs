@@ -128,6 +128,7 @@ If you want to choose your own words from the BIP-39 word list, this method lets
 
 After creating your seed, SeedSigner loads it into memory. You can now:
 
+- [Follow the single-sig walkthrough](/using-seedsigner/single-sig-walkthrough.md) — the complete beginner path from this seed to a verified receive address
 - [Export your public key (xpub)](/using-seedsigner/export-xpub.md) to set up a watch-only wallet
 - [Back up your seed as a SeedQR](/using-seedsigner/seedqr-backup.md) for fast future loading
 - [Sign a transaction](/using-seedsigner/sign-transaction.md) if your wallet is already configured

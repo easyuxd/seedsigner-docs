@@ -58,3 +58,5 @@ After your coordinator imports the xpub, it builds a **watch-only wallet**. You 
 - Prepare unsigned transactions (PSBTs) for SeedSigner to sign later.
 
 None of this requires your private key. SeedSigner only needs to come out of storage when you want to **send** Bitcoin.
+
+> **New to this?** Exporting the xpub is the midpoint of the full single-sig journey. Continue with the [single-sig walkthrough](/using-seedsigner/single-sig-walkthrough.md) to create the wallet in your coordinator, **verify your first receive address**, and practice recovery.

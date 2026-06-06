@@ -18,6 +18,7 @@
     - [Power off and restart](/getting-started/power-off.md)
 
 - **Using SeedSigner**
+  - [Single-sig walkthrough (start here)](/using-seedsigner/single-sig-walkthrough.md)
   - **Seeds**
     - [Create a new seed](/using-seedsigner/create-seed.md)
     - [Load an existing seed](/using-seedsigner/load-seed.md)

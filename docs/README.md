@@ -21,6 +21,7 @@ SeedSigner helps you generate seed phrases, sign Bitcoin transactions, and manag
 | Build a SeedSigner from parts | [Hardware Build Guide](/hardware-build/components.md) |
 | Install the software on an SD card | [Software Setup](/software-setup/download-and-verify.md) |
 | Power on and create your first seed | [Quick-start Checklist](/getting-started/checklist.md) |
+| Set up your first single-sig wallet | [Single-sig Walkthrough](/using-seedsigner/single-sig-walkthrough.md) |
 | Set up a multi-signature wallet | [Multi-sig Custody Guide](/security/why-multisig.md) |
 | Look up a setting | [Configuration Reference](/configuration/basic.md) |
 
