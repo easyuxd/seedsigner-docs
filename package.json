@@ -6,7 +6,12 @@
   "directories": {
     "doc": "docs"
   },
-  "scripts": {},
+  "scripts": {
+    "start": "docsify serve docs --port 3000",
+    "serve": "docsify serve docs --port 3000",
+    "test": "playwright test",
+    "test:report": "playwright show-report"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/easyuxd/seedsigner-docs.git"
@@ -21,6 +26,7 @@
   "homepage": "https://github.com/easyuxd/seedsigner-docs#readme",
   "devDependencies": {
     "@playwright/test": "^1.59.1",
-    "@types/node": "^25.5.2"
+    "@types/node": "^25.5.2",
+    "docsify-cli": "^4.4.4"
   }
 }

@@ -11,6 +11,11 @@ import { defineConfig, devices } from '@playwright/test';
 /**
  * See https://playwright.dev/docs/test-configuration.
  */
+/* Port for the docsify dev server under test. Override with PORT to avoid
+ * collisions with other local services (e.g. PORT=4173 npx playwright test). */
+const PORT = Number(process.env.PORT) || 3000;
+const baseURL = `http://localhost:${PORT}`;
+
 export default defineConfig({
   testDir: './tests',
   /* Run tests in files in parallel */
@@ -25,8 +30,8 @@ export default defineConfig({
   reporter: 'html',
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
-    /* Base URL to use in actions like `await page.goto('')`. */
-    // baseURL: 'http://localhost:3000',
+    /* Base URL to use in actions like `await page.goto('/')`. */
+    baseURL,
 
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     trace: 'on-first-retry',
@@ -70,10 +75,11 @@ export default defineConfig({
     // },
   ],
 
-  /* Run your local dev server before starting the tests */
-  // webServer: {
-  //   command: 'npm run start',
-  //   url: 'http://localhost:3000',
-  //   reuseExistingServer: !process.env.CI,
-  // },
+  /* Serve the docsify site before starting the tests */
+  webServer: {
+    command: `npx docsify serve docs --port ${PORT} --livereload-port ${PORT + 1}`,
+    url: baseURL,
+    reuseExistingServer: !process.env.CI,
+    timeout: 120 * 1000,
+  },
 });

@@ -91,7 +91,7 @@ Follow these conventions to keep the docs consistent:
 
 ## Images
 
-Place all images in the `docs../images/` folder. Reference them in Markdown like this:
+Place all images in the `docs/images/` folder. Reference them in Markdown like this:
 
 ```markdown
 ![Description of the image](images/filename.png)

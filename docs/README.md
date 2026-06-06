@@ -4,7 +4,7 @@
 
 SeedSigner helps you generate seed phrases, sign Bitcoin transactions, and manage your keys — all without ever connecting to a network. Built on a Raspberry Pi Zero with a camera and LCD display, it communicates exclusively through QR codes.
 
-![SeedSigner in an orange 3D-printed enclosure displaying the home screen, surrounded by a Raspberry Pi Zero, camera module, LCD HAT, SeedQR backup card, seed words notepad, and a gray enclosure](../images/SeedSigner_Device_and_Components.jpg)
+![SeedSigner in an orange 3D-printed enclosure displaying the home screen, surrounded by a Raspberry Pi Zero, camera module, LCD HAT, SeedQR backup card, seed words notepad, and a gray enclosure](images/SeedSigner_Device_and_Components.jpg)
 
 ## Why SeedSigner?
 

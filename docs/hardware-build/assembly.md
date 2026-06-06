@@ -4,8 +4,6 @@
 
 Everything connects with friction-fit connectors and press-on headers.
 
-<!-- TODO: Add assembly overview photo showing all components laid out before assembly -->
-
 ## What you need
 
 Before you start, make sure you have:
