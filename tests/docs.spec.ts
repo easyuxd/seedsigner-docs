@@ -18,10 +18,10 @@ async function brokenImages(page: Page, selector: string): Promise<string[]> {
   );
 }
 
-test('homepage renders the documentation title', async ({ page }) => {
+test('homepage renders the merged Home title', async ({ page }) => {
   await page.goto('/');
   await expect(page.locator('.markdown-section h1').first()).toHaveText(
-    /SeedSigner Documentation/,
+    /^SeedSigner$/,
   );
 });
 
@@ -46,23 +46,32 @@ test('no broken images on the homepage', async ({ page }) => {
 });
 
 test('an internal route renders its content', async ({ page }) => {
+  await page.goto('/#/reference/hardware/assembly');
+  await expect(page.locator('.markdown-section h1').first()).toHaveText(
+    /^Assembly$/,
+  );
+});
+
+test('a pre-restructure URL still resolves via alias redirect', async ({ page }) => {
+  // Old topic-taxonomy path; the `alias` map in index.html points it at the
+  // new reference location so existing bookmarks/inbound links keep working.
   await page.goto('/#/hardware-build/assembly');
   await expect(page.locator('.markdown-section h1').first()).toHaveText(
-    /Assembly instructions/,
+    /^Assembly$/,
   );
 });
 
 test('sidebar navigation works', async ({ page }) => {
   await page.goto('/');
-  // On the homepage the "Home" section is auto-expanded (it holds the active
-  // route), so its child links are visible and clickable without expanding a
-  // collapsed section first.
-  const overviewLink = page.locator('.sidebar-nav a', {
-    hasText: 'What is SeedSigner?',
-  });
-  await overviewLink.first().click();
-  await expect(page).toHaveURL(/overview/);
+  // Top-level sections start collapsed; expand "Get Started", then click a journey.
+  await page
+    .locator('.sidebar-nav')
+    .getByText('Get Started', { exact: true })
+    .click();
+  const journey = page.locator('.sidebar-nav a', { hasText: 'Build your device' });
+  await journey.first().click();
+  await expect(page).toHaveURL(/get-started\/build-device/);
   await expect(page.locator('.markdown-section h1').first()).toHaveText(
-    /What is SeedSigner\?/,
+    /^Build your device$/,
   );
 });

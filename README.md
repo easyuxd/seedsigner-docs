@@ -27,8 +27,8 @@ This repository contains the **documentation website** for [SeedSigner](https://
 
 A [Docsify](https://docsify.js.org/) single-page documentation site. Docsify has **no build step**: it ships a static `index.html` that loads the Docsify runtime from a CDN, then fetches and renders the Markdown files in `docs/` client-side at request time. You edit Markdown, reload, and the site updates.
 
-- **45** Markdown files (content pages plus the `_sidebar`/`_navbar`/`_404` partials) and **143** images under `docs/`.
-- Hash-based client-side routing (e.g. `/#/hardware-build/assembly`).
+- **48** Markdown files (45 content pages plus the `_sidebar`/`_navbar`/`_404` partials) and **143** images under `docs/`.
+- Hash-based client-side routing (e.g. `/#/reference/hardware/assembly`). Pre-restructure URLs (e.g. `/#/hardware-build/assembly`) still resolve via a Docsify `alias` redirect map in `index.html`.
 - Theming, search, code-copy, pagination, image zoom, collapsible sidebar, and a scroll progress bar — all via Docsify plugins (see below).
 
 ## Tech stack
@@ -55,7 +55,7 @@ Configured in [docs/index.html](docs/index.html):
 - **docsify-pagination** — Previous/Next links, cross-chapter.
 - **docsify-sidebar-collapse** — collapsible top-level sidebar sections.
 - **docsify-progress** — top scroll-progress bar (honors the theme color).
-- **Custom inline plugin** (`sidebarSubheadingHeadings`) — converts nested sidebar groups without a page link (e.g. *Build*, *Seeds*) into non-clickable subheadings. Lives in the `$docsify.plugins` array in `index.html`.
+- **Custom inline plugin** (`sidebarSubheadingHeadings`) — converts nested sidebar groups without a page link (e.g. *Seeds*, *Hardware*) into non-clickable subheadings. Lives in the `$docsify.plugins` array in `index.html`.
 
 ## Pinned dependency versions
 
@@ -83,22 +83,24 @@ Dev dependencies (see [package.json](package.json)):
 ```
 .
 ├── docs/                       # The published site (served root)
-│   ├── index.html              # Docsify config, theme, CDN script tags, custom plugin
+│   ├── index.html              # Docsify config, theme, CDN script tags, custom plugin, alias redirects
 │   ├── README.md               # Site HOMEPAGE content (route "/") — NOT this file
 │   ├── _sidebar.md             # Sidebar navigation (mirror new pages here)
 │   ├── _navbar.md              # Top navbar links
 │   ├── _404.md                 # Custom not-found page
 │   ├── .nojekyll               # Tells GitHub Pages to serve files as-is
-│   ├── overview.md
-│   ├── getting-started/        # Quick-start checklist, first boot, navigation, power
-│   ├── hardware-build/         # Components, sourcing, assembly, enclosures
-│   ├── software-setup/         # Download/verify, write SD card, first run
-│   ├── using-seedsigner/       # Seeds, keys/wallets, transactions
-│   ├── security/               # Security model + multi-sig guides
-│   ├── configuration/          # Settings reference
-│   ├── troubleshooting/        # Common issues, error messages
-│   ├── appendices/             # FAQ, glossary, compatible wallets, resources
-│   ├── development/            # Contributing guides, testnet
+│   ├── get-started/            # Journeys: build-device, first-wallet, receive, send, recover, multisig (+ landing README)
+│   ├── reference/              # Screen/object-first reference, grouped into:
+│   │   ├── hardware/           #   components, sourcing, assembly, enclosures
+│   │   ├── software/           #   image verification, SD flashing, first-run setup
+│   │   ├── device/             #   first boot, navigation, power & restart
+│   │   ├── seeds/              #   creation, loading, seedqr, verification, discard
+│   │   ├── keys/               #   xpub export, address explorer, PSBT signing
+│   │   ├── multisig/           #   wallet descriptor, multisig spending
+│   │   └── settings/           #   basic, advanced, hardware settings
+│   ├── security/               # Security model, why-multisig, physical, key storage, trade-offs
+│   ├── help/                   # Troubleshooting (common issues, errors) + FAQ, glossary, wallets, resources
+│   ├── contribute/             # Contributing guides, testnet
 │   └── images/                 # All screenshots & photos (143 files)
 ├── tests/                      # Playwright smoke tests
 │   └── docs.spec.ts
@@ -137,10 +139,11 @@ PORT=4173 npx playwright test    # use a different port if 3000 is taken locally
 
 What's covered ([tests/docs.spec.ts](tests/docs.spec.ts)):
 
-- Homepage renders the documentation title.
+- Homepage renders the merged Home title.
 - **Homepage hero image loads** — a regression guard for relative image paths (the root page must use `images/…`, not `../images/…`).
 - No broken images on the homepage.
 - An internal hash route renders its content.
+- **A pre-restructure URL still resolves via the alias redirect** — guards the old→new URL map in `index.html`.
 - Sidebar navigation works.
 
 **Port note:** the dev/test server defaults to port `3000`. If another local service occupies it, set `PORT` — `playwright.config.ts` reads it for both the server and `baseURL`. In CI, `reuseExistingServer` is off so a clean server is always started.
@@ -164,37 +167,39 @@ The site is plain static files. `docs/.nojekyll` indicates it is intended to be 
 
 ## Authoring & contributing
 
-Full guide: [docs/development/contributing-docs.md](docs/development/contributing-docs.md). Quick rules:
+Full guide: [docs/contribute/docs.md](docs/contribute/docs.md). Quick rules:
 
-- **Add a page →** create the Markdown file in the right section folder **and** add a link in [docs/_sidebar.md](docs/_sidebar.md).
+- **Add a page →** create the Markdown file in the right section folder **and** add a link in [docs/_sidebar.md](docs/_sidebar.md). Match the layer convention: journeys (`get-started/`) use action-voice titles ("Create your first wallet"); reference pages use screen/object-first titles ("Seed creation").
 - **One `#` H1 per page**, short paragraphs, active voice, address the reader as "you."
-- **Images live in `docs/images/`.** Reference them with a path relative to the *current* file:
-  - Pages inside a section folder (e.g. `using-seedsigner/`) use `../images/name.png`.
-  - The root homepage (`docs/README.md`) uses `images/name.png` — **no `../`** (that escapes the served root and 404s).
+- **Images live in `docs/images/`.** Reference them with a path relative to the *current file's depth*:
+  - The root homepage (`docs/README.md`) uses `images/name.png` — **no `../`**.
+  - One-level pages (`get-started/`, `security/`, `help/`, `contribute/`) use `../images/name.png`.
+  - Two-level pages (`reference/<group>/`, e.g. `reference/seeds/`) use `../../images/name.png`.
+  - A wrong relative depth escapes or undershoots the served root and 404s.
+- **Moving/renaming a page?** Add an entry to the `alias` map in [docs/index.html](docs/index.html) so the old URL still resolves.
 - Use descriptive image filenames (`assembly-step-3-camera-ribbon.png`, not `IMG_4521.png`).
 - Keep PRs small and focused; preview locally with `npm start` before submitting.
 
 ## Content overview
 
+The site uses a **journey-first** information architecture: goal-based journeys in **Get Started** sit in front of a screen/object-first **Reference** layer. Six top-level sidebar sections:
+
 | Section | Folder | Covers |
 |---|---|---|
-| Getting Started | `getting-started/` | Quick-start checklist, first boot, navigation, power off |
-| Hardware Build | `hardware-build/` | Components list, sourcing, assembly, enclosures |
-| Software Setup | `software-setup/` | Download & verify, write SD card, first-run config |
-| Using SeedSigner | `using-seedsigner/` | Beginner single-sig walkthrough, create/load/back-up/view/discard seeds, xpub export, addresses, signing PSBTs |
-| Security & Multi-sig | `security/` | Security model, physical security, key storage, trade-offs, multi-sig setup/spend/descriptor |
-| Configuration | `configuration/` | Basic, advanced, and hardware settings |
-| Troubleshooting | `troubleshooting/` | Common issues, error messages |
-| Reference | `appendices/` | FAQ, glossary, compatible wallets, resources |
-| Development | `development/` | Contributing to the project & docs, testnet |
+| Home | `README.md` | Merged intro — what SeedSigner is, why, how it works, and where to start |
+| Get Started | `get-started/` | Journeys: build your device, create your first wallet, receive, send, recover, set up multisig (+ a "what do you want to do?" landing page) |
+| Reference | `reference/` | Screen/object-first docs grouped into hardware, software, device basics, seeds, keys & transactions, multisig, settings |
+| Security | `security/` | Security model, why multisig, physical security, key storage, trade-offs |
+| Help & Resources | `help/` | Troubleshooting (common issues, error messages) + FAQ, glossary, compatible wallets, resources |
+| Contribute | `contribute/` | Contributing to the project & docs, testnet |
 
 ## Known gaps & TODOs
 
 Honest list of what's incomplete or worth improving:
 
 - **No deploy automation.** Add a GitHub Pages (or other) deploy workflow so merges publish automatically. Today it is manual.
-- **Smoke-test depth.** The suite is intentionally shallow (5 tests). Candidates: crawl every sidebar route, verify no broken internal links/images site-wide, add a11y checks, and enable mobile/Firefox/WebKit projects.
-- **Content gap — assembly photos.** `hardware-build/assembly.md` would benefit from a "components laid out before assembly" photo (previously a stray inline TODO, now removed). Track as a content task with a real screenshot.
+- **Smoke-test depth.** The suite is intentionally shallow (6 tests). Candidates: crawl every sidebar route, verify no broken internal links/images site-wide, assert every `alias` redirect resolves, add a11y checks, and enable mobile/Firefox/WebKit projects.
+- **Content gap — assembly photos.** `reference/hardware/assembly.md` would benefit from a "components laid out before assembly" photo (previously a stray inline TODO, now removed). Track as a content task with a real screenshot.
 - **CDN sourcing.** Runtime deps are pinned but still loaded from jsDelivr at request time. For stronger reproducibility/offline support, consider vendoring the assets locally and/or adding Subresource Integrity (SRI) hashes.
 - **Dev-dependency advisories.** `npm audit` reports advisories in the transitive `docsify-cli` tree (dev/build-time only — never shipped to the static site). Revisit when upstream updates.
 - **Translations.** The legacy SeedSigner user guide had multi-language translations; this restructured site does not yet. Contributions welcome (coordinate via a GitHub issue).

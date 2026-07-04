@@ -32,7 +32,7 @@ Multi-sig is not without trade-offs:
 - **More information to track** — losing track of your setup details can be just as dangerous as losing a key.
 - **Multiple mistakes can still cause loss** — if you lose 2 of your 3 keys, or lose 1 key AND your wallet descriptor, your funds may be gone forever.
 
-> **Tip:** The wallet descriptor is a critical piece of your backup. Make sure you read the [wallet descriptor backup guide](/security/wallet-descriptor.md) before depositing any funds.
+> **Tip:** The wallet descriptor is a critical piece of your backup. Make sure you read the [wallet descriptor backup guide](/reference/multisig/descriptor.md) before depositing any funds.
 
 ## Multi-sig is not just for experts
 

@@ -1,31 +1,34 @@
-# SeedSigner Documentation
+# SeedSigner
 
-> Open-source, air-gapped Bitcoin signing device built from off-the-shelf hardware.
+> Open-source, air-gapped Bitcoin signing device built from off-the-shelf hardware for around $50.
 
-SeedSigner helps you generate seed phrases, sign Bitcoin transactions, and manage your keys — all without ever connecting to a network. Built on a Raspberry Pi Zero with a camera and LCD display, it communicates exclusively through QR codes.
+SeedSigner is a do-it-yourself Bitcoin signing device. You assemble it from three inexpensive, general-purpose components, flash an open-source operating system onto a microSD card, and you have a fully functional tool to **generate seed phrases, export public keys, and sign transactions — all without ever connecting to a network.** It communicates exclusively through QR codes, using a camera to read and a screen to display.
 
 ![SeedSigner in an orange 3D-printed enclosure displaying the home screen, surrounded by a Raspberry Pi Zero, camera module, LCD HAT, SeedQR backup card, seed words notepad, and a gray enclosure](images/SeedSigner_Device_and_Components.jpg)
 
 ## Why SeedSigner?
 
-- **Air-gapped by design** — No Wi-Fi, no Bluetooth, no USB data. The Raspberry Pi Zero v1.3 physically cannot connect to any network.
-- **Stateless** — Private keys exist only in RAM while the device is powered on. Pull the plug and they are gone.
-- **Affordable** — Total build cost is around $50 with off-the-shelf parts.
-- **Open source** — Every line of code and every hardware schematic is publicly auditable.
+- **Air-gapped by design** — Built on the Raspberry Pi Zero v1.3, a board with **no Wi-Fi or Bluetooth hardware**. It cannot connect to a network even if compromised software tried to. Data moves only through the camera (in) and the screen (out), as QR codes.
+- **Stateless** — Your private keys exist only in volatile RAM while the device is powered on. There is no secure element, no encrypted storage, no flash memory holding secrets. Pull the plug and everything is erased. If the device cannot remember your keys, it cannot leak them.
+- **Affordable and discreet** — The bill of materials is roughly $50, all generic electronics. Nothing about the parts signals "Bitcoin" to a merchant, a courier, or anyone who sees the package.
+- **Fully open source** — Every line of Python and every hardware schematic is publicly auditable and published under the MIT license. No proprietary chips or black-box firmware control key operations.
 - **Multi-sig ready** — One device can sign for multiple keys, making multi-signature wallets practical and affordable.
 
-## Get started
+## What it can do
 
-| Goal | Go to |
-|------|-------|
-| Build a SeedSigner from parts | [Hardware Build Guide](/hardware-build/components.md) |
-| Install the software on an SD card | [Software Setup](/software-setup/download-and-verify.md) |
-| Power on and create your first seed | [Quick-start Checklist](/getting-started/checklist.md) |
-| Set up your first single-sig wallet | [Single-sig Walkthrough](/using-seedsigner/single-sig-walkthrough.md) |
-| Set up a multi-signature wallet | [Multi-sig Custody Guide](/security/why-multisig.md) |
-| Look up a setting | [Configuration Reference](/configuration/basic.md) |
+| Task | Description |
+|------|-------------|
+| **Generate a seed** | Create a new BIP-39 seed phrase from camera entropy, dice rolls, or manual word selection |
+| **Load a seed** | Enter an existing seed by typing words or scanning a SeedQR |
+| **Export an xpub** | Derive and display an extended public key so your coordinator can build a watch-only wallet |
+| **Sign a PSBT** | Scan an unsigned transaction, review it on screen, and produce a signed QR |
+| **Create a SeedQR** | Encode your seed phrase into a compact QR for fast future loading |
+| **Explore & verify addresses** | Browse receiving and change addresses, and confirm an address belongs to your wallet |
+| **Calculate the final word** | Enter 11 or 23 words and compute the valid checksum word |
 
 ## How it works
+
+SeedSigner is the **signer** in a signer-plus-coordinator setup. It holds private keys temporarily and produces signatures; it never touches the Bitcoin network. You pair it with a **coordinator** — a wallet app on a networked computer or phone that builds transactions, manages addresses, and broadcasts to the network.
 
 ```
 ┌───────────────┐    QR codes    ┌───────────────┐
@@ -39,17 +42,39 @@ SeedSigner helps you generate seed phrases, sign Bitcoin transactions, and manag
                                (never stored on disk)
 ```
 
-1. Your wallet coordinator (such as Sparrow) builds an unsigned transaction.
+1. Your coordinator (such as Sparrow) builds an unsigned transaction.
 2. It displays the transaction as an animated QR code.
 3. SeedSigner scans the QR, shows you the details, and signs it.
 4. SeedSigner displays a new QR containing the signature.
 5. Your coordinator scans that QR and broadcasts the transaction.
 
-No cables. No wireless. Just light.
+No cables. No wireless. Just light. Popular coordinators include [Sparrow Wallet](https://sparrowwallet.com) (desktop), [Specter Desktop](https://specter.solutions) (desktop, requires a node), [BlueWallet](https://bluewallet.io) (mobile), [Nunchuk](https://nunchuk.io), and [Keeper](https://bitcoinkeeper.app) — see [Compatible wallets](/help/compatible-wallets.md).
+
+## Who is SeedSigner for?
+
+- **New Bitcoiners** who want affordable self-custody with solid security defaults.
+- **Privacy-conscious users** who prefer hardware that cannot phone home.
+- **Multi-sig users** who need multiple signers without buying multiple expensive hardware wallets.
+- **Developers and tinkerers** who want to audit, modify, or extend a signing device.
+- **Bitcoiners in restrictive jurisdictions** who need discreet, unrecognizable hardware.
+
+## Where to start
+
+New here? Head to **[Get Started](/get-started/)** and pick the path that matches what you want to do.
+
+| I want to… | Go to |
+|------------|-------|
+| Build a SeedSigner from parts and boot it | [Build your device](/get-started/build-device.md) |
+| Generate a seed and set up my first wallet | [Create your first wallet](/get-started/first-wallet.md) |
+| Generate and verify a receive address | [Receive bitcoin](/get-started/receive.md) |
+| Sign and broadcast a transaction | [Send bitcoin](/get-started/send.md) |
+| Restore a wallet from a backup | [Recover from backup](/get-started/recover.md) |
+| Set up a multi-signature wallet | [Set up multisig](/get-started/multisig.md) |
+| Look up a specific screen or setting | [Reference](/reference/hardware/components.md) |
 
 ## Important security notice
 
-> **Bitcoin transactions are irreversible.** Always verify recipient addresses and amounts before signing. Practice with testnet before using real funds. See [Security Practices](/security/overview.md) for a full guide.
+> **Bitcoin transactions are irreversible.** Always verify recipient addresses and amounts on SeedSigner's own screen before signing. Practice with testnet before using real funds. See [Security](/security/overview.md) for the full model and best practices.
 
 ## Project links
 

@@ -55,6 +55,10 @@
     .sidebar .app-name img {
       max-width: 160px;
     }
+    /* Top-level direct page link (Home is a single page, not an expandable section): match section-header weight */
+    .sidebar-nav > ul > li > a {
+      font-weight: 700;
+    }
     .markdown-section h1 {
       border-bottom: 2px solid #f6851b;
       padding-bottom: 0.3em;
@@ -240,6 +244,49 @@
       },
       themeColor: '#f6851b',
       notFoundPage: true,
+      /*
+        Redirects for the pre-restructure URLs. Each old route (with or without a
+        trailing .md) resolves to its new location so existing bookmarks and inbound
+        links keep working after the journey-first IA move.
+      */
+      alias: {
+        '/overview(\\.md)?': '/README.md',
+        '/getting-started/checklist(\\.md)?': '/get-started/build-device.md',
+        '/getting-started/first-boot(\\.md)?': '/reference/device/first-boot.md',
+        '/getting-started/navigation(\\.md)?': '/reference/device/navigation.md',
+        '/getting-started/power-off(\\.md)?': '/reference/device/power.md',
+        '/hardware-build/components(\\.md)?': '/reference/hardware/components.md',
+        '/hardware-build/sourcing(\\.md)?': '/reference/hardware/sourcing.md',
+        '/hardware-build/assembly(\\.md)?': '/reference/hardware/assembly.md',
+        '/hardware-build/enclosures(\\.md)?': '/reference/hardware/enclosures.md',
+        '/software-setup/download-and-verify(\\.md)?': '/reference/software/verify-image.md',
+        '/software-setup/write-sd-card(\\.md)?': '/reference/software/flash-sd-card.md',
+        '/software-setup/first-run(\\.md)?': '/reference/software/first-run.md',
+        '/using-seedsigner/single-sig-walkthrough(\\.md)?': '/get-started/first-wallet.md',
+        '/using-seedsigner/create-seed(\\.md)?': '/reference/seeds/creation.md',
+        '/using-seedsigner/load-seed(\\.md)?': '/reference/seeds/loading.md',
+        '/using-seedsigner/seedqr-backup(\\.md)?': '/reference/seeds/seedqr.md',
+        '/using-seedsigner/view-seeds(\\.md)?': '/reference/seeds/verification.md',
+        '/using-seedsigner/discard-seed(\\.md)?': '/reference/seeds/discard.md',
+        '/using-seedsigner/export-xpub(\\.md)?': '/reference/keys/xpub-export.md',
+        '/using-seedsigner/addresses(\\.md)?': '/reference/keys/address-explorer.md',
+        '/using-seedsigner/sign-transaction(\\.md)?': '/reference/keys/psbt-signing.md',
+        '/security/multisig-walkthrough(\\.md)?': '/get-started/multisig.md',
+        '/security/multisig-spend(\\.md)?': '/reference/multisig/spending.md',
+        '/security/wallet-descriptor(\\.md)?': '/reference/multisig/descriptor.md',
+        '/configuration/basic(\\.md)?': '/reference/settings/basic.md',
+        '/configuration/advanced(\\.md)?': '/reference/settings/advanced.md',
+        '/configuration/hardware(\\.md)?': '/reference/settings/hardware.md',
+        '/troubleshooting/common-issues(\\.md)?': '/help/common-issues.md',
+        '/troubleshooting/error-messages(\\.md)?': '/help/error-messages.md',
+        '/appendices/faq(\\.md)?': '/help/faq.md',
+        '/appendices/glossary(\\.md)?': '/help/glossary.md',
+        '/appendices/compatible-wallets(\\.md)?': '/help/compatible-wallets.md',
+        '/appendices/resources(\\.md)?': '/help/resources.md',
+        '/development/contributing-docs(\\.md)?': '/contribute/docs.md',
+        '/development/contributing(\\.md)?': '/contribute/seedsigner.md',
+        '/development/testnet(\\.md)?': '/contribute/testnet.md'
+      },
       /* 0 = top-level sections start collapsed; active route is still expanded by the plugin */
       sidebarDisplayLevel: 0,
       plugins: [
