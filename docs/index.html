@@ -212,6 +212,12 @@
     .sidebar-nav > ul > li ul li.collapse > a[href^="/"]:not([href*="?id="]) {
       background: var(--sidebar-nav-link-background--active, var(--sidebar-nav-link-background, transparent)) !important;
     }
+    /* Search field alignment: center X icon vertically with text and magnifying glass */
+    .search .clear-button {
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+    }
   </style>
 </head>
 <body>
@@ -300,6 +306,25 @@
                 e.stopImmediatePropagation();
               }
             }, true);
+            /*
+              On mobile, docsify closes the whole sidebar drawer on any click
+              that bubbles to <body> while it's open (its own outside-tap-to-
+              dismiss behavior). Tapping an L1 section only expands/collapses
+              it in place (handled by docsify-sidebar-collapse's own bubble-
+              phase listener on this same element), so once that's done, stop
+              the click from bubbling further up to <body> — otherwise
+              expanding "Reference" also closes the drawer, hiding the very
+              items the tap just revealed. This runs in the bubble phase
+              (after the collapse toggle fires) so the expand behavior itself
+              is unaffected.
+            */
+            nav.addEventListener('click', function (e) {
+              var rootUl = nav.querySelector(':scope > ul');
+              var li = e.target.closest('li');
+              if (rootUl && li && li.parentElement === rootUl && li.classList.contains('folder')) {
+                e.stopPropagation();
+              }
+            });
           });
           hook.doneEach(function () {
             var rootUl = document.querySelector('.sidebar-nav > ul');
