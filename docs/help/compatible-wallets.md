@@ -14,7 +14,17 @@ SeedSigner works with any Bitcoin wallet software that supports PSBT exchange vi
 | [Nunchuk](https://nunchuk.io) | iOS, Android, Windows, macOS, Linux | Yes | Yes | Yes | Collaborative custody features. |
 | [Keeper](https://bitcoinkeeper.app) | iOS, Android | Yes | Yes | Yes | Inheritance planning features. |
 
-## Choosing a coordinator
+## Which should I choose?
+
+Match the coordinator to how you'll actually use the wallet:
+
+| If you… | Choose | Why |
+|---------|--------|-----|
+| Are new and want the best-documented path | **Sparrow** | Every journey on this site is written against it; full testnet support for risk-free practice |
+| Want to manage funds from your phone | **BlueWallet** | Simple mobile watch-only + QR signing — see the [mobile coordinator journey](/get-started/bluewallet.md) |
+| Want mobile *and* practice on testnet first | **Nunchuk** | Mobile + desktop apps with testnet support |
+| Are setting up collaborative or inheritance custody | **Nunchuk** or **Keeper** | Purpose-built multi-party features |
+| Run your own Bitcoin Core node and want it front-and-center | **Specter Desktop** | Designed to pair directly with a local node |
 
 For most users following this documentation, **Sparrow Wallet** is the recommended choice because it:
 
@@ -24,7 +34,7 @@ For most users following this documentation, **Sparrow Wallet** is the recommend
 - Does not require a full Bitcoin node (though it works with one).
 - Has excellent QR code scanning support.
 
-If you prefer a mobile-first experience, **Nunchuk** or **Keeper** are strong choices with SeedSigner compatibility.
+You are not locked in. Coordinators only ever hold **public** data — your keys stay on SeedSigner and your backup. You can import the same xpub into several coordinators, or switch later, without touching your seed.
 
 ## Coordinator setting in SeedSigner
 

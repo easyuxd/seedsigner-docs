@@ -30,17 +30,28 @@ SeedSigner is a do-it-yourself Bitcoin signing device. You assemble it from thre
 
 SeedSigner is the **signer** in a signer-plus-coordinator setup. It holds private keys temporarily and produces signatures; it never touches the Bitcoin network. You pair it with a **coordinator** — a wallet app on a networked computer or phone that builds transactions, manages addresses, and broadcasts to the network.
 
-```
-┌───────────────┐    QR codes    ┌───────────────┐
-│   Sparrow /   │  ◄──────────►  │  SeedSigner   │
-│  Coordinator  │                │   (signer)    │
-│  (networked)  │                │  (air-gapped) │
-└───────────────┘                └───────────────┘
-        │                              │
-        ▼                              ▼
-  Bitcoin network              Private keys in RAM
-                               (never stored on disk)
-```
+<figure class="ss-diagram ss-arch" aria-label="How SeedSigner communicates with a coordinator: only QR codes cross the air gap">
+  <div class="ss-arch-grid">
+    <div class="ss-node ss-node--computer">
+      <span class="ss-node-kicker">Networked computer</span>
+      <strong class="ss-node-title">Coordinator</strong>
+      <span class="ss-node-sub">Sparrow, Specter, BlueWallet&hellip;</span>
+    </div>
+    <div class="ss-airgap">
+      <span class="ss-airgap-label">Air gap</span>
+      <span class="ss-qr-link"><span aria-hidden="true">&#9668;</span>&nbsp;QR codes&nbsp;<span aria-hidden="true">&#9658;</span></span>
+    </div>
+    <div class="ss-node ss-node--device">
+      <span class="ss-node-kicker">Air-gapped device</span>
+      <strong class="ss-node-title">SeedSigner</strong>
+      <span class="ss-node-sub">the signer</span>
+    </div>
+    <div class="ss-endpoint ss-endpoint--computer"><span aria-hidden="true">&#8595;</span> talks to the <strong>Bitcoin network</strong></div>
+    <div class="ss-arch-spacer" aria-hidden="true"></div>
+    <div class="ss-endpoint ss-endpoint--device"><span aria-hidden="true">&#8595;</span> holds <strong>private keys in RAM only</strong> &mdash; never stored on disk</div>
+  </div>
+  <figcaption class="ss-caption">No cables, no wireless &mdash; only light crosses the gap: the camera reads QR codes in, the screen displays QR codes out.</figcaption>
+</figure>
 
 1. Your coordinator (such as Sparrow) builds an unsigned transaction.
 2. It displays the transaction as an animated QR code.

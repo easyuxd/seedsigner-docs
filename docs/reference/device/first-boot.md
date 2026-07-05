@@ -10,9 +10,13 @@ Plug a micro USB cable into the **power-only port** on your SeedSigner. This is 
 
 > **Warning:** Use the correct port. The port farther from the joystick is for data and will not reliably power the device on its own.
 
-## Wait for boot
+## Wait for boot — the screen stays blank for a while
 
-After you connect power, the device takes a few seconds to start up. You will see the SeedSigner splash screen appear on the LCD display. Be patient — there is nothing you need to press during this step.
+After you connect power, **expect the screen to stay completely blank for around 45 seconds** on a Pi Zero v1.3 before the SeedSigner splash screen appears (the faster Pi Zero 2 W boots in roughly half that). This is normal: the entire operating system is loading from the SD card into RAM.
+
+Don't unplug it, don't press anything — just wait for the splash screen.
+
+> **Tip:** A blank screen for the first minute does **not** mean the device is dead or mis-assembled. Only start troubleshooting if nothing has appeared after about 90 seconds — then see [Common issues](/help/common-issues.md#device-wont-boot).
 
 ## Dismiss the SD card message
 

@@ -40,17 +40,24 @@ Start with single-sig to learn the workflow end to end. You can graduate to [mul
 
 ## The journey at a glance
 
-```
- SeedSigner                         Sparrow (coordinator)
- ──────────                         ─────────────────────
- 1. Create seed
- 2. Back up + verify seed
- 3. Export xpub  ───── QR ────►     4. Create watch-only wallet
- 5. Verify address  ◄── QR ─────       (Receive tab → address QR)
- 6.                                 6. Receive a test payment
- 7. Sign a spend (PSBT)  ◄─ QR ─►   7. Build + broadcast spend
- 8. Recovery drill (wipe → reload → re-verify)
-```
+<figure class="ss-diagram ss-swimlane" aria-label="The eight steps of creating your first wallet, split between Sparrow on your networked computer and the air-gapped SeedSigner">
+  <div class="ss-lane-heads">
+    <span class="ss-lane-head ss-lane-head--computer">Sparrow <em>coordinator &middot; networked</em></span>
+    <span class="ss-gap-label" aria-hidden="true">&#8646; QR only</span>
+    <span class="ss-lane-head ss-lane-head--device">SeedSigner <em>air-gapped</em></span>
+  </div>
+  <ol class="ss-steps">
+    <li class="ss-step ss-step--device"><span class="ss-step-num">1</span><span class="ss-lane-tag ss-lane-tag--device">SeedSigner</span><span class="ss-step-body">Create seed</span></li>
+    <li class="ss-step ss-step--device"><span class="ss-step-num">2</span><span class="ss-lane-tag ss-lane-tag--device">SeedSigner</span><span class="ss-step-body">Back up + verify seed</span></li>
+    <li class="ss-step ss-step--device"><span class="ss-step-num">3</span><span class="ss-lane-tag ss-lane-tag--device">SeedSigner</span><span class="ss-step-body">Export xpub</span><span class="ss-qr-badge"><span class="ss-sr">xpub sent to Sparrow by </span>QR<span aria-hidden="true">&nbsp;&#9668;</span></span></li>
+    <li class="ss-step ss-step--computer"><span class="ss-step-num">4</span><span class="ss-lane-tag ss-lane-tag--computer">Sparrow</span><span class="ss-step-body">Create watch-only wallet<small>Receive tab shows the address QR</small></span></li>
+    <li class="ss-step ss-step--device"><span class="ss-step-num">5</span><span class="ss-lane-tag ss-lane-tag--device">SeedSigner</span><span class="ss-step-body">Verify the receive address on the device screen</span><span class="ss-qr-badge"><span class="ss-sr">address received from Sparrow by </span>QR<span aria-hidden="true">&nbsp;&#9658;</span></span></li>
+    <li class="ss-step ss-step--computer"><span class="ss-step-num">6</span><span class="ss-lane-tag ss-lane-tag--computer">Sparrow</span><span class="ss-step-body">Receive a test payment</span></li>
+    <li class="ss-step ss-step--handoff"><span class="ss-step-num">7</span><span class="ss-handoff-half ss-handoff-half--computer">Build the spend, then broadcast it</span><span class="ss-qr-badge">QR<span aria-hidden="true">&nbsp;&#8646;</span></span><span class="ss-handoff-half ss-handoff-half--device">Review + sign the PSBT</span></li>
+    <li class="ss-step ss-step--span"><span class="ss-step-num">8</span><span class="ss-step-body">Recovery drill &mdash; wipe <span aria-hidden="true">&#8594;</span> reload from backup <span aria-hidden="true">&#8594;</span> re-verify the same address</span></li>
+  </ol>
+  <figcaption class="ss-caption">Steps 1&ndash;5 get you a verified receive address; steps 6&ndash;8 prove the wallet works and that you can recover it. Every exchange crosses the air gap as a QR code &mdash; nothing else connects the two.</figcaption>
+</figure>
 
 You will do each step once, in order. Steps 1–5 get you to a verified receive address. Steps 6–8 confirm the wallet truly works and that you can recover it.
 

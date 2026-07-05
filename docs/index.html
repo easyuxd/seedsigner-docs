@@ -88,6 +88,501 @@
       margin: 16px 0;
       border-radius: 4px;
     }
+    /* === Diagram components (ss-*) ===================================
+       Semantic HTML diagrams authored directly in markdown (see
+       docs/contribute/docs.md → "Diagrams"). Conventions:
+       blue = networked coordinator (left lane), orange = air-gapped
+       SeedSigner (right lane), dashed line = the air gap.
+       All colors flow through --ss-* tokens so a future dark mode only
+       needs to override this one block. */
+    :root {
+      --ss-device-accent: var(--theme-color, #f6851b);
+      --ss-device-accent-strong: #b35a08; /* >=4.5:1 with white text */
+      --ss-device-bg: #fdf0e3;
+      --ss-device-text: #8a4a00;
+      --ss-computer-accent: #2f6bc4;
+      --ss-computer-bg: #e9f0fa;
+      --ss-computer-text: #1d4f91;
+      --ss-diagram-bg: #fff;
+      --ss-diagram-neutral-bg: #f4f6f8;
+      --ss-diagram-border: #dde3ea;
+      --ss-diagram-text: #3b454e;
+      --ss-diagram-muted: #6a7580;
+      --ss-warn-accent: #ffc107;
+      --ss-warn-bg: #fff3cd;
+      --ss-warn-text: #7a5b00;
+    }
+    .markdown-section .ss-diagram {
+      margin: 1.5em 0;
+      padding: 1.25rem 1.25rem 1rem;
+      background: var(--ss-diagram-bg);
+      border: 1px solid var(--ss-diagram-border);
+      border-radius: 10px;
+      color: var(--ss-diagram-text);
+      font-size: 0.9rem;
+      line-height: 1.45;
+    }
+    .markdown-section .ss-diagram ol,
+    .markdown-section .ss-diagram ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+    .markdown-section .ss-caption {
+      margin-top: 1rem;
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--ss-diagram-muted);
+    }
+    .markdown-section .ss-sr {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0 0 0 0);
+      white-space: nowrap;
+      border: 0;
+    }
+    /* Architecture panel (homepage) */
+    .markdown-section .ss-arch-grid {
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      column-gap: 1rem;
+      row-gap: 0.6rem;
+      align-items: stretch;
+    }
+    .markdown-section .ss-node {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 0.15rem;
+      padding: 0.85rem 1rem;
+      border: 2px solid;
+      border-radius: 8px;
+      text-align: center;
+      min-width: 0;
+      overflow-wrap: break-word;
+    }
+    .markdown-section .ss-node--computer {
+      border-color: var(--ss-computer-accent);
+      background: var(--ss-computer-bg);
+      color: var(--ss-computer-text);
+    }
+    .markdown-section .ss-node--device {
+      border-color: var(--ss-device-accent);
+      background: var(--ss-device-bg);
+      color: var(--ss-device-text);
+    }
+    .markdown-section .ss-node-kicker {
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      opacity: 0.8;
+    }
+    .markdown-section .ss-node-title {
+      font-size: 1.05rem;
+    }
+    .markdown-section .ss-node-sub {
+      font-size: 0.8rem;
+      opacity: 0.85;
+    }
+    .markdown-section .ss-airgap {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 0.4rem;
+      padding: 0 0.5rem;
+      min-width: 7.5rem;
+    }
+    .markdown-section .ss-airgap::before {
+      content: "";
+      position: absolute;
+      top: -0.75rem;
+      bottom: -0.75rem;
+      left: 50%;
+      border-left: 2px dashed var(--ss-device-accent);
+    }
+    .markdown-section .ss-airgap-label {
+      position: relative;
+      z-index: 1;
+      padding: 0.1rem 0.35rem;
+      background: var(--ss-diagram-bg);
+      font-size: 0.62rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--ss-diagram-muted);
+    }
+    .markdown-section .ss-qr-link {
+      position: relative;
+      z-index: 1;
+      display: inline-flex;
+      align-items: center;
+      padding: 0.25rem 0.6rem;
+      border: 1.5px solid var(--ss-device-accent);
+      border-radius: 999px;
+      background: var(--ss-diagram-bg);
+      color: var(--ss-device-text);
+      font-size: 0.75rem;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+    .markdown-section .ss-endpoint {
+      font-size: 0.8rem;
+      text-align: center;
+      color: var(--ss-diagram-muted);
+    }
+    /* Swimlane (two-lane step flow with the air gap down the middle) */
+    .markdown-section .ss-lane-heads {
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      column-gap: 1rem;
+      align-items: center;
+      margin-bottom: 0.75rem;
+    }
+    .markdown-section .ss-lane-head {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 0.45rem 0.75rem;
+      border-radius: 8px;
+      font-weight: 700;
+      text-align: center;
+      min-width: 0;
+    }
+    .markdown-section .ss-lane-head em {
+      font-style: normal;
+      font-weight: 600;
+      font-size: 0.66rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      opacity: 0.75;
+    }
+    .markdown-section .ss-lane-head--computer {
+      background: var(--ss-computer-bg);
+      border-top: 3px solid var(--ss-computer-accent);
+      color: var(--ss-computer-text);
+    }
+    .markdown-section .ss-lane-head--device {
+      background: var(--ss-device-bg);
+      border-top: 3px solid var(--ss-device-accent);
+      color: var(--ss-device-text);
+    }
+    .markdown-section .ss-gap-label {
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--ss-diagram-muted);
+      white-space: nowrap;
+    }
+    .markdown-section ol.ss-steps {
+      position: relative;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      column-gap: 2.75rem;
+      row-gap: 0.5rem;
+    }
+    .markdown-section ol.ss-steps::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 50%;
+      border-left: 2px dashed var(--ss-device-accent);
+    }
+    .markdown-section li.ss-step {
+      position: relative;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      padding: 0.6rem 0.75rem;
+      border-left: 3px solid;
+      border-radius: 8px;
+      min-width: 0;
+      overflow-wrap: break-word;
+    }
+    .markdown-section li.ss-step--computer {
+      grid-column: 1;
+      border-left-color: var(--ss-computer-accent);
+      background: var(--ss-computer-bg);
+      color: var(--ss-computer-text);
+    }
+    .markdown-section li.ss-step--device {
+      grid-column: 2;
+      border-left-color: var(--ss-device-accent);
+      background: var(--ss-device-bg);
+      color: var(--ss-device-text);
+    }
+    .markdown-section li.ss-step--span {
+      grid-column: 1 / -1;
+      z-index: 1;
+      border-left-color: var(--ss-diagram-muted);
+      background: var(--ss-diagram-neutral-bg);
+      color: var(--ss-diagram-text);
+    }
+    .markdown-section li.ss-step--handoff {
+      grid-column: 1 / -1;
+      z-index: 1;
+      padding: 0;
+      border-left: none;
+      background: transparent;
+    }
+    .markdown-section .ss-handoff-half {
+      flex: 1 1 0;
+      padding: 0.6rem 0.75rem;
+      border-left: 3px solid;
+      border-radius: 8px;
+      min-width: 0;
+      overflow-wrap: break-word;
+    }
+    .markdown-section .ss-handoff-half--computer {
+      border-left-color: var(--ss-computer-accent);
+      background: var(--ss-computer-bg);
+      color: var(--ss-computer-text);
+    }
+    .markdown-section .ss-handoff-half--device {
+      border-left-color: var(--ss-device-accent);
+      background: var(--ss-device-bg);
+      color: var(--ss-device-text);
+    }
+    /* --warn is defined after the lane variants so it wins when combined */
+    .markdown-section li.ss-step--warn {
+      border-left-color: var(--ss-warn-accent);
+      background: var(--ss-warn-bg);
+      color: var(--ss-warn-text);
+    }
+    .markdown-section .ss-step-num {
+      flex-shrink: 0;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 1.5rem;
+      height: 1.5rem;
+      border-radius: 50%;
+      background: var(--ss-diagram-text);
+      color: #fff;
+      font-size: 0.75rem;
+      font-weight: 700;
+    }
+    .markdown-section li.ss-step--computer .ss-step-num {
+      background: var(--ss-computer-accent);
+    }
+    .markdown-section li.ss-step--device .ss-step-num {
+      background: var(--ss-device-accent-strong);
+    }
+    .markdown-section .ss-step-body {
+      flex: 1 1 auto;
+      min-width: 0;
+    }
+    .markdown-section .ss-step-body small {
+      display: block;
+      font-size: 0.75rem;
+      opacity: 0.8;
+    }
+    .markdown-section .ss-qr-badge {
+      position: absolute;
+      top: 50%;
+      z-index: 2;
+      display: inline-flex;
+      align-items: center;
+      padding: 0.15rem 0.45rem;
+      border: 1.5px solid var(--ss-device-accent);
+      border-radius: 999px;
+      background: var(--ss-diagram-bg);
+      color: var(--ss-device-text);
+      font-size: 0.68rem;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+    /* Center the badge on the dashed air-gap line (half of the 2.75rem gap) */
+    .markdown-section li.ss-step--device > .ss-qr-badge {
+      left: -1.375rem;
+      transform: translate(-50%, -50%);
+    }
+    .markdown-section li.ss-step--computer > .ss-qr-badge {
+      right: -1.375rem;
+      transform: translate(50%, -50%);
+    }
+    .markdown-section li.ss-step--handoff > .ss-qr-badge {
+      position: static;
+      transform: none;
+      flex-shrink: 0;
+    }
+    .markdown-section .ss-lane-tag {
+      display: none;
+    }
+    .markdown-section .ss-chip {
+      flex-shrink: 0;
+      padding: 0.1rem 0.45rem;
+      border: 1px solid currentColor;
+      border-radius: 999px;
+      background: var(--ss-diagram-bg);
+      font-size: 0.68rem;
+      font-weight: 700;
+    }
+    /* Phase strip (build journey) */
+    .markdown-section .ss-phases {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.4rem;
+    }
+    .markdown-section .ss-phases .ss-caption {
+      grid-column: 1 / -1;
+      margin-top: 0;
+    }
+    .markdown-section .ss-phase {
+      position: relative;
+      padding: 0.85rem 1rem;
+      border: 1px solid var(--ss-diagram-border);
+      border-top: 3px solid var(--ss-device-accent);
+      border-radius: 8px;
+      background: var(--ss-diagram-neutral-bg);
+      min-width: 0;
+    }
+    .markdown-section .ss-phase + .ss-phase::before {
+      content: "\2192";
+      position: absolute;
+      left: -1.15rem;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--ss-diagram-muted);
+      font-weight: 700;
+    }
+    .markdown-section .ss-phase--critical {
+      border-top-color: var(--ss-warn-accent);
+    }
+    .markdown-section .ss-phase--critical .ss-phase-kicker {
+      color: var(--ss-warn-text);
+    }
+    .markdown-section .ss-phase-kicker {
+      display: block;
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--ss-diagram-muted);
+    }
+    .markdown-section .ss-phase-title {
+      display: block;
+      margin: 0.1rem 0 0.5rem;
+      font-size: 1rem;
+      color: var(--ss-diagram-text);
+    }
+    .markdown-section .ss-diagram ol.ss-phase-steps {
+      list-style: decimal;
+      padding-left: 1.4rem;
+      font-size: 0.85rem;
+    }
+    .markdown-section ol.ss-phase-steps li {
+      margin: 0.15rem 0;
+    }
+    /* Vertical flow (multisig journey) */
+    .markdown-section ol.ss-flow {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+    @media (max-width: 700px) {
+      .markdown-section .ss-lane-heads {
+        display: none;
+      }
+      .markdown-section ol.ss-steps {
+        grid-template-columns: 1fr;
+        column-gap: 0;
+      }
+      .markdown-section ol.ss-steps::before {
+        display: none;
+      }
+      .markdown-section li.ss-step--computer,
+      .markdown-section li.ss-step--device {
+        grid-column: 1;
+      }
+      .markdown-section li.ss-step--handoff {
+        flex-wrap: wrap;
+      }
+      .markdown-section .ss-lane-tag {
+        display: inline-block;
+        flex-shrink: 0;
+        padding: 0.05rem 0.4rem;
+        border-radius: 4px;
+        font-size: 0.62rem;
+        font-weight: 700;
+        letter-spacing: 0.05em;
+        text-transform: uppercase;
+        color: #fff;
+      }
+      .markdown-section .ss-lane-tag--computer {
+        background: var(--ss-computer-accent);
+      }
+      .markdown-section .ss-lane-tag--device {
+        background: var(--ss-device-accent-strong);
+      }
+      .markdown-section li.ss-step--device > .ss-qr-badge,
+      .markdown-section li.ss-step--computer > .ss-qr-badge {
+        position: static;
+        transform: none;
+        margin-left: auto;
+      }
+      .markdown-section .ss-phases {
+        grid-template-columns: 1fr;
+        gap: 0.9rem;
+      }
+      .markdown-section .ss-phase + .ss-phase::before {
+        content: "\2193";
+        left: 50%;
+        top: -1.05rem;
+        transform: translateX(-50%);
+      }
+      .markdown-section .ss-arch-grid {
+        grid-template-columns: 1fr;
+      }
+      .markdown-section .ss-arch-grid .ss-node--computer { order: 1; }
+      .markdown-section .ss-arch-grid .ss-endpoint--computer { order: 2; }
+      .markdown-section .ss-arch-grid .ss-airgap { order: 3; }
+      .markdown-section .ss-arch-grid .ss-node--device { order: 4; }
+      .markdown-section .ss-arch-grid .ss-endpoint--device { order: 5; }
+      .markdown-section .ss-arch-spacer {
+        display: none;
+      }
+      .markdown-section .ss-airgap {
+        flex-direction: row;
+        justify-content: center;
+        gap: 0.6rem;
+        padding: 0.4rem 0;
+        min-width: 0;
+      }
+      .markdown-section .ss-airgap::before {
+        top: 50%;
+        bottom: auto;
+        left: 0;
+        right: 0;
+        border-left: none;
+        border-top: 2px dashed var(--ss-device-accent);
+      }
+      /* Stacked nodes exchange up/down, so rotate the QR pill arrows */
+      .markdown-section .ss-qr-link span[aria-hidden] {
+        display: inline-block;
+        transform: rotate(90deg);
+      }
+    }
+    @media print {
+      .markdown-section .ss-diagram {
+        break-inside: avoid;
+        border-color: #999;
+      }
+      .markdown-section .ss-step-num,
+      .markdown-section .ss-lane-tag {
+        print-color-adjust: exact;
+        -webkit-print-color-adjust: exact;
+      }
+    }
+    /* === End diagram components === */
     /* Nested sidebar labels (no page link): heading only, no chevron, links always visible */
     .sidebar-nav li.sidebar-subheading {
       cursor: default;
@@ -236,7 +731,10 @@
         placeholder: 'Search docs...',
         noData: 'No results found.',
         paths: 'auto',
-        depth: 3
+        depth: 3,
+        /* Bump when page content changes shape (e.g. the diagram rework) so
+           returning visitors don't search a stale localStorage index. */
+        namespace: 'seedsigner-docs-v2'
       },
       copyCode: {
         buttonText: 'Copy',

@@ -24,6 +24,7 @@ New to SeedSigner? These journeys take you from a specific goal to a finished re
 |---------|----------------|
 | **[Recover from backup](/get-started/recover.md)** | Restore access from a paper or SeedQR backup and prove it controls your funds. |
 | **[Set up multisig](/get-started/multisig.md)** | Create a multi-key wallet (e.g. 2-of-3) for higher security. |
+| **[Use a mobile coordinator](/get-started/bluewallet.md)** | Run your watch-only wallet on your phone with BlueWallet instead of a desktop. |
 
 ---
 

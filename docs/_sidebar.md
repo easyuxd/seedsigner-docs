@@ -11,6 +11,7 @@
   - **Going further**
     - [Recover from backup](/get-started/recover.md)
     - [Set up multisig](/get-started/multisig.md)
+    - [Use a mobile coordinator](/get-started/bluewallet.md)
 
 - **Reference**
   - **Hardware**
@@ -28,14 +29,17 @@
     - [Power & restart](/reference/device/power.md)
   - **Seeds**
     - [Seed creation](/reference/seeds/creation.md)
+    - [Dice entropy explained](/reference/seeds/dice-entropy.md)
     - [Seed loading](/reference/seeds/loading.md)
     - [SeedQR backup](/reference/seeds/seedqr.md)
     - [Seed verification](/reference/seeds/verification.md)
     - [Seed discard](/reference/seeds/discard.md)
+    - [BIP-85 child seeds](/reference/seeds/bip85.md)
   - **Keys & transactions**
     - [Xpub export](/reference/keys/xpub-export.md)
     - [Address explorer](/reference/keys/address-explorer.md)
     - [PSBT signing](/reference/keys/psbt-signing.md)
+    - [Message signing](/reference/keys/message-signing.md)
   - **Multisig**
     - [Wallet descriptor](/reference/multisig/descriptor.md)
     - [Multisig spending](/reference/multisig/spending.md)
@@ -43,6 +47,7 @@
     - [Basic settings](/reference/settings/basic.md)
     - [Advanced settings](/reference/settings/advanced.md)
     - [Hardware settings](/reference/settings/hardware.md)
+    - [SettingsQR](/reference/settings/settingsqr.md)
 
 - **Security**
   - [Security model](/security/overview.md)
@@ -54,6 +59,7 @@
 - **Help & Resources**
   - **Troubleshooting**
     - [Common issues](/help/common-issues.md)
+    - [QR scanning](/help/qr-scanning.md)
     - [Error messages](/help/error-messages.md)
   - **Resources**
     - [FAQ](/help/faq.md)

@@ -23,29 +23,57 @@ Do not download SeedSigner images from any other source. Always use the official
 
 ## Verify the download
 
-The SeedSigner maintainer publishes a PGP-signed message containing a SHA256 hash for each release file. Verification has two parts: confirming the signature is authentic, and confirming your file matches the signed hash.
+The SeedSigner maintainer publishes a PGP-signed message containing the SHA256 hashes for each release. Verification answers two separate questions, and you need both:
+
+1. **Is the signed hash list authentic?** (Was it really published by the maintainer?) → the *signature* check.
+2. **Is my file the one that was signed?** (Not corrupted or swapped?) → the *hash* comparison.
+
+You'll need GPG installed: it ships with most Linux distros, comes with [GPG Suite](https://gpgtools.org) on macOS, and with [Gpg4win](https://gpg4win.org) on Windows.
 
 ### Step 1 — Import the maintainer's public PGP key
 
-If you haven't already, import the maintainer's public key into your keyring. The key is available on the SeedSigner GitHub repository.
+Download the maintainer's public key (published in the SeedSigner GitHub repository) and import it into your local keyring:
 
 ```bash
 gpg --import seedsigner_pubkey.asc
 ```
 
-### Step 2 — Verify the PGP signature
+GPG confirms with a line like `key <KEY-ID>: public key "SeedSigner <email>" imported`.
 
-Use GPG to verify that the signature file was actually signed by the maintainer's key:
+### Step 2 — Check the key's fingerprint against independent sources
+
+Importing a key proves nothing by itself — an attacker who could tamper with your download could also serve you a fake key. What ties the key to the real maintainer is its **fingerprint** (a 40-character hex string). Display it:
+
+```bash
+gpg --fingerprint
+```
+
+Now compare that fingerprint against **at least two independent places** where the maintainer has published it — for example the SeedSigner GitHub repository *and* the project's posts or profiles on other platforms. The more independent channels agree, the harder the fingerprint is to fake. If the fingerprints differ *anywhere*, stop and ask in the community channels before proceeding.
+
+> **Tip:** This step is the heart of the whole procedure. Signature math is automatic; deciding to trust the key is the human part. Do it once, carefully, and future releases verify against the same key.
+
+### Step 3 — Verify the PGP signature on the hash file
+
+With the key imported and fingerprint-checked, verify that the signed hash list really was signed by it:
 
 ```bash
 gpg --verify <signature-file>
 ```
 
-You should see a message confirming a **Good signature**. If GPG reports a bad signature or an unknown key, stop — do not use the image.
+A successful check looks like:
 
-### Step 3 — Compare the SHA256 hash
+```
+gpg: Good signature from "SeedSigner <email>"
+```
 
-Generate the SHA256 hash of your downloaded `.img` file and compare it to the hash in the signed message:
+Two common messages and what they mean:
+
+- `WARNING: This key is not certified with a trusted signature!` — **this is normal and OK.** GPG is telling you that *you* haven't formally marked the key as trusted in your keyring. Your trust comes from the fingerprint check in Step 2, so you can proceed.
+- `BAD signature` — **stop immediately.** The file was altered after signing, or was signed by something else. Do not use the image; re-download and re-verify, and report it if the failure repeats.
+
+### Step 4 — Compare the SHA256 hash
+
+Finally, confirm your `.img` file matches the hash inside the signed file. Generate your file's hash:
 
 **Linux / macOS:**
 ```bash
@@ -57,13 +85,25 @@ sha256sum seedsigner_<version>.img
 Get-FileHash seedsigner_<version>.img -Algorithm SHA256
 ```
 
-The output must match the hash in the signed file exactly. If it doesn't, your download may be corrupted or tampered with — download the file again and repeat the process.
+Compare the output to the hash listed for your file in the signed message — it must match **exactly, every character**. On Linux/macOS you can automate the comparison by running `sha256sum -c` against the hash file, which prints `OK` per file.
+
+If the hashes don't match, your download is corrupted or tampered with. Delete it, download again, and repeat. 
 
 > **Warning:** If the hash does not match after a second download, do not use the image. Report the issue on the SeedSigner GitHub repository.
 
+## If verification fails — quick reference
+
+| What you see | What it means | What to do |
+|--------------|---------------|------------|
+| `Good signature` + "not certified" warning | Success — the warning is expected (see Step 3) | Proceed |
+| `BAD signature` | The signed file was modified | **Stop.** Re-download; report if it repeats |
+| `Can't check signature: No public key` | The maintainer's key isn't in your keyring | Do Steps 1–2, then re-verify |
+| Fingerprint doesn't match a published source | Possible fake key | **Stop.** Ask in community channels |
+| SHA256 mismatch | Corrupted or tampered image file | Re-download; **stop** if it repeats |
+
 ## Build from source
 
-If you want maximum assurance that the software is exactly what the source code says it is, you can build the image yourself from source. This eliminates any trust in the pre-built release file.
+If you want maximum assurance that the software is exactly what the source code says it is, you can build the image yourself from source. This eliminates any trust in the pre-built release file — you verify the *code* instead of the *binary*.
 
 See the build instructions in the [SeedSigner GitHub repository](https://github.com/SeedSigner/seedsigner).
 

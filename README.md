@@ -27,7 +27,7 @@ This repository contains the **documentation website** for [SeedSigner](https://
 
 A [Docsify](https://docsify.js.org/) single-page documentation site. Docsify has **no build step**: it ships a static `index.html` that loads the Docsify runtime from a CDN, then fetches and renders the Markdown files in `docs/` client-side at request time. You edit Markdown, reload, and the site updates.
 
-- **48** Markdown files (45 content pages plus the `_sidebar`/`_navbar`/`_404` partials) and **143** images under `docs/`.
+- **54** Markdown files (51 content pages plus the `_sidebar`/`_navbar`/`_404` partials) and **143** images under `docs/`.
 - Hash-based client-side routing (e.g. `/#/reference/hardware/assembly`). Pre-restructure URLs (e.g. `/#/hardware-build/assembly`) still resolve via a Docsify `alias` redirect map in `index.html`.
 - Theming, search, code-copy, pagination, image zoom, collapsible sidebar, and a scroll progress bar — all via Docsify plugins (see below).
 
@@ -89,7 +89,7 @@ Dev dependencies (see [package.json](package.json)):
 │   ├── _navbar.md              # Top navbar links
 │   ├── _404.md                 # Custom not-found page
 │   ├── .nojekyll               # Tells GitHub Pages to serve files as-is
-│   ├── get-started/            # Journeys: build-device, first-wallet, receive, send, recover, multisig (+ landing README)
+│   ├── get-started/            # Journeys: build-device, first-wallet, receive, send, recover, multisig, bluewallet (+ landing README)
 │   ├── reference/              # Screen/object-first reference, grouped into:
 │   │   ├── hardware/           #   components, sourcing, assembly, enclosures
 │   │   ├── software/           #   image verification, SD flashing, first-run setup
@@ -103,7 +103,8 @@ Dev dependencies (see [package.json](package.json)):
 │   ├── contribute/             # Contributing guides, testnet
 │   └── images/                 # All screenshots & photos (143 files)
 ├── tests/                      # Playwright smoke tests
-│   └── docs.spec.ts
+│   ├── docs.spec.ts            #   Site smoke tests (routing, images, sidebar, aliases)
+│   └── diagrams.spec.ts        #   ss-* diagram rendering + mobile-overflow guards
 ├── playwright.config.ts        # Test config (PORT-overridable web server)
 ├── package.json                # Scripts + dev dependencies
 ├── .github/workflows/          # CI
@@ -145,6 +146,13 @@ What's covered ([tests/docs.spec.ts](tests/docs.spec.ts)):
 - An internal hash route renders its content.
 - **A pre-restructure URL still resolves via the alias redirect** — guards the old→new URL map in `index.html`.
 - Sidebar navigation works.
+
+And ([tests/diagrams.spec.ts](tests/diagrams.spec.ts)):
+
+- Every diagram page renders exactly one visible `.ss-diagram` figure with a non-empty `aria-label`.
+- **ASCII-art regression guard** — no box-drawing/arrow characters may reappear in `pre` blocks.
+- Desktop: the first-wallet swimlane lays out as two lanes with step badges 1–8.
+- Mobile (375 px): no horizontal page overflow on any diagram page; swimlanes stack to one column with lane chips visible.
 
 **Port note:** the dev/test server defaults to port `3000`. If another local service occupies it, set `PORT` — `playwright.config.ts` reads it for both the server and `baseURL`. In CI, `reuseExistingServer` is off so a clean server is always started.
 
@@ -195,14 +203,19 @@ The site uses a **journey-first** information architecture: goal-based journeys 
 
 ## Known gaps & TODOs
 
-Honest list of what's incomplete or worth improving:
+Honest list of what's incomplete or worth improving, ranked roughly by importance. Items 1–4 are the outstanding recommendations from the 2026-07 comprehensive audit (the audit's higher-ranked items — the `ss-*` diagram system and the ecosystem content gap-fill: QR scanning guide, GPG verification walkthrough, BlueWallet journey, SettingsQR / BIP-85 / message signing / dice entropy pages, Pi variant comparison, boot-time note — are done).
 
-- **No deploy automation.** Add a GitHub Pages (or other) deploy workflow so merges publish automatically. Today it is manual.
-- **Smoke-test depth.** The suite is intentionally shallow (6 tests). Candidates: crawl every sidebar route, verify no broken internal links/images site-wide, assert every `alias` redirect resolves, add a11y checks, and enable mobile/Firefox/WebKit projects.
-- **Content gap — assembly photos.** `reference/hardware/assembly.md` would benefit from a "components laid out before assembly" photo (previously a stray inline TODO, now removed). Track as a content task with a real screenshot.
-- **CDN sourcing.** Runtime deps are pinned but still loaded from jsDelivr at request time. For stronger reproducibility/offline support, consider vendoring the assets locally and/or adding Subresource Integrity (SRI) hashes.
-- **Dev-dependency advisories.** `npm audit` reports advisories in the transitive `docsify-cli` tree (dev/build-time only — never shipped to the static site). Revisit when upstream updates.
-- **Translations.** The legacy SeedSigner user guide had multi-language translations; this restructured site does not yet. Contributions welcome (coordinate via a GitHub issue).
+1. **No deploy automation.** Add a GitHub Actions workflow that publishes `docs/` to GitHub Pages on every push to `main`. Today the only workflow is CI tests; publishing is manual.
+2. **Site-wide link/image crawl test.** Extend Playwright beyond the current smoke tests: walk **every** route in `_sidebar.md`, assert no 404s and no broken images on any page, and assert every entry in the `alias` redirect map resolves. This protects the IA/restructure investment against silent link rot.
+3. **Dark mode.** Add a `prefers-color-scheme: dark` override of the docsify-themeable CSS variables in `docs/index.html`. The diagram system is already fully variable-driven (`--ss-*` tokens), so diagrams inherit dark mode for free once the token block is overridden.
+4. **Lower-priority audit items:**
+   - **CDN sourcing.** Runtime deps are pinned but still loaded from jsDelivr at request time. Vendor the assets locally and/or add Subresource Integrity (SRI) hashes for stronger reproducibility/offline support.
+   - **Browser coverage.** CI tests Chromium only; the Firefox/WebKit/mobile projects exist but are commented out in `playwright.config.ts`.
+   - **Content gap — assembly photos.** `reference/hardware/assembly.md` would benefit from a "components laid out before assembly" photo. Needs a real photograph.
+   - **Translations.** The legacy SeedSigner user guide had multi-language translations; this restructured site does not yet. Contributions welcome (coordinate via a GitHub issue).
+5. **Future content idea.** An exhaustive settings reference generated from (and periodically checked against) the firmware source — exact menu paths and every option value, kept in sync per SeedSigner release.
+6. **Platform note (not an action item).** The audit's verdict was to **stay on Docsify** — revisit a migration (e.g. Astro Starlight: non-hash URLs, prerendered HTML for SEO, built-in dark mode/i18n) only if SEO or translations become priorities. Mermaid support was likewise deliberately skipped in favor of the hand-styled `ss-*` diagrams; if contributors ever need ad-hoc diagrams, it can be added with a small `markdown.renderer.code` hook in `index.html`.
+7. **Dev-dependency advisories.** `npm audit` reports advisories in the transitive `docsify-cli` tree (dev/build-time only — never shipped to the static site). Revisit when upstream updates.
 
 ## License & links
 

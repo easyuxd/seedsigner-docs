@@ -86,7 +86,7 @@ Physical dice produce true randomness that cannot be influenced by software bugs
 6. Read the security warning and press **I Understand**.
 7. Write down all seed words and complete the backup verification.
 
-> **Tip:** Use a casino-grade die for the best randomness. Roll on a flat, hard surface.
+> **Tip:** Use a casino-grade die for the best randomness. Roll on a flat, hard surface. Curious why it's exactly 50 or 99 rolls, or how to independently verify the result? See [Dice entropy explained](/reference/seeds/dice-entropy.md).
 
 ---
 

@@ -15,13 +15,16 @@ A **multisig** (multi-signature) wallet requires several keys to spend — for e
 
 ## The journey at a glance
 
-```
- 1. Create 3 seeds on SeedSigner (back up each)
- 2. Sparrow → New Wallet → Multi Signature → 2 of 3
- 3. Export each seed's xpub (Multisig) → scan into Keystores 1, 2, 3
- 4. Apply & save the wallet
- 5. Back up the wallet descriptor  ← do this before depositing funds
-```
+<figure class="ss-diagram" aria-label="The five steps of setting up a 2-of-3 multisig wallet: create three seeds on SeedSigner, configure Sparrow, scan in the three xpubs, save, and back up the descriptor">
+  <ol class="ss-flow">
+    <li class="ss-step ss-step--device"><span class="ss-step-num">1</span><span class="ss-step-body">Create 3 seeds on SeedSigner<small>Back up and label each one</small></span><span class="ss-chip">&times;3</span></li>
+    <li class="ss-step ss-step--computer"><span class="ss-step-num">2</span><span class="ss-step-body">Sparrow &#8594; New Wallet &#8594; Multi Signature &#8594; <strong>2 of 3</strong></span></li>
+    <li class="ss-step ss-step--device"><span class="ss-step-num">3</span><span class="ss-step-body">Export each seed's xpub (Multisig)<small>Scan into Keystore 1, 2, 3</small></span><span class="ss-chip">QR &times;3</span></li>
+    <li class="ss-step ss-step--computer"><span class="ss-step-num">4</span><span class="ss-step-body">Apply &amp; save the wallet</span></li>
+    <li class="ss-step ss-step--warn"><span class="ss-step-num">5</span><span class="ss-step-body">Back up the wallet descriptor<small><strong>Before depositing funds</strong> &mdash; seeds alone may not be enough to recover a multisig wallet</small></span></li>
+  </ol>
+  <figcaption class="ss-caption"><span style="color: var(--ss-device-text);">&#9632;</span> on SeedSigner &nbsp;&middot;&nbsp; <span style="color: var(--ss-computer-text);">&#9632;</span> in Sparrow &mdash; the same two roles as single-sig, repeated across three keys.</figcaption>
+</figure>
 
 ## Step 1: Create three private keys
 

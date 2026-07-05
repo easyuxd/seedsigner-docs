@@ -12,15 +12,20 @@ Spending is the half that requires your keys, so SeedSigner does the signing. Yo
 
 ## The journey at a glance
 
-```
- Coordinator (Sparrow)            SeedSigner
- ─────────────────────            ──────────
- 1. Build tx → show PSBT QR
-                                  2. Scan PSBT
-                                  3. Review recipient / amount / fee / change
-                                  4. Approve → show signed QR
- 5. Scan signed QR → Broadcast
-```
+<figure class="ss-diagram ss-swimlane" aria-label="The four steps of sending bitcoin: build the transaction in the coordinator, scan it into SeedSigner, review every detail on the device screen, then sign and broadcast">
+  <div class="ss-lane-heads">
+    <span class="ss-lane-head ss-lane-head--computer">Coordinator <em>Sparrow &middot; networked</em></span>
+    <span class="ss-gap-label" aria-hidden="true">&#8646; QR only</span>
+    <span class="ss-lane-head ss-lane-head--device">SeedSigner <em>air-gapped</em></span>
+  </div>
+  <ol class="ss-steps">
+    <li class="ss-step ss-step--computer"><span class="ss-step-num">1</span><span class="ss-lane-tag ss-lane-tag--computer">Coordinator</span><span class="ss-step-body">Build the transaction<small>Show it as an animated PSBT QR</small></span><span class="ss-qr-badge"><span class="ss-sr">unsigned transaction sent to SeedSigner by </span>QR<span aria-hidden="true">&nbsp;&#9658;</span></span></li>
+    <li class="ss-step ss-step--device"><span class="ss-step-num">2</span><span class="ss-lane-tag ss-lane-tag--device">SeedSigner</span><span class="ss-step-body">Scan the PSBT</span></li>
+    <li class="ss-step ss-step--device ss-step--warn"><span class="ss-step-num">3</span><span class="ss-lane-tag ss-lane-tag--device">SeedSigner</span><span class="ss-step-body">Review recipient / amount / fee / change<small>The whole reason to use a signer &mdash; check all four</small></span></li>
+    <li class="ss-step ss-step--handoff"><span class="ss-step-num">4</span><span class="ss-handoff-half ss-handoff-half--computer">Scan the signed QR back in &#8594; Broadcast</span><span class="ss-qr-badge"><span class="ss-sr">signature returned to the coordinator by </span>QR<span aria-hidden="true">&nbsp;&#9668;</span></span><span class="ss-handoff-half ss-handoff-half--device">Approve &#8594; the signed QR appears</span></li>
+  </ol>
+  <figcaption class="ss-caption">The PSBT goes in as one QR and the signature comes back as another &mdash; your keys never leave the device, and step 3 happens on a screen malware can't touch.</figcaption>
+</figure>
 
 ---
 
@@ -69,4 +74,4 @@ SeedSigner shows you the transaction on a screen that malware on your computer *
 - [Receive bitcoin](/get-started/receive.md) — the other half of using your wallet.
 - [Set up multisig](/get-started/multisig.md) — require multiple keys to spend.
 
-> **Tip:** Trouble getting the QR to scan in either direction? Lower **QR Density** in SeedSigner settings for larger codes, and improve lighting. More: [Common issues — QR scanning](/help/common-issues.md#qr-code-scanning-problems).
+> **Tip:** Trouble getting the QR to scan in either direction? Lower **QR Density** in SeedSigner settings for larger codes, and improve lighting. More: [QR scanning troubleshooting](/help/qr-scanning.md).

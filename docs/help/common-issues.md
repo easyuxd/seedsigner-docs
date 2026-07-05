@@ -24,6 +24,8 @@ If your SeedSigner shows no signs of life when you connect power, work through t
 
 QR scanning depends on lighting, distance, and camera settings. If scans are failing or taking too long, try these fixes:
 
+> **Tip:** There is now a dedicated, in-depth guide covering both directions (SeedSigner reading your coordinator, and your coordinator reading SeedSigner): [QR scanning troubleshooting](/help/qr-scanning.md).
+
 1. **Improve lighting.** The camera needs even, adequate light on the QR code. Avoid harsh shadows or direct glare on a phone screen.
 2. **Adjust your distance.** Hold the SeedSigner 6 to 12 inches from the QR code. Too close and the camera can't focus; too far and the code is too small.
 3. **Clean the camera lens.** A fingerprint or speck of dust on the tiny lens dramatically reduces scan quality. Wipe it gently with a microfiber cloth.

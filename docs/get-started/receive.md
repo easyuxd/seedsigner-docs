@@ -12,14 +12,19 @@ Receiving is the safe half of using a wallet: you can hand out an address freely
 
 ## The journey at a glance
 
-```
- Coordinator (Sparrow)              SeedSigner
- ─────────────────────              ──────────
- 1. Receive tab → show address QR
-                                    2. Tools → Verify Address → scan
-                                    3. Match found ✓  (it's really yours)
- 4. Share the verified address
-```
+<figure class="ss-diagram ss-swimlane" aria-label="The three steps of receiving bitcoin: display an address in the coordinator, verify it on SeedSigner's screen, then share it and receive the payment">
+  <div class="ss-lane-heads">
+    <span class="ss-lane-head ss-lane-head--computer">Coordinator <em>Sparrow &middot; networked</em></span>
+    <span class="ss-gap-label" aria-hidden="true">&#8646; QR only</span>
+    <span class="ss-lane-head ss-lane-head--device">SeedSigner <em>air-gapped</em></span>
+  </div>
+  <ol class="ss-steps">
+    <li class="ss-step ss-step--computer"><span class="ss-step-num">1</span><span class="ss-lane-tag ss-lane-tag--computer">Coordinator</span><span class="ss-step-body">Receive tab shows a fresh address QR<small>Don't share it yet</small></span><span class="ss-qr-badge"><span class="ss-sr">address sent to SeedSigner by </span>QR<span aria-hidden="true">&nbsp;&#9658;</span></span></li>
+    <li class="ss-step ss-step--device"><span class="ss-step-num">2</span><span class="ss-lane-tag ss-lane-tag--device">SeedSigner</span><span class="ss-step-body">Tools &#8594; Verify Address &#8594; scan<small>Success! &mdash; Address Verified &#10003; It's really yours</small></span></li>
+    <li class="ss-step ss-step--span"><span class="ss-step-num">3</span><span class="ss-step-body">Share the verified address and receive the payment</span></li>
+  </ol>
+  <figcaption class="ss-caption">The device screen is the source of truth: malware on your computer can swap an address in the coordinator, but it cannot touch what SeedSigner shows you.</figcaption>
+</figure>
 
 ---
 

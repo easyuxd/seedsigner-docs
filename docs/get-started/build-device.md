@@ -10,13 +10,38 @@ By the end you'll have a device sitting at the main menu, ready to create or loa
 
 ## The journey at a glance
 
-```
- Phase 1 — Hardware        Phase 2 — Software           Phase 3 — First boot
- ─────────────────         ──────────────────           ────────────────────
- 1. Gather components      4. Download + verify image   7. Power on
- 2. Source the parts       5. Flash the microSD card    8. Reach the main menu
- 3. Assemble (no solder)   6. First-run settings        9. Learn to navigate
-```
+<figure class="ss-diagram ss-phases" aria-label="The three phases of building a SeedSigner, eleven steps total: assemble the hardware, prepare the software, then boot and learn the device">
+  <div class="ss-phase">
+    <span class="ss-phase-kicker">Phase 1</span>
+    <strong class="ss-phase-title">Hardware</strong>
+    <ol class="ss-phase-steps" start="1">
+      <li>Gather the components</li>
+      <li>Source the parts</li>
+      <li>Pick an enclosure</li>
+      <li>Assemble &mdash; no solder</li>
+    </ol>
+  </div>
+  <div class="ss-phase ss-phase--critical">
+    <span class="ss-phase-kicker">Phase 2 &middot; security-critical</span>
+    <strong class="ss-phase-title">Software</strong>
+    <ol class="ss-phase-steps" start="5">
+      <li>Download <em>and verify</em> the image</li>
+      <li>Flash the microSD card</li>
+    </ol>
+  </div>
+  <div class="ss-phase">
+    <span class="ss-phase-kicker">Phase 3</span>
+    <strong class="ss-phase-title">First boot</strong>
+    <ol class="ss-phase-steps" start="7">
+      <li>Plug in power</li>
+      <li>Dismiss the SD-card notice</li>
+      <li>Reach the main menu</li>
+      <li>Do the first-run setup</li>
+      <li>Learn the controls</li>
+    </ol>
+  </div>
+  <figcaption class="ss-caption">Eleven steps, about 45 minutes of hands-on time. Phase 2 is where your security is decided &mdash; never skip image verification.</figcaption>
+</figure>
 
 ---
 

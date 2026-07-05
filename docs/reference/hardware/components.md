@@ -14,6 +14,18 @@ The Raspberry Pi Zero v1.3 is the main computer that runs SeedSigner. Version 1.
 
 > **Tip:** If you use a wireless-capable Pi and want extra assurance, community members have documented hardware methods to permanently disable the wireless chips. See the [hardware wireless disable guide](https://github.com/DesobedienteTecnologico/rpi_disable_wifi_and_bt_by_hardware) for details.
 
+#### Which Pi Zero variant? — comparison
+
+| | **Pi Zero v1.3** | **Pi Zero W / WH** | **Pi Zero 2 W** |
+|---|---|---|---|
+| Wireless hardware | **None on the board** | Wi-Fi + Bluetooth chip present | Wi-Fi + Bluetooth chip present |
+| Air gap | Physical — guaranteed by hardware | Software — radios disabled at boot | Software — radios disabled at boot |
+| Speed | Single-core; boots in ~45 s | Single-core; boots in ~45 s | Quad-core; noticeably faster boot and UI |
+| Availability | Often out of stock — discontinued-tier product | Moderate | Good |
+| Best for | Maximum-assurance builds | Using a board you already own | Convenience builds where speed matters |
+
+**How to choose:** if you can find a **v1.3**, it remains the gold standard — no radio exists to worry about. If you can't, the **Zero 2 W** is the practical pick: the software air gap disables its radios at boot, and its quad-core CPU makes boot and QR work snappier. The **W/WH** makes sense mainly if one is already in your drawer. Note that the WH variant ships with a pre-soldered GPIO header, which you need anyway for the display HAT.
+
 **A note about the Pi Zero's USB ports:** The Pi Zero has two Micro USB ports. The port nearest the joystick (once the HAT is attached) is **power only**. The other port carries both power and data. For normal SeedSigner use, plug your power source into the **power-only** port.
 
 ### 2. Waveshare 1.3" 240x240 LCD HAT

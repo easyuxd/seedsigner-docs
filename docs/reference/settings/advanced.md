@@ -109,7 +109,7 @@ When enabled, SeedSigner can generate and read the compact SeedQR format, which 
 
 When enabled, SeedSigner can derive deterministic child seeds from a master seed using the BIP-85 standard. Each child seed is a fully independent BIP-39 seed that can be reproducibly generated from the parent.
 
-> **Tip:** BIP-85 is useful for generating separate seeds for different purposes (e.g., one for savings, one for spending) all derived from a single master seed.
+> **Tip:** BIP-85 is useful for generating separate seeds for different purposes (e.g., one for savings, one for spending) all derived from a single master seed. Full guide: [BIP-85 child seeds](/reference/seeds/bip85.md).
 
 ### Electrum seeds
 
@@ -117,7 +117,7 @@ When enabled, SeedSigner supports the Electrum seed format in addition to the st
 
 ### Message signing
 
-When enabled, SeedSigner can sign arbitrary text messages with a private key. This can be used to prove ownership of a Bitcoin address.
+When enabled, SeedSigner can sign arbitrary text messages with a private key. This can be used to prove ownership of a Bitcoin address. Full guide: [Message signing](/reference/keys/message-signing.md).
 
 ### Privacy warnings
 
