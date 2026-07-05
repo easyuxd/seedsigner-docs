@@ -28,6 +28,6 @@ You can display the seed words for any loaded seed and run a verification quiz t
 
 ## When to verify
 
-- **After creating a new seed** — always verify immediately.
-- **Before relying on a backup for the first time** — load the seed and confirm the words match your written copy.
-- **Periodically** — especially before making a large deposit, re-verify that your backup is accurate and legible.
+- **After creating a new seed:** always verify immediately.
+- **Before relying on a backup for the first time:** load the seed and confirm the words match your written copy.
+- **Periodically:** especially before making a large deposit, re-verify that your backup is accurate and legible.

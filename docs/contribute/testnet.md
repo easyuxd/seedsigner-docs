@@ -10,7 +10,7 @@ Bitcoin testnet is a separate Bitcoin network where the coins have zero real-wor
 
 ## What Is Testnet?
 
-Testnet is a parallel Bitcoin blockchain maintained specifically for testing. Testnet coins (tBTC) are freely available and intentionally worthless. Every feature you use on mainnet — single-sig, multi-sig, PSBTs, address verification — works identically on testnet.
+Testnet is a parallel Bitcoin blockchain maintained specifically for testing. Testnet coins (tBTC) are freely available and intentionally worthless. Every feature you use on mainnet (single-sig, multi-sig, PSBTs, address verification) works identically on testnet.
 
 ---
 

@@ -92,26 +92,26 @@ See the full instructions in [Back up the wallet descriptor](/reference/multisig
 
 If you have trouble scanning QR codes between SeedSigner and Sparrow:
 
-- **Adjust QR brightness** — use the joystick on SeedSigner to increase or decrease screen brightness.
-- **Lower QR density** — in SeedSigner settings, reduce the QR code density. This produces larger, easier-to-read QR modules that work better with low-quality webcams.
-- **Improve lighting** — make sure the SeedSigner screen is well-lit and not reflecting glare into the webcam.
-- **Hold steady** — keep the SeedSigner screen at a consistent distance from the webcam (roughly 4-8 inches works for most setups).
+- **Adjust QR brightness:** use the joystick on SeedSigner to increase or decrease screen brightness.
+- **Lower QR density:** in SeedSigner settings, reduce the QR code density. This produces larger, easier-to-read QR modules that work better with low-quality webcams.
+- **Improve lighting:** make sure the SeedSigner screen is well-lit and not reflecting glare into the webcam.
+- **Hold steady:** keep the SeedSigner screen at a consistent distance from the webcam (roughly 4-8 inches works for most setups).
 
 > **Warning:** Always verify you are on the correct network (Mainnet vs. Testnet) before exporting keys. Mixing networks will cause the wallet setup to fail.
 
 ---
 
-## You're done — checklist
+## You're done: checklist
 
 - [ ] Three seeds created and individually backed up (labelled 1, 2, 3).
 - [ ] Sparrow wallet created as **Multi Signature, 2 of 3**.
 - [ ] All three xpubs exported as **Multisig + Native SegWit** and scanned in.
 - [ ] Wallet applied and saved.
-- [ ] **Wallet descriptor backed up** — without it, recovery may be impossible.
+- [ ] **Wallet descriptor backed up:** without it, recovery may be impossible.
 
 ## Where to go next
 
-- [Wallet descriptor](/reference/multisig/descriptor.md) — what it is and how to store it safely. **Do this before depositing funds.**
-- [Multisig spending](/reference/multisig/spending.md) — collect signatures from multiple keys to send.
-- [Receive bitcoin](/get-started/receive.md) — verify a multisig receive address before sharing it.
-- [Key storage strategies](/security/key-storage.md) — how many copies of each key, and where.
+- [Wallet descriptor](/reference/multisig/descriptor.md): what it is and how to store it safely. **Do this before depositing funds.**
+- [Multisig spending](/reference/multisig/spending.md): collect signatures from multiple keys to send.
+- [Receive bitcoin](/get-started/receive.md): verify a multisig receive address before sharing it.
+- [Key storage strategies](/security/key-storage.md): how many copies of each key, and where.

@@ -16,7 +16,7 @@ Use the official web generator:
 2. The page renders a QR code that updates live as you change options.
 3. Save it: print it, or keep a screenshot/PDF wherever you keep the device.
 
-> **Tip:** A SettingsQR contains **only configuration** — no seed material, no keys. It is safe to print, photograph, and leave next to the device. (Someone who sees it learns your preferences, such as which network and coordinator you use, but nothing secret.)
+> **Tip:** A SettingsQR contains **only configuration:** no seed material, no keys. It is safe to print, photograph, and leave next to the device. (Someone who sees it learns your preferences, such as which network and coordinator you use, but nothing secret.)
 
 ## Apply it on the device
 
@@ -37,5 +37,5 @@ That's it — no menu digging. If an SD card is inserted, the settings also pers
 
 ## Related pages
 
-- [Basic settings](/reference/settings/basic.md), [Advanced settings](/reference/settings/advanced.md), [Hardware settings](/reference/settings/hardware.md) — what each option does.
-- [First boot](/reference/device/first-boot.md) — why running without the SD card is recommended.
+- [Basic settings](/reference/settings/basic.md), [Advanced settings](/reference/settings/advanced.md), [Hardware settings](/reference/settings/hardware.md): what each option does.
+- [First boot](/reference/device/first-boot.md): why running without the SD card is recommended.

@@ -38,6 +38,6 @@ Anyone can verify a signature with just three things: the **address**, the **mes
 
 ## Related pages
 
-- [PSBT signing](/reference/keys/psbt-signing.md) — the same scan-review-approve pattern, for transactions.
-- [Address explorer](/reference/keys/address-explorer.md) — verify that an address belongs to your wallet.
-- [Advanced settings](/reference/settings/advanced.md) — the full settings reference, including this toggle.
+- [PSBT signing](/reference/keys/psbt-signing.md): the same scan-review-approve pattern, for transactions.
+- [Address explorer](/reference/keys/address-explorer.md): verify that an address belongs to your wallet.
+- [Advanced settings](/reference/settings/advanced.md): the full settings reference, including this toggle.

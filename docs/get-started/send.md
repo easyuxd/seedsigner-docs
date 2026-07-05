@@ -2,7 +2,7 @@
 
 > Build a transaction in your coordinator, **review and sign it on SeedSigner's trusted screen**, then broadcast it — bouncing the transaction back and forth as QR codes.
 
-Spending is the half that requires your keys, so SeedSigner does the signing. Your coordinator builds an unsigned transaction (a **PSBT** — Partially Signed Bitcoin Transaction), SeedSigner shows you exactly what you're authorizing and signs it, and the coordinator broadcasts the result.
+Spending is the half that requires your keys, so SeedSigner does the signing. Your coordinator builds an unsigned transaction (a **PSBT:** Partially Signed Bitcoin Transaction), SeedSigner shows you exactly what you're authorizing and signs it, and the coordinator broadcasts the result.
 
 ## What you need
 
@@ -37,7 +37,7 @@ In your coordinator, create the send: enter the recipient address and amount, ch
 
 On SeedSigner, from the loaded seed's menu select **Scan PSBT** (or **Scan** from the main menu), then point the camera at the animated QR on your computer. The device reads multiple frames and reassembles the full transaction. Full detail: [PSBT signing](/reference/keys/psbt-signing.md).
 
-## Step 3: Review every detail — this is the important part
+## Step 3: Review every detail, this is the important part
 
 SeedSigner shows you the transaction on a screen that malware on your computer **cannot** tamper with. Check all four:
 
@@ -61,7 +61,7 @@ SeedSigner shows you the transaction on a screen that malware on your computer *
 
 ---
 
-## You're done — checklist
+## You're done: checklist
 
 - [ ] Transaction built and shown as a PSBT QR in the coordinator.
 - [ ] Recipient, amount, fee, and change **reviewed on SeedSigner**.
@@ -70,8 +70,8 @@ SeedSigner shows you the transaction on a screen that malware on your computer *
 
 ## Where to go next
 
-- [PSBT signing](/reference/keys/psbt-signing.md) — the full screen-by-screen reference, including scanning tips.
-- [Receive bitcoin](/get-started/receive.md) — the other half of using your wallet.
-- [Set up multisig](/get-started/multisig.md) — require multiple keys to spend.
+- [PSBT signing](/reference/keys/psbt-signing.md): the full screen-by-screen reference, including scanning tips.
+- [Receive bitcoin](/get-started/receive.md): the other half of using your wallet.
+- [Set up multisig](/get-started/multisig.md): require multiple keys to spend.
 
 > **Tip:** Trouble getting the QR to scan in either direction? Lower **QR Density** in SeedSigner settings for larger codes, and improve lighting. More: [QR scanning troubleshooting](/help/qr-scanning.md).

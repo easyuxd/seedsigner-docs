@@ -61,6 +61,6 @@ Change addresses receive the leftover funds from a transaction. Your wallet mana
 
 ## Why verify addresses?
 
-If malware on your computer compromises your coordinator wallet, it could display a fake receiving address that sends your Bitcoin to an attacker. By checking the address on SeedSigner's air-gapped screen — which cannot be tampered with remotely — you confirm the address truly belongs to your wallet.
+If malware on your computer compromises your coordinator wallet, it could display a fake receiving address that sends your Bitcoin to an attacker. By checking the address on SeedSigner's air-gapped screen (which cannot be tampered with remotely), you confirm the address truly belongs to your wallet.
 
 Make it a habit to verify new receiving addresses on SeedSigner before sharing them, especially for large amounts.

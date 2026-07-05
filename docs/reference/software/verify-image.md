@@ -30,7 +30,7 @@ The SeedSigner maintainer publishes a PGP-signed message containing the SHA256 h
 
 You'll need GPG installed: it ships with most Linux distros, comes with [GPG Suite](https://gpgtools.org) on macOS, and with [Gpg4win](https://gpg4win.org) on Windows.
 
-### Step 1 — Import the maintainer's public PGP key
+### Step 1: Import the maintainer's public PGP key
 
 Download the maintainer's public key (published in the SeedSigner GitHub repository) and import it into your local keyring:
 
@@ -40,7 +40,7 @@ gpg --import seedsigner_pubkey.asc
 
 GPG confirms with a line like `key <KEY-ID>: public key "SeedSigner <email>" imported`.
 
-### Step 2 — Check the key's fingerprint against independent sources
+### Step 2: Check the key's fingerprint against independent sources
 
 Importing a key proves nothing by itself — an attacker who could tamper with your download could also serve you a fake key. What ties the key to the real maintainer is its **fingerprint** (a 40-character hex string). Display it:
 
@@ -52,7 +52,7 @@ Now compare that fingerprint against **at least two independent places** where t
 
 > **Tip:** This step is the heart of the whole procedure. Signature math is automatic; deciding to trust the key is the human part. Do it once, carefully, and future releases verify against the same key.
 
-### Step 3 — Verify the PGP signature on the hash file
+### Step 3: Verify the PGP signature on the hash file
 
 With the key imported and fingerprint-checked, verify that the signed hash list really was signed by it:
 
@@ -71,7 +71,7 @@ Two common messages and what they mean:
 - `WARNING: This key is not certified with a trusted signature!` — **this is normal and OK.** GPG is telling you that *you* haven't formally marked the key as trusted in your keyring. Your trust comes from the fingerprint check in Step 2, so you can proceed.
 - `BAD signature` — **stop immediately.** The file was altered after signing, or was signed by something else. Do not use the image; re-download and re-verify, and report it if the failure repeats.
 
-### Step 4 — Compare the SHA256 hash
+### Step 4: Compare the SHA256 hash
 
 Finally, confirm your `.img` file matches the hash inside the signed file. Generate your file's hash:
 
@@ -91,7 +91,7 @@ If the hashes don't match, your download is corrupted or tampered with. Delete i
 
 > **Warning:** If the hash does not match after a second download, do not use the image. Report the issue on the SeedSigner GitHub repository.
 
-## If verification fails — quick reference
+## If verification fails: quick reference
 
 | What you see | What it means | What to do |
 |--------------|---------------|------------|

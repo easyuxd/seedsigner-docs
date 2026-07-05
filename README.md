@@ -1,4 +1,4 @@
-# SeedSigner Documentation — Site Repository
+# SeedSigner Documentation: Site Repository
 
 This repository contains the **documentation website** for [SeedSigner](https://github.com/SeedSigner/seedsigner), an open-source, air-gapped Bitcoin signing device. It is a content + tooling repo: the published pages, the static-site configuration, and the test/CI harness that keeps them healthy.
 
@@ -51,10 +51,10 @@ Configured in [docs/index.html](docs/index.html):
 
 - **search** (bundled with docsify) — full-text search box.
 - **zoom-image** (bundled with docsify) — click-to-zoom on images.
-- **docsify-copy-code** — "Copy" buttons on code blocks.
-- **docsify-pagination** — Previous/Next links, cross-chapter.
-- **docsify-sidebar-collapse** — collapsible top-level sidebar sections.
-- **docsify-progress** — top scroll-progress bar (honors the theme color).
+- **docsify-copy-code:** "Copy" buttons on code blocks.
+- **docsify-pagination:** Previous/Next links, cross-chapter.
+- **docsify-sidebar-collapse:** collapsible top-level sidebar sections.
+- **docsify-progress:** top scroll-progress bar (honors the theme color).
 - **Custom inline plugin** (`sidebarSubheadingHeadings`) — converts nested sidebar groups without a page link (e.g. *Seeds*, *Hardware*) into non-clickable subheadings. Lives in the `$docsify.plugins` array in `index.html`.
 
 ## Pinned dependency versions
@@ -141,16 +141,16 @@ PORT=4173 npx playwright test    # use a different port if 3000 is taken locally
 What's covered ([tests/docs.spec.ts](tests/docs.spec.ts)):
 
 - Homepage renders the merged Home title.
-- **Homepage hero image loads** — a regression guard for relative image paths (the root page must use `images/…`, not `../images/…`).
+- **Homepage hero image loads:** a regression guard for relative image paths (the root page must use `images/…`, not `../images/…`).
 - No broken images on the homepage.
 - An internal hash route renders its content.
-- **A pre-restructure URL still resolves via the alias redirect** — guards the old→new URL map in `index.html`.
+- **A pre-restructure URL still resolves via the alias redirect:** guards the old→new URL map in `index.html`.
 - Sidebar navigation works.
 
 And ([tests/diagrams.spec.ts](tests/diagrams.spec.ts)):
 
 - Every diagram page renders exactly one visible `.ss-diagram` figure with a non-empty `aria-label`.
-- **ASCII-art regression guard** — no box-drawing/arrow characters may reappear in `pre` blocks.
+- **ASCII-art regression guard:** no box-drawing/arrow characters may reappear in `pre` blocks.
 - Desktop: the first-wallet swimlane lays out as two lanes with step badges 1–8.
 - Mobile (375 px): no horizontal page overflow on any diagram page; swimlanes stack to one column with lane chips visible.
 
@@ -214,7 +214,7 @@ Honest list of what's incomplete or worth improving, ranked roughly by importanc
    - **Content gap — assembly photos.** `reference/hardware/assembly.md` would benefit from a "components laid out before assembly" photo. Needs a real photograph.
    - **Translations.** The legacy SeedSigner user guide had multi-language translations; this restructured site does not yet. Contributions welcome (coordinate via a GitHub issue).
 5. **Future content idea.** An exhaustive settings reference generated from (and periodically checked against) the firmware source — exact menu paths and every option value, kept in sync per SeedSigner release.
-6. **Platform note (not an action item).** The audit's verdict was to **stay on Docsify** — revisit a migration (e.g. Astro Starlight: non-hash URLs, prerendered HTML for SEO, built-in dark mode/i18n) only if SEO or translations become priorities. Mermaid support was likewise deliberately skipped in favor of the hand-styled `ss-*` diagrams; if contributors ever need ad-hoc diagrams, it can be added with a small `markdown.renderer.code` hook in `index.html`.
+6. **Platform note (not an action item).** The audit's verdict was to **stay on Docsify:** revisit a migration (e.g. Astro Starlight: non-hash URLs, prerendered HTML for SEO, built-in dark mode/i18n) only if SEO or translations become priorities. Mermaid support was likewise deliberately skipped in favor of the hand-styled `ss-*` diagrams; if contributors ever need ad-hoc diagrams, it can be added with a small `markdown.renderer.code` hook in `index.html`.
 7. **Dev-dependency advisories.** `npm audit` reports advisories in the transitive `docsify-cli` tree (dev/build-time only — never shipped to the static site). Revisit when upstream updates.
 
 ## License & links

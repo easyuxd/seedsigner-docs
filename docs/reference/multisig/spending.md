@@ -29,11 +29,11 @@ Sending Bitcoin from a multi-sig wallet works similarly to single-sig, but you n
 
 SeedSigner displays the transaction details for your review. Check each screen carefully:
 
-- **PSBT overview** — the number of inputs and outputs
-- **Amounts** — how much is being sent
-- **Recipients** — the destination address(es)
-- **Change** — any amount returning to your wallet
-- **Fee** — the mining fee
+- **PSBT overview:** the number of inputs and outputs
+- **Amounts:** how much is being sent
+- **Recipients:** the destination address(es)
+- **Change:** any amount returning to your wallet
+- **Fee:** the mining fee
 
 If everything looks correct, approve the PSBT. SeedSigner generates a signed QR code.
 

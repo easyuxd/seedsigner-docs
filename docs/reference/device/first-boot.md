@@ -10,7 +10,7 @@ Plug a micro USB cable into the **power-only port** on your SeedSigner. This is 
 
 > **Warning:** Use the correct port. The port farther from the joystick is for data and will not reliably power the device on its own.
 
-## Wait for boot — the screen stays blank for a while
+## Wait for boot: the screen stays blank for a while
 
 After you connect power, **expect the screen to stay completely blank for around 45 seconds** on a Pi Zero v1.3 before the SeedSigner splash screen appears (the faster Pi Zero 2 W boots in roughly half that). This is normal: the entire operating system is loading from the SD card into RAM.
 
@@ -32,7 +32,7 @@ After dismissing the message, you land on the main menu. From here you can creat
 
 SeedSigner's operating system loads entirely into RAM during boot. Once the SD card message appears, the card is no longer needed. You can physically eject it and set it aside.
 
-Why do this? With the microSD card removed, there is **no writable storage** connected to the device. This makes it impossible for any private data — seed phrases, private keys, or anything else — to be saved to disk. Your secrets exist only in volatile memory and vanish the moment you unplug the device.
+Why do this? With the microSD card removed, there is **no writable storage** connected to the device. This makes it impossible for any private data (seed phrases, private keys, or anything else) to be saved to disk. Your secrets exist only in volatile memory and vanish the moment you unplug the device.
 
 > **Tip:** Removing the SD card is optional but recommended whenever you are working with real funds.
 

@@ -12,12 +12,12 @@ SeedSigner is a fully open-source project released under the [MIT License](https
 
 There are many ways to get involved beyond writing code:
 
-- **Code** — Fix bugs, add features, or improve performance. The codebase is Python.
-- **Testing** — Run development builds on your hardware and report what works (and what doesn't).
-- **Documentation** — Improve guides, fix typos, or write new content. See [Contributing to docs](/contribute/docs.md).
-- **Translations** — Help make SeedSigner accessible to more people around the world.
-- **Bug reports** — Found something broken? File a clear, detailed issue on GitHub.
-- **Enclosure designs** — Design and share 3D-printable cases or other hardware enclosures.
+- **Code:** Fix bugs, add features, or improve performance. The codebase is Python.
+- **Testing:** Run development builds on your hardware and report what works (and what doesn't).
+- **Documentation:** Improve guides, fix typos, or write new content. See [Contributing to docs](/contribute/docs.md).
+- **Translations:** Help make SeedSigner accessible to more people around the world.
+- **Bug reports:** Found something broken? File a clear, detailed issue on GitHub.
+- **Enclosure designs:** Design and share 3D-printable cases or other hardware enclosures.
 
 ---
 

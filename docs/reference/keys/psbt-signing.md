@@ -2,7 +2,7 @@
 
 > Scan an unsigned transaction from your coordinator, review the details on SeedSigner, and approve the signature.
 
-When you want to send Bitcoin, your coordinator wallet builds an unsigned transaction called a PSBT (Partially Signed Bitcoin Transaction). SeedSigner scans that PSBT, shows you the details, and — if you approve — adds the cryptographic signature needed to authorize the spend.
+When you want to send Bitcoin, your coordinator wallet builds an unsigned transaction called a PSBT (Partially Signed Bitcoin Transaction). SeedSigner scans that PSBT, shows you the details, and (if you approve) adds the cryptographic signature needed to authorize the spend.
 
 ## Before you begin
 

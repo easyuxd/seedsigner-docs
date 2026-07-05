@@ -13,7 +13,7 @@ Every security tool makes trade-offs. SeedSigner is no exception. This page addr
 You can further reduce risk by:
 
 - Adding a **passphrase** to your seed, so the seed words alone are not sufficient to access funds.
-- Being deliberate about your **physical environment** — work in private, shield the screen, and discard the seed from memory as soon as you finish.
+- Being deliberate about your **physical environment:** work in private, shield the screen, and discard the seed from memory as soon as you finish.
 
 ## 2. One device signs for multiple keys
 
@@ -37,13 +37,13 @@ The SD card image is the trust boundary. If you verify the image before flashing
 
 **The response:** The air gap is not a silver bullet, but it is far from theatre. QR code communication is:
 
-- **Limited in scope** — only small, well-defined data payloads can pass through.
-- **Auditable** — QR contents can be decoded and inspected.
-- **Visually obvious** — you can see exactly when data is being transferred.
+- **Limited in scope:** only small, well-defined data payloads can pass through.
+- **Auditable:** QR contents can be decoded and inspected.
+- **Visually obvious:** you can see exactly when data is being transferred.
 
 For an air-gap attack to succeed, **both** SeedSigner and your coordinator software (such as Sparrow) would need to be independently compromised and coordinating with each other through QR codes. This is an extraordinarily difficult attack to execute.
 
-## 5. No secure boot — how do you know the software is genuine?
+## 5. No secure boot: how do you know the software is genuine?
 
 **The concern:** The Raspberry Pi does not support secure boot, so there is no hardware-level guarantee that the software has not been tampered with.
 

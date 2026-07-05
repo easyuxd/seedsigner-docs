@@ -6,7 +6,7 @@ BIP-85 lets one carefully backed-up master seed act as a **seed factory**: from 
 
 ## Why use child seeds?
 
-Because derivation is deterministic, **backing up the master seed backs up every child** — present and future. That enables patterns like:
+Because derivation is deterministic, **backing up the master seed backs up every child:** present and future. That enables patterns like:
 
 - **One backup, many wallets.** Separate seeds for savings, spending, and experiments, all recoverable from the single master backup.
 - **Seeds for other devices.** Provision a hot wallet or a second signing device with a child seed; if that device is lost or compromised, the master (and the other children) are unaffected.
@@ -49,6 +49,6 @@ Repeat the derivation steps above on any SeedSigner (or other BIP-85-capable too
 
 ## Related pages
 
-- [Seed creation](/reference/seeds/creation.md) — generating the master seed with camera or dice entropy.
-- [SeedQR backup](/reference/seeds/seedqr.md) — fast, scannable backups for master or child seeds.
-- [Advanced settings](/reference/settings/advanced.md) — the full settings reference, including this toggle.
+- [Seed creation](/reference/seeds/creation.md): generating the master seed with camera or dice entropy.
+- [SeedQR backup](/reference/seeds/seedqr.md): fast, scannable backups for master or child seeds.
+- [Advanced settings](/reference/settings/advanced.md): the full settings reference, including this toggle.

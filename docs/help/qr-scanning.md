@@ -2,7 +2,7 @@
 
 > Fix slow, stalled, or failed QR scans — in both directions: SeedSigner reading your coordinator's screen, and your coordinator reading SeedSigner's screen.
 
-QR codes are SeedSigner's **only** communication channel, so when scanning misbehaves the whole workflow stops. The good news: nearly every scanning problem comes down to one of four factors — **lighting, distance, focus, or QR density** — and all four are fixable in minutes.
+QR codes are SeedSigner's **only** communication channel, so when scanning misbehaves the whole workflow stops. The good news: nearly every scanning problem comes down to one of four factors: **lighting, distance, focus, or QR density**. All four are fixable in minutes.
 
 This page is organized by direction. First figure out which side is struggling:
 
@@ -42,7 +42,7 @@ Hold SeedSigner **6 to 12 inches (15–30 cm)** from the code. Too close and the
 
 A fingerprint or dust speck on the tiny lens dramatically degrades scanning. Wipe it gently with a microfiber cloth.
 
-> **Tip:** Many OV5647 camera modules ship with a **protective film over the lens** — if your camera has never scanned well, check that the film was removed. Some modules also have an adjustable focus ring; if yours does and close-range scanning has always been poor, a very slight rotation can bring the 6–12 inch range into focus.
+> **Tip:** Many OV5647 camera modules ship with a **protective film over the lens:** if your camera has never scanned well, check that the film was removed. Some modules also have an adjustable focus ring; if yours does and close-range scanning has always been poor, a very slight rotation can bring the 6–12 inch range into focus.
 
 ### 4. Lower the density on the *sending* side
 

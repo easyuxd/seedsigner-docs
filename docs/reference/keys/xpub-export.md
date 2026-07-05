@@ -16,8 +16,8 @@ You export the xpub once, scan it into your coordinator, and from that point for
    ![Seed menu](../../images/SeedMenuView.png)
 
 2. Choose the **signature type**:
-   - **Single Sig** — for a standard personal wallet controlled by one key.
-   - **Multisig** — for a multi-signature wallet requiring multiple keys.
+   - **Single Sig:** for a standard personal wallet controlled by one key.
+   - **Multisig:** for a multi-signature wallet requiring multiple keys.
 
    ![Signature type](../../images/SeedExportXpubSigTypeView.png)
 

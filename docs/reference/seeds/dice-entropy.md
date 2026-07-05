@@ -21,7 +21,7 @@ To put 128 bits in perspective: guessing a 12-word seed by brute force means sea
 
 1. You enter each roll (1–6) on the device; SeedSigner records the sequence.
 2. The full roll sequence is hashed with **SHA-256**, producing a uniformly distributed string of bits. Hashing means the entropy is spread evenly even though raw dice digits aren't a power of two.
-3. The first 128 (or 256) bits become the seed's entropy. A **checksum** — the first bits of a second SHA-256 hash — is appended: 4 bits for 12 words, 8 bits for 24.
+3. The first 128 (or 256) bits become the seed's entropy. A **checksum** (the first bits of a second SHA-256 hash) is appended: 4 bits for 12 words, 8 bits for 24.
 4. The combined bits are split into 11-bit groups, and each group indexes one of the 2,048 words in the BIP-39 word list. That's why 24 × 11 = 264 = 256 entropy + 8 checksum.
 
 The process is fully deterministic: **the same rolls always produce the same seed phrase**, which is what makes independent verification possible.
@@ -49,6 +49,6 @@ The math above assumes **fair** dice. In practice:
 
 ## Related pages
 
-- [Seed creation](/reference/seeds/creation.md) — the step-by-step dice procedure on the device.
-- [Seed verification](/reference/seeds/verification.md) — backup-check your new seed.
-- [Security model](/security/overview.md) — where trust-minimized entropy fits in the bigger picture.
+- [Seed creation](/reference/seeds/creation.md): the step-by-step dice procedure on the device.
+- [Seed verification](/reference/seeds/verification.md): backup-check your new seed.
+- [Security model](/security/overview.md): where trust-minimized entropy fits in the bigger picture.

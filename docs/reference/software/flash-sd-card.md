@@ -4,15 +4,15 @@
 
 ## What you need
 
-- A **MicroSD card** — 1 GB minimum capacity. A basic, inexpensive card works fine.
-- An **SD card writer** — either a USB adapter or a built-in card slot on your computer.
+- A **MicroSD card:** 1 GB minimum capacity. A basic, inexpensive card works fine.
+- An **SD card writer:** either a USB adapter or a built-in card slot on your computer.
 
 ## Recommended imaging tools
 
 Either of these free, cross-platform tools will get the job done:
 
-- **[Balena Etcher](https://etcher.balena.io/)** — simple interface, hard to make a mistake.
-- **[Raspberry Pi Imager](https://www.raspberrypi.com/software/)** — made by the Raspberry Pi Foundation, supports custom images.
+- **[Balena Etcher](https://etcher.balena.io/):** simple interface, hard to make a mistake.
+- **[Raspberry Pi Imager](https://www.raspberrypi.com/software/):** made by the Raspberry Pi Foundation, supports custom images.
 
 Both work on Windows, macOS, and Linux. Pick whichever you prefer.
 

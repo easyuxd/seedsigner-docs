@@ -26,4 +26,4 @@ Discarding a seed completely erases it from volatile RAM. No trace of the seed r
 
 ## Alternative: just unplug
 
-Because SeedSigner is stateless, you can also simply unplug the power cable at any time. All data in RAM — including any loaded seeds — is permanently erased when power is removed.
+Because SeedSigner is stateless, you can also simply unplug the power cable at any time. All data in RAM (including any loaded seeds) is permanently erased when power is removed.

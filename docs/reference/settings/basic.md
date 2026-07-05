@@ -44,8 +44,8 @@ Controls whether amounts are shown in BTC or sats. The threshold determines the 
 
 This setting controls whether your configuration is written to the SD card.
 
-- **Enabled** — Settings persist across reboots. Configuration data is stored on the SD card.
-- **Disabled** — Settings reset to factory defaults every time the device powers off.
+- **Enabled:** Settings persist across reboots. Configuration data is stored on the SD card.
+- **Disabled:** Settings reset to factory defaults every time the device powers off.
 
 > **Warning:** Enabling persistent settings stores configuration data on your SD card. If your threat model requires leaving no trace on removable media, keep this disabled.
 

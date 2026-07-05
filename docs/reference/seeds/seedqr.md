@@ -17,8 +17,8 @@ You need a seed [loaded into SeedSigner](/reference/seeds/loading.md).
    ![Export as SeedQR](../../images/ExportAsSeedQRSelectView.png)
 
 2. Choose a format:
-   - **Standard (25x25)** — larger QR, easier to hand-draw and scan.
-   - **Compact (21x21)** — smaller QR, requires more precise transcription.
+   - **Standard (25x25):** larger QR, easier to hand-draw and scan.
+   - **Compact (21x21):** smaller QR, requires more precise transcription.
 
    ![Format selection](../../images/SeedTranscribeSeedQRFormatView.png)
 
@@ -38,18 +38,18 @@ You need a seed [loaded into SeedSigner](/reference/seeds/loading.md).
 
    ![Confirm prompt](../../images/SeedTranscribeSeedQRConfirmQRPromptView.png)
 
-   - **Confirm SeedQR** — the camera opens so you can scan your hand-drawn QR to verify it reads correctly.
-   - **Done** — skip verification and return to the seed menu.
+   - **Confirm SeedQR:** the camera opens so you can scan your hand-drawn QR to verify it reads correctly.
+   - **Done:** skip verification and return to the seed menu.
 
 > **Tip:** Always choose **Confirm SeedQR** and scan your transcription. A single misplaced dot can make the QR unreadable.
 
 ## Verification results
 
-**Success** — Your transcription is accurate and will scan correctly in the future.
+**Success:** Your transcription is accurate and will scan correctly in the future.
 
 ![Verification success](../../images/SeedTranscribeSeedQRConfirmSuccessView.png)
 
-**Failure** — The scanned QR does not match. Re-examine your transcription for errors and try again.
+**Failure:** The scanned QR does not match. Re-examine your transcription for errors and try again.
 
 ![Verification failure](../../images/SeedTranscribeSeedQRConfirmWrongSeedView.png)
 

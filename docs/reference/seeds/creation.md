@@ -103,9 +103,9 @@ If you want to choose your own words from the BIP-39 word list, this method lets
    ![Calc seed length](../../images/SeedMnemonicLengthCalcView.png)
 
 3. Enter each word using the on-screen keyboard:
-   - **Key A** — move up in the suggestion list
-   - **Key C** — move down in the suggestion list
-   - **Key B** — select the highlighted word
+   - **Key A:** move up in the suggestion list
+   - **Key C:** move down in the suggestion list
+   - **Key B:** select the highlighted word
    - Type the first 2--3 letters and pick from suggestions for speed.
 
    ![Word entry](../../images/WordEntry.png)
@@ -114,9 +114,9 @@ If you want to choose your own words from the BIP-39 word list, this method lets
 
    ![Finalize prompt](../../images/ToolsCalcFinalWordFinalizePromptView.png)
 
-   - **Coin flips** — Flip a physical coin 7 times; enter heads (1) or tails (0) for each.
-   - **Word selection** — Pick any word from the BIP-39 list as your entropy source.
-   - **Zeros** — Uses a 7-bit string of zeros (simplest, still valid).
+   - **Coin flips:** Flip a physical coin 7 times; enter heads (1) or tails (0) for each.
+   - **Word selection:** Pick any word from the BIP-39 list as your entropy source.
+   - **Zeros:** Uses a 7-bit string of zeros (simplest, still valid).
 
 5. SeedSigner displays the calculated final word along with the derivation details.
 
@@ -132,7 +132,7 @@ If you want to choose your own words from the BIP-39 word list, this method lets
 
 After creating your seed, SeedSigner loads it into memory. You can now:
 
-- [Follow the single-sig walkthrough](/get-started/first-wallet.md) — the complete beginner path from this seed to a verified receive address
+- [Follow the single-sig walkthrough](/get-started/first-wallet.md): the complete beginner path from this seed to a verified receive address
 - [Export your public key (xpub)](/reference/keys/xpub-export.md) to set up a watch-only wallet
 - [Back up your seed as a SeedQR](/reference/seeds/seedqr.md) for fast future loading
 - [Sign a transaction](/reference/keys/psbt-signing.md) if your wallet is already configured

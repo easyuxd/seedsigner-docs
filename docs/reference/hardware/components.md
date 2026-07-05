@@ -14,7 +14,7 @@ The Raspberry Pi Zero v1.3 is the main computer that runs SeedSigner. Version 1.
 
 > **Tip:** If you use a wireless-capable Pi and want extra assurance, community members have documented hardware methods to permanently disable the wireless chips. See the [hardware wireless disable guide](https://github.com/DesobedienteTecnologico/rpi_disable_wifi_and_bt_by_hardware) for details.
 
-#### Which Pi Zero variant? — comparison
+#### Which Pi Zero variant? A comparison
 
 | | **Pi Zero v1.3** | **Pi Zero W / WH** | **Pi Zero 2 W** |
 |---|---|---|---|
@@ -40,7 +40,7 @@ The display typically costs **$15 or less** from most retailers.
 
 Most SeedSigner builders choose the **OV5647-based camera module**, which runs about **$10**. This is the same sensor used in the original Raspberry Pi Camera Module v1.
 
-If you are building with a **Pi Zero**, you need the **Zero-compatible ribbon cable** — it is narrower than the standard ribbon cable and has a gold-colored connector. Many camera listings include both cables; if yours does not, order the Zero cable separately.
+If you are building with a **Pi Zero**, you need the **Zero-compatible ribbon cable:** it is narrower than the standard ribbon cable and has a gold-colored connector. Many camera listings include both cables; if yours does not, order the Zero cable separately.
 
 The camera is also available in a **compact form factor** (a smaller board), which fits neatly into certain enclosure designs. Check the [enclosures page](/reference/hardware/enclosures.md) before buying so you pick the right form factor.
 
@@ -48,9 +48,9 @@ The camera is also available in a **compact form factor** (a smaller board), whi
 
 You probably already have these around the house:
 
-- **MicroSD card** — Minimum 1 GB capacity. Any brand works. This holds the SeedSigner software image.
-- **Micro USB cable** — A standard phone-charging cable.
-- **Power source** — A phone charger, laptop USB port, or portable battery pack all work fine.
+- **MicroSD card:** Minimum 1 GB capacity. Any brand works. This holds the SeedSigner software image.
+- **Micro USB cable:** A standard phone-charging cable.
+- **Power source:** A phone charger, laptop USB port, or portable battery pack all work fine.
 
 > **Warning:** Avoid 9V-to-USB adapters. They may not supply enough current to reliably power the camera, which can cause startup failures or erratic behavior.
 

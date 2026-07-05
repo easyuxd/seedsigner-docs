@@ -45,7 +45,7 @@ By the end you'll have a device sitting at the main menu, ready to create or loa
 
 ---
 
-## Phase 1 — Gather and assemble the hardware
+## Phase 1: Gather and assemble the hardware
 
 A complete build costs around **$50** in off-the-shelf parts.
 
@@ -58,22 +58,22 @@ A complete build costs around **$50** in off-the-shelf parts.
 
 ---
 
-## Phase 2 — Prepare the software
+## Phase 2: Prepare the software
 
 This is the security-critical phase. Do it carefully on your networked computer.
 
 5. **Download and verify the image.** Download the latest release from the **official** [SeedSigner GitHub](https://github.com/SeedSigner/seedsigner/releases), then verify the PGP signature and SHA256 hash before you flash. This proves the image hasn't been tampered with — full instructions in [Image download & verification](/reference/software/verify-image.md).
 6. **Flash the microSD card.** Use Balena Etcher or Raspberry Pi Imager to write the verified `.img` to your card, then insert it into the Pi. See [SD card flashing](/reference/software/flash-sd-card.md).
 
-> **Warning:** Never skip verification. With self-custody, **you are your own security team** — a compromised image could steal your keys the moment you load a seed.
+> **Warning:** Never skip verification. With self-custody, **you are your own security team:** a compromised image could steal your keys the moment you load a seed.
 
 ---
 
-## Phase 3 — Power on and find your way around
+## Phase 3: Power on and find your way around
 
 Now bring the device to life. Make sure you have your assembled device, the flashed microSD card inserted, a micro USB cable, and any USB power source (charger, power bank, or computer port).
 
-7. **Plug in power.** Connect the cable to the **power-only port** — the one **nearest the joystick**. The other port is data-only and won't reliably power the device.
+7. **Plug in power.** Connect the cable to the **power-only port:** the one **nearest the joystick**. The other port is data-only and won't reliably power the device.
 8. **Wait for boot, then dismiss the SD-card message.** After a few seconds you'll see the splash screen, then a "you can remove the SD card now" notice. Press **any button (A, B, or C)** to clear it.
 9. **You're at the main menu.** From here you can create seeds, scan QR codes, open tools, and change settings. Full detail: [First boot](/reference/device/first-boot.md).
 
@@ -86,7 +86,7 @@ Now bring the device to life. Make sure you have your assembled device, the flas
 
 ---
 
-## You're done — checklist
+## You're done: checklist
 
 - [ ] Hardware assembled (camera, LCD HAT, microSD seated).
 - [ ] Software image downloaded **and verified** (PGP signature + SHA256 hash).
@@ -97,8 +97,8 @@ Now bring the device to life. Make sure you have your assembled device, the flas
 
 ## Where to go next
 
-- **[Create your first wallet](/get-started/first-wallet.md)** — generate a seed, back it up, and connect a coordinator. *The natural next step.*
-- **[Recover from backup](/get-started/recover.md)** — if you already have a seed phrase to restore.
-- [Power & restart](/reference/device/power.md) — how to safely shut down (you can unplug anytime — it's stateless).
+- **[Create your first wallet](/get-started/first-wallet.md):** generate a seed, back it up, and connect a coordinator. *The natural next step.*
+- **[Recover from backup](/get-started/recover.md):** if you already have a seed phrase to restore.
+- [Power & restart](/reference/device/power.md): how to safely shut down (you can unplug anytime — it's stateless).
 
 > **Tip:** If something doesn't look right during boot, see [Common issues — device won't boot](/help/common-issues.md#device-wont-boot).

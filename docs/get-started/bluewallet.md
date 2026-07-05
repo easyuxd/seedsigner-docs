@@ -38,7 +38,7 @@ Everything in the other journeys assumes Sparrow on a computer, but a coordinato
 3. Choose **Single Sig**, keep the default **Native Segwit** script type, and select **BlueWallet** as the coordinator.
 4. Review the xpub details, then SeedSigner displays the export as a QR code.
 
-This is your **extended public key** — it lets a wallet watch balances and generate addresses, but it cannot spend. Full detail: [Xpub export](/reference/keys/xpub-export.md).
+This is your **extended public key:** it lets a wallet watch balances and generate addresses, but it cannot spend. Full detail: [Xpub export](/reference/keys/xpub-export.md).
 
 ## Step 2: Import it into BlueWallet
 
@@ -68,13 +68,13 @@ When it's time to spend:
 ## Step 5: Sign on SeedSigner, broadcast from the phone
 
 1. On SeedSigner, select **Scan** and read the animated QR from the phone's screen.
-2. **Review everything on SeedSigner's screen** — recipient address, amount, fee — exactly as in the [send journey](/get-started/send.md#step-3-review-every-detail--this-is-the-important-part).
+2. **Review everything on SeedSigner's screen:** recipient address, amount, fee — exactly as in the [send journey](/get-started/send.md#step-3-review-every-detail--this-is-the-important-part).
 3. Approve. SeedSigner displays the signed transaction as a new animated QR.
 4. In BlueWallet, scan the **signed transaction** from SeedSigner's screen, then broadcast it.
 
 ---
 
-## You're done — checklist
+## You're done: checklist
 
 - [ ] Xpub exported from SeedSigner and imported into BlueWallet as watch-only.
 - [ ] A receive address **verified on SeedSigner** before funding.
@@ -90,6 +90,6 @@ Two small screens scanning each other is the fiddliest part of this journey:
 
 ## Where to go next
 
-- [Compatible wallets](/help/compatible-wallets.md) — how BlueWallet compares to Sparrow, Nunchuk, and other coordinators.
-- [Send bitcoin](/get-started/send.md) — the desktop version of the same signing flow, in more depth.
-- [Set up multisig](/get-started/multisig.md) — combine SeedSigner with other keys for higher security.
+- [Compatible wallets](/help/compatible-wallets.md): how BlueWallet compares to Sparrow, Nunchuk, and other coordinators.
+- [Send bitcoin](/get-started/send.md): the desktop version of the same signing flow, in more depth.
+- [Set up multisig](/get-started/multisig.md): combine SeedSigner with other keys for higher security.

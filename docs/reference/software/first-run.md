@@ -24,8 +24,8 @@ SeedSigner adjusts its QR code output format based on the coordinator you select
 
 Go to **Settings → Persistent Settings** and choose your preference:
 
-- **Enabled** — Your settings are saved to the MicroSD card and persist across reboots. Convenient if you use the same configuration every time.
-- **Disabled** — Settings reset to defaults each time you power on. Nothing is written to the SD card, which is the more secure option.
+- **Enabled:** Your settings are saved to the MicroSD card and persist across reboots. Convenient if you use the same configuration every time.
+- **Disabled:** Settings reset to defaults each time you power on. Nothing is written to the SD card, which is the more secure option.
 
 This is a tradeoff between convenience and security. If you remove the SD card after boot (as described in the previous guide), persistent settings won't apply regardless.
 

@@ -22,9 +22,9 @@ Use this when you have your seed words written on paper or stamped in metal.
 
 3. Type each word using the on-screen keyboard:
    - Use the joystick to move between letters.
-   - **Key A** — move up in the suggestion list.
-   - **Key C** — move down in the suggestion list.
-   - **Key B** — select the highlighted suggestion.
+   - **Key A:** move up in the suggestion list.
+   - **Key C:** move down in the suggestion list.
+   - **Key B:** select the highlighted suggestion.
 
    ![Word entry](../../images/SeedWordEnterView.png)
 
@@ -35,8 +35,8 @@ Use this when you have your seed words written on paper or stamped in metal.
    ![Finalize seed](../../images/SeedFinalizeView.png)
 
 5. Choose your next step:
-   - **Done** — Load the seed as-is.
-   - **BIP-39 Passphrase** — Add an optional passphrase for additional security (see below).
+   - **Done:** Load the seed as-is.
+   - **BIP-39 Passphrase:** Add an optional passphrase for additional security (see below).
 
 ---
 

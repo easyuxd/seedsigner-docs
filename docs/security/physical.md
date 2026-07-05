@@ -39,7 +39,7 @@ This does not prevent theft, but it tells you if someone has accessed your backu
 
 ## Periodic key checks
 
-Set a recurring reminder — quarterly or twice a year — to verify your backups:
+Set a recurring reminder (quarterly or twice a year) to verify your backups:
 
 - Confirm each seed backup is still in its expected location.
 - Check that the words are legible.

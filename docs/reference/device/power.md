@@ -4,7 +4,7 @@
 
 SeedSigner gives you two ways to power off and a clean way to restart. Because the device stores nothing permanently by default, both methods are safe.
 
-## Power off — Method 1: Use the menu
+## Power off: Method 1: Use the menu
 
 This is the recommended way to shut down.
 
@@ -19,7 +19,7 @@ This is the recommended way to shut down.
 
 4. Confirm when prompted. The device shuts down.
 
-## Power off — Method 2: Unplug the cable
+## Power off: Method 2: Unplug the cable
 
 You can simply disconnect the micro USB power cable at any time. SeedSigner does not store private data to disk, so there is nothing to corrupt. All temporary data in RAM — loaded seeds, in-progress transactions, and anything else — is erased the instant power is removed.
 

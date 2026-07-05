@@ -60,7 +60,7 @@ Re-verify a receive address you recognize from the original wallet using **Tools
 
 ---
 
-## You're done — checklist
+## You're done: checklist
 
 - [ ] Seed loaded from backup (and passphrase entered, if any).
 - [ ] Fingerprint matches the original wallet.
@@ -69,6 +69,6 @@ Re-verify a receive address you recognize from the original wallet using **Tools
 
 ## Where to go next
 
-- [Seed loading](/reference/seeds/loading.md) — manual entry, SeedQR, and passphrases in full.
-- [Key storage strategies](/security/key-storage.md) — store backups so recovery is always possible.
-- [SeedQR backup](/reference/seeds/seedqr.md) — make recovery a 10-second scan next time.
+- [Seed loading](/reference/seeds/loading.md): manual entry, SeedQR, and passphrases in full.
+- [Key storage strategies](/security/key-storage.md): store backups so recovery is always possible.
+- [SeedQR backup](/reference/seeds/seedqr.md): make recovery a 10-second scan next time.

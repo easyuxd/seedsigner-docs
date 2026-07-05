@@ -16,7 +16,7 @@ Think of it as the blueprint for your wallet. Your seed phrases are the raw mate
 
 In a single-sig wallet, your seed phrase is all you need to recover your funds. Multi-sig is different.
 
-If you lose 1 of your 3 seeds **and** you do not have the wallet descriptor, your funds are **permanently lost**. Even though you still have 2 valid keys — enough to sign — no software can reconstruct the wallet without knowing how all three keys were originally combined.
+If you lose 1 of your 3 seeds **and** you do not have the wallet descriptor, your funds are **permanently lost**. Even though you still have 2 valid keys (enough to sign), no software can reconstruct the wallet without knowing how all three keys were originally combined.
 
 > **Warning:** Back up your wallet descriptor before depositing any funds into your multi-sig wallet. This is not optional.
 
@@ -27,7 +27,7 @@ The wallet descriptor is **private but not secret**:
 - **It can reveal:** your wallet addresses and transaction history. Anyone who obtains it can see your balances and past activity.
 - **It cannot:** move your funds. The descriptor contains only public keys, not private keys. No one can spend your Bitcoin using the descriptor alone.
 
-Treat it with care — you would not want your financial history exposed — but understand that its compromise does not put your funds at direct risk.
+Treat it with care (you would not want your financial history exposed) but understand that its compromise does not put your funds at direct risk.
 
 ## How to export from Sparrow
 
@@ -48,9 +48,9 @@ Treat it with care — you would not want your financial history exposed — but
 
 Because the descriptor does not contain private keys, you have more flexibility in how you store it:
 
-- **Printed copies** — print the QR code and/or the text content. Store alongside (or near) your seed backups.
-- **Digital copies** — save the exported `.json` file to a USB drive or other offline storage.
-- **Multiple locations** — consider keeping a copy with each seed backup location, so that any 2 of your 3 storage sites have everything needed for recovery.
+- **Printed copies:** print the QR code and/or the text content. Store alongside (or near) your seed backups.
+- **Digital copies:** save the exported `.json` file to a USB drive or other offline storage.
+- **Multiple locations:** consider keeping a copy with each seed backup location, so that any 2 of your 3 storage sites have everything needed for recovery.
 
 > **Tip:** A good practice is to store a copy of the wallet descriptor at each location where you keep a seed backup. That way, if you can access any 2 of your 3 locations, you have both the required seeds and the descriptor.
 

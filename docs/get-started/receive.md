@@ -30,7 +30,7 @@ Receiving is the safe half of using a wallet: you can hand out an address freely
 
 ## Step 1: Display a receiving address in your coordinator
 
-Open your coordinator and go to the **Receive** tab. It shows a fresh receiving address (single-sig Native SegWit addresses start with `bc1q…`) and a QR code of that address. **Don't share it yet** — verify it first.
+Open your coordinator and go to the **Receive** tab. It shows a fresh receiving address (single-sig Native SegWit addresses start with `bc1q…`) and a QR code of that address. **Don't share it yet:** verify it first.
 
 > **Tip:** Use a **fresh receiving address for each payment**. Reusing addresses links your transactions together on the public blockchain and weakens your privacy.
 
@@ -69,7 +69,7 @@ With a verified address in hand:
 
 ---
 
-## You're done — checklist
+## You're done: checklist
 
 - [ ] Receiving address displayed in the coordinator.
 - [ ] Address **verified on SeedSigner** (Address Verified ✓).
@@ -77,6 +77,6 @@ With a verified address in hand:
 
 ## Where to go next
 
-- **[Send bitcoin](/get-started/send.md)** — when you're ready to spend.
-- [Address explorer](/reference/keys/address-explorer.md) — browse receive and change addresses in detail.
-- [Why verify addresses?](/security/physical.md) — the attack this habit defeats.
+- **[Send bitcoin](/get-started/send.md):** when you're ready to spend.
+- [Address explorer](/reference/keys/address-explorer.md): browse receive and change addresses in detail.
+- [Why verify addresses?](/security/physical.md): the attack this habit defeats.

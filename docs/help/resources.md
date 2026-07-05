@@ -52,5 +52,5 @@
 ## Further reading
 
 - [10x Bitcoin Security Guide](https://btcguide.github.io/) by Michael Flaxman — multi-sig security deep dive
-- [The Hitchhiker's Guide to Online Anonymity](https://anonymousplanet.org/guide.html) — threat modeling and privacy
+- [The Hitchhiker's Guide to Online Anonymity](https://anonymousplanet.org/guide.html): threat modeling and privacy
 - [The Blocksize War](https://www.amazon.com/Blocksize-War-controls-Bitcoins-protocol/dp/B08YQMC2WM) by Jonathan Bier — historical context on Bitcoin governance

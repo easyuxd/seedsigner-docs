@@ -10,7 +10,7 @@ The Pi Zero v1.3 is an older model and can be **hard to find in stock**. It is w
 
 Places to look:
 
-- **Official Raspberry Pi distributors** — Check the [Raspberry Pi products page](https://www.raspberrypi.com/products/) for a list of approved resellers in your country.
+- **Official Raspberry Pi distributors:** Check the [Raspberry Pi products page](https://www.raspberrypi.com/products/) for a list of approved resellers in your country.
 - **Adafruit** (adafruit.com)
 - **PiShop** (pishop.us)
 - **Vilros**, **CanaKit**, and other Pi-focused retailers
@@ -40,6 +40,6 @@ If you already know which [enclosure](/reference/hardware/enclosures.md) you pla
 
 ## A note on privacy
 
-SeedSigner's components are **generic electronics** — a small computer, a display, and a camera. Nothing in your order signals "Bitcoin" to a merchant, payment processor, or shipping carrier. There is no branded packaging or product name that ties your purchase to cryptocurrency.
+SeedSigner's components are **generic electronics:** a small computer, a display, and a camera. Nothing in your order signals "Bitcoin" to a merchant, payment processor, or shipping carrier. There is no branded packaging or product name that ties your purchase to cryptocurrency.
 
 This is a deliberate design advantage. If you value purchasing privacy, SeedSigner's commodity hardware helps you maintain it.

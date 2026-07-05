@@ -14,9 +14,9 @@ Multi-sig gives you **fault tolerance**. There is no single point of failure. If
 
 This opens up practical options that single-sig cannot offer:
 
-- **Geographic distribution** — store keys in different physical locations so no single disaster (fire, flood, theft) can take out your wallet.
-- **Different hardware profiles** — use different devices or backup formats for each key to avoid a shared vulnerability.
-- **Tolerance for mistakes** — you can lose one key OR have one key exposed, and your funds are still protected. In single-sig, either scenario is catastrophic.
+- **Geographic distribution:** store keys in different physical locations so no single disaster (fire, flood, theft) can take out your wallet.
+- **Different hardware profiles:** use different devices or backup formats for each key to avoid a shared vulnerability.
+- **Tolerance for mistakes:** you can lose one key OR have one key exposed, and your funds are still protected. In single-sig, either scenario is catastrophic.
 
 ## The single-sig dilemma
 
@@ -28,9 +28,9 @@ You are stuck choosing between loss risk and disclosure risk. Multi-sig solves t
 
 Multi-sig is not without trade-offs:
 
-- **More complexity** — you are managing multiple keys, multiple backups, and a wallet descriptor file.
-- **More information to track** — losing track of your setup details can be just as dangerous as losing a key.
-- **Multiple mistakes can still cause loss** — if you lose 2 of your 3 keys, or lose 1 key AND your wallet descriptor, your funds may be gone forever.
+- **More complexity:** you are managing multiple keys, multiple backups, and a wallet descriptor file.
+- **More information to track:** losing track of your setup details can be just as dangerous as losing a key.
+- **Multiple mistakes can still cause loss:** if you lose 2 of your 3 keys, or lose 1 key AND your wallet descriptor, your funds may be gone forever.
 
 > **Tip:** The wallet descriptor is a critical piece of your backup. Make sure you read the [wallet descriptor backup guide](/reference/multisig/descriptor.md) before depositing any funds.
 

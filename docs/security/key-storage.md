@@ -32,7 +32,7 @@ This is a personal decision with trade-offs:
 
 - **One copy per key** (recommended for multi-sig) — If you use a multi-signature wallet, you can tolerate the loss of one key. Having only one copy of each key minimizes disclosure risk. If one copy is lost, your funds are still accessible with the remaining cosigners.
 
-- **Two copies per key** — Halves the risk of loss but doubles the risk of disclosure. You must now secure two locations per key. More appropriate for single-signature setups where losing the one key means losing everything.
+- **Two copies per key:** Halves the risk of loss but doubles the risk of disclosure. You must now secure two locations per key. More appropriate for single-signature setups where losing the one key means losing everything.
 
 > **Tip:** In a multi-sig wallet, the fault tolerance is built into the quorum structure. You do not need redundant copies of each key — that is what multi-sig is for.
 
@@ -53,9 +53,9 @@ Distribute your key backups across geographically separate, physically secure lo
 
 Consider how far apart your key storage locations should be, based on how often you expect to access funds:
 
-- **Same city** — convenient but vulnerable to regional disasters.
-- **Different cities** — good balance of security and accessibility for cold storage.
-- **Different countries** — maximum redundancy but significant access overhead.
+- **Same city:** convenient but vulnerable to regional disasters.
+- **Different cities:** good balance of security and accessibility for cold storage.
+- **Different countries:** maximum redundancy but significant access overhead.
 
 For most cold-storage users making 1--2 transactions per year, different cities within the same country is a practical default.
 
@@ -65,11 +65,11 @@ For most cold-storage users making 1--2 transactions per year, different cities 
 
 You cannot always be certain that no one has accessed your stored seeds while you are away. Tamper-evident measures help you detect unauthorized access:
 
-- **Tamper-evident bags** — use the same sealable evidence bags that law enforcement uses. Sign or initial the seal with a unique marking.
-- **Security tape** — apply over the opening of a container. Any attempt to peel it leaves a visible "VOID" pattern.
-- **Sealed containers** — a small lockbox adds a physical barrier, though it signals that something valuable is inside.
+- **Tamper-evident bags:** use the same sealable evidence bags that law enforcement uses. Sign or initial the seal with a unique marking.
+- **Security tape:** apply over the opening of a container. Any attempt to peel it leaves a visible "VOID" pattern.
+- **Sealed containers:** a small lockbox adds a physical barrier, though it signals that something valuable is inside.
 
-Make it a habit to do periodic **key checks** — visit your storage locations and verify that seals are intact, backups are legible, and nothing has been disturbed.
+Make it a habit to do periodic **key checks:** visit your storage locations and verify that seals are intact, backups are legible, and nothing has been disturbed.
 
 ---
 

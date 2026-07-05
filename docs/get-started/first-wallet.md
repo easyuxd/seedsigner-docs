@@ -1,6 +1,6 @@
 # Create your first wallet
 
-> Go from a brand-new SeedSigner to your **first verified receive address** — and prove you can recover the wallet — using SeedSigner and Sparrow Wallet, step by step.
+> Go from a brand-new SeedSigner to your **first verified receive address**, and prove you can recover the wallet, using SeedSigner and Sparrow Wallet, step by step.
 
 This is the recommended starting point for newcomers, and it sets up a **single-signature** wallet — the simplest self-custody setup: **one seed phrase controls all your funds.** It is easy to use, easy to back up, and easy to recover. By the end of this guide you will have:
 
@@ -9,11 +9,11 @@ This is the recommended starting point for newcomers, and it sets up a **single-
 - A receive address you have **verified on SeedSigner's own screen**.
 - A successful **recovery drill** that proves your backup actually works.
 
-> **Tip:** Do this entire walkthrough on **testnet first** — free practice coins, zero risk. See [Using testnet](/contribute/testnet.md). When you are confident, repeat it on mainnet with real funds.
+> **Tip:** Do this entire walkthrough on **testnet first:** free practice coins, zero risk. See [Using testnet](/contribute/testnet.md). When you are confident, repeat it on mainnet with real funds.
 
 ---
 
-## Single-sig vs. multi-sig — which should you choose?
+## Single-sig vs. multi-sig: which should you choose?
 
 | | Single-sig (this guide) | [Multi-sig](/get-started/multisig.md) |
 |---|---|---|
@@ -68,8 +68,8 @@ You will do each step once, in order. Steps 1–5 get you to a verified receive 
 Your seed phrase **is** your wallet. Whoever holds these words controls the Bitcoin.
 
 1. On SeedSigner, go to **Tools → New Seed** and pick a method:
-   - **Camera** — fast, captures randomness from a photo.
-   - **Dice** — most trust-minimized (50 rolls for 12 words, 99 for 24 words).
+   - **Camera:** fast, captures randomness from a photo.
+   - **Dice:** most trust-minimized (50 rolls for 12 words, 99 for 24 words).
 2. When prompted, choose **24 words** for long-term cold storage (12 words is also valid).
 3. Read the security warning and press **I Understand**.
 
@@ -77,16 +77,16 @@ The full instructions for every creation method are in [Create a new seed](/refe
 
 ![Tools menu showing the New Seed options](../images/ToolsMenuView.png)
 
-> **Tip:** SeedSigner is **stateless** — the seed lives only in RAM and is erased the moment you power off. That is a security feature, and it is exactly why Step 2 (backup) is non-negotiable.
+> **Tip:** SeedSigner is **stateless:** the seed lives only in RAM and is erased the moment you power off. That is a security feature, and it is exactly why Step 2 (backup) is non-negotiable.
 
 ---
 
-## Step 2: Back up your seed — and verify the backup
+## Step 2: Back up your seed, and verify the backup
 
 Write down **every word, in order, spelled exactly.** Words display four at a time.
 
 1. Transcribe all words onto paper or a metal backup.
-2. Complete the on-device **backup verification quiz** — SeedSigner asks you to confirm specific words to prove your written copy is correct.
+2. Complete the on-device **backup verification quiz:** SeedSigner asks you to confirm specific words to prove your written copy is correct.
 
 ![Backup verification quiz prompting for a specific seed word](../images/SeedBackupTestView.png)
 
@@ -139,7 +139,7 @@ This is where your wallet actually comes to life on the coordinator.
 1. Open Sparrow and go to **File → New Wallet**.
 2. Give it a descriptive name (for example, "My Single-Sig") and click **Create Wallet**.
 3. Set **Policy Type** to **Single Signature**.
-4. Set **Script Type** to **Native Segwit (P2WPKH)** — this **must match** the script type you exported in Step 3.
+4. Set **Script Type** to **Native Segwit (P2WPKH):** this **must match** the script type you exported in Step 3.
 5. In the **Keystore** panel, click **Airgapped Hardware Wallet**.
 6. Find **SeedSigner** and click **Import / Scan** (Sparrow activates your webcam).
 7. Hold SeedSigner's xpub QR (from Step 3) in front of the webcam until Sparrow reads it.
@@ -149,7 +149,7 @@ Sparrow now shows the imported keystore, including a **master fingerprint** (a s
 8. Confirm the master fingerprint in Sparrow **matches the fingerprint shown on SeedSigner** when the seed is loaded. They should be identical.
 9. Click **Apply**. When asked for a password, click **No Password** for this guide.
 
-Your watch-only wallet is created. Open the **Receive** tab — Sparrow displays your first receiving address (starting `bc1q…`) and a QR code of that address. **Do not send funds to it yet** — verify it first.
+Your watch-only wallet is created. Open the **Receive** tab — Sparrow displays your first receiving address (starting `bc1q…`) and a QR code of that address. **Do not send funds to it yet:** verify it first.
 
 > **Why "watch-only"?** Sparrow can see and receive, but it holds no private key and cannot spend. Spending always requires SeedSigner to sign (Step 7).
 
@@ -195,7 +195,7 @@ With a verified address in hand:
 
 Browse and double-check addresses any time with SeedSigner's [Address Explorer](/reference/keys/address-explorer.md) (**Tools → Address Explorer**). Use a **fresh receiving address for each payment** to protect your privacy.
 
-> **Focused guide:** For receiving on its own — outside this full setup — see the [Receive bitcoin](/get-started/receive.md) journey.
+> **Focused guide:** For receiving on its own (outside this full setup) see the [Receive bitcoin](/get-started/receive.md) journey.
 
 ---
 
@@ -226,7 +226,7 @@ If recovery succeeds, your single-sig wallet is fully operational and provably r
 
 ---
 
-## You're done — success checklist
+## You're done: success checklist
 
 - [ ] Seed created and backed up on paper/metal, verification quiz passed.
 - [ ] (Optional) SeedQR backup created.
@@ -241,7 +241,7 @@ If recovery succeeds, your single-sig wallet is fully operational and provably r
 ## Troubleshooting
 
 - **Sparrow can't read the xpub / SeedSigner can't read the QR.** Lower **QR Density** in SeedSigner settings for larger modules, improve lighting, and hold the screen 4–8 inches from the webcam. More tips: [Common issues — QR scanning](/help/common-issues.md#qr-code-scanning-problems).
-- **Address verification finds no match.** The usual cause is a **mismatch** — different script type on device vs. Sparrow, or a network mismatch (Mainnet vs. Testnet). Confirm both sides use the same script type and the same network, then retry. Use **Skip 10** in case the address is simply at a higher index.
+- **Address verification finds no match.** The usual cause is a **mismatch:** different script type on device vs. Sparrow, or a network mismatch (Mainnet vs. Testnet). Confirm both sides use the same script type and the same network, then retry. Use **Skip 10** in case the address is simply at a higher index.
 - **Fingerprints don't match in Step 4.** You imported the wrong seed/xpub or the wrong network. Re-export from the correct seed on the correct network.
 - **Wrong network.** SeedSigner and Sparrow must agree. Switch SeedSigner via **Settings → Advanced → Bitcoin Network**; switch Sparrow via **Tools → Restart in Testnet**.
 
@@ -270,8 +270,8 @@ A condensed, ordered map of every action — handy for experienced users and AI 
 
 ## Where to go next
 
-- [Receive bitcoin](/get-started/receive.md) — the focused address-verification journey.
-- [Send bitcoin](/get-started/send.md) — build, sign, and broadcast a spend.
-- [Address explorer](/reference/keys/address-explorer.md) — browse and verify any address.
-- [Security model](/security/overview.md) — understand what SeedSigner does and does not protect.
-- [Set up multisig](/get-started/multisig.md) — when to graduate from single-sig.
+- [Receive bitcoin](/get-started/receive.md): the focused address-verification journey.
+- [Send bitcoin](/get-started/send.md): build, sign, and broadcast a spend.
+- [Address explorer](/reference/keys/address-explorer.md): browse and verify any address.
+- [Security model](/security/overview.md): understand what SeedSigner does and does not protect.
+- [Set up multisig](/get-started/multisig.md): when to graduate from single-sig.

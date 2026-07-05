@@ -14,7 +14,7 @@ Approximately $50 for all components. The Raspberry Pi Zero is around $15, the W
 
 ### Is SeedSigner a wallet?
 
-No. SeedSigner is a **signer** — it holds private keys temporarily and produces signatures. You pair it with a **coordinator wallet** (like Sparrow, BlueWallet, or Nunchuk) that runs on a networked computer or phone. The coordinator handles addresses, balances, and broadcasting transactions.
+No. SeedSigner is a **signer:** it holds private keys temporarily and produces signatures. You pair it with a **coordinator wallet** (like Sparrow, BlueWallet, or Nunchuk) that runs on a networked computer or phone. The coordinator handles addresses, balances, and broadcasting transactions.
 
 ### Does SeedSigner store my private keys?
 
@@ -48,7 +48,7 @@ If the device is powered off, there is nothing to steal — no keys are stored. 
 
 ## Seeds and keys
 
-### 12-word or 24-word seed — which should I use?
+### 12-word or 24-word seed: which should I use?
 
 A 24-word seed has more entropy and is recommended for single-signature wallets. For multi-signature wallets, 12-word seeds per cosigner can be sufficient because the overall security comes from the combination of multiple keys. 12-word seeds are also easier to manage as SeedQR codes.
 

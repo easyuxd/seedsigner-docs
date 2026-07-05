@@ -49,9 +49,9 @@ Select which Bitcoin network SeedSigner operates on.
 
 Controls how much data is packed into each frame of an animated QR code.
 
-- **Low density** — Larger, simpler QR codes that are easier for cameras to scan. Best if you have scanning difficulties.
-- **Medium density** — A balanced default for most setups.
-- **High density** — More data per frame means fewer frames and faster transfers, but requires a good camera and steady hands.
+- **Low density:** Larger, simpler QR codes that are easier for cameras to scan. Best if you have scanning difficulties.
+- **Medium density:** A balanced default for most setups.
+- **High density:** More data per frame means fewer frames and faster transfers, but requires a good camera and steady hands.
 
 > **Tip:** If your coordinator wallet struggles to scan QR codes from SeedSigner, try lowering the density.
 
@@ -63,8 +63,8 @@ When enabled, SeedSigner allows you to export extended public keys (xpubs) to yo
 
 Control which signature schemes are available.
 
-- **Single Sig** — Standard single-key signing.
-- **Multisig** — Multi-key signing (e.g., 2-of-3 setups).
+- **Single Sig:** Standard single-key signing.
+- **Multisig:** Multi-key signing (e.g., 2-of-3 setups).
 
 You can enable one or both depending on your workflow.
 
