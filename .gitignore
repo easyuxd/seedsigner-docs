@@ -1,6 +1,10 @@
 /test-output/
 .specstory/
 
+# Screenshot generator staging output
+/docs-screenshots/out/
+__pycache__/
+
 # Playwright
 node_modules/
 /test-results/

@@ -20,13 +20,27 @@ BIP-85 is off by default. Turn it on at:
 
 **Settings > Advanced > BIP-85 Child Seeds → Enabled**
 
+![Advanced settings menu with BIP-85 child seeds highlighted](../../images/BIP-85ChildSeedsSelectView.png)
+
+![BIP-85 child seeds enabled or disabled](../../images/SettingsEntryUpdateSelectionView_bip85.png)
+
 ## Derive a child seed
 
 1. Load the master seed ([seed loading](/reference/seeds/loading.md)) or create one ([seed creation](/reference/seeds/creation.md)).
 2. From the main menu select **Seeds** and choose the loaded master seed.
 3. Select **BIP-85 Child Seed**.
 4. Choose the child's length: **12 words** or **24 words**.
+
+   ![BIP-85 application mode: child seed length](../../images/SeedBIP85ApplicationModeView.png)
+
 5. Enter the **index number** (0, 1, 2, …). The same master + length + index always produces the same child seed.
+
+   ![Entering the BIP-85 child index](../../images/SeedBIP85SelectChildIndexView.png)
+
+   Indexes outside the valid range are rejected rather than silently clamped:
+
+   ![Invalid BIP-85 child index](../../images/SeedBIP85InvalidChildIndexView.png)
+
 6. SeedSigner displays the child's seed phrase. From here treat it like any other seed: write it down or export it as a [SeedQR](/reference/seeds/seedqr.md), and note **which index it is**.
 
 > **Tip:** Record the index alongside each child's purpose (e.g. "index 0 = mobile spending, index 1 = savings"). The words themselves are recoverable from the master, but only if you remember which index to re-derive.

@@ -38,7 +38,7 @@ This method uses environmental entropy captured by the camera — pixel data, pr
 
 5. Choose **12 words** or **24 words**.
 
-   ![Seed length selection showing 12-word and 24-word options](../../images/SeedMnemonicLengthView.png)
+   ![Seed length selection showing 12-word and 24-word options](../../images/SeedMnemonicLengthCalcView.png)
 
 6. Read the security warning and press **I Understand**.
 
@@ -46,7 +46,7 @@ This method uses environmental entropy captured by the camera — pixel data, pr
 
 7. **Write down every word** in exact order. Words display four at a time. Double-check each one.
 
-   ![Generated seed words displayed four at a time](../../images/SeedMnemonicEntryView.png)
+   ![Generated seed words displayed four at a time](../../images/SeedWordsView.png)
 
 8. SeedSigner prompts you to verify your backup. Select **Verify** to continue (recommended) or **Skip** to bypass.
 
@@ -100,7 +100,7 @@ If you want to choose your own words from the BIP-39 word list, this method lets
 
 2. Choose **12 words** or **24 words**.
 
-   ![Calc seed length](../../images/SeedMnemonicLengthCalcView.png)
+   ![Calc seed length](../../images/ToolsCalcFinalWordNumWordsView.png)
 
 3. Enter each word using the on-screen keyboard:
    - **Key A:** move up in the suggestion list
@@ -108,21 +108,31 @@ If you want to choose your own words from the BIP-39 word list, this method lets
    - **Key B:** select the highlighted word
    - Type the first 2--3 letters and pick from suggestions for speed.
 
-   ![Word entry](../../images/WordEntry.png)
+   ![Word entry](../../images/ToolsCalcFinalWordEnterSeedView.png)
 
 4. After entering all words, choose how to generate entropy for the final word:
 
    ![Finalize prompt](../../images/ToolsCalcFinalWordFinalizePromptView.png)
 
    - **Coin flips:** Flip a physical coin 7 times; enter heads (1) or tails (0) for each.
+
+     ![Coin flip entry screen](../../images/ToolsCalcFinalWordCoinFlipsView.png)
+
+     ![Final word calculated from coin flips](../../images/ToolsCalcFinalWordCoinFlipResultView.png)
+
    - **Word selection:** Pick any word from the BIP-39 list as your entropy source.
+
+     ![Selecting a word as the entropy source](../../images/ToolsCalcFinalWordEntropyView.png)
+
    - **Zeros:** Uses a 7-bit string of zeros (simplest, still valid).
 
-5. SeedSigner displays the calculated final word along with the derivation details.
+5. SeedSigner displays the calculated final word along with the derivation details. The greyed digits are your entropy; the highlighted digits are the checksum SeedSigner computed.
 
    ![Final word display](../../images/ToolsCalcFinalWordShowFinalWordView.png)
 
-6. Your complete seed phrase is now ready for backup and use.
+6. Your complete seed phrase is now ready for backup and use. The fingerprint shown here identifies the finished wallet.
+
+   ![Final Word Calc done screen with the resulting fingerprint](../../images/ToolsCalcFinalWordDoneView.png)
 
 > **Technical note:** The final word in any BIP-39 seed phrase contains both entropy bits and a checksum. The checksum detects transcription errors and proves the phrase is mathematically valid.
 

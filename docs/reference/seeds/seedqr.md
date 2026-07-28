@@ -30,6 +30,14 @@ You need a seed [loaded into SeedSigner](/reference/seeds/loading.md).
 
    ![Full QR](../../images/SeedTranscribeSeedQRWholeQRView_12_Standard.png)
 
+   The grid size depends on the seed length and format. A 24-word seed produces a
+   larger QR than a 12-word one, and Compact is smaller than Standard for the same
+   seed:
+
+   ![24-word Standard SeedQR, 29x29 modules](../../images/SeedTranscribeSeedQRWholeQRView_24_Standard.png)
+
+   ![24-word Compact SeedQR, 25x25 modules](../../images/SeedTranscribeSeedQRWholeQRView_24_Compact.png)
+
 5. Use the joystick to navigate through zoomed sections of the QR. Carefully transcribe each section onto paper, a metal plate, or another durable medium.
 
    ![Zoomed view](../../images/SeedTranscribeSeedQRZoomedInView_12_Standard.png)
@@ -40,6 +48,8 @@ You need a seed [loaded into SeedSigner](/reference/seeds/loading.md).
 
    - **Confirm SeedQR:** the camera opens so you can scan your hand-drawn QR to verify it reads correctly.
    - **Done:** skip verification and return to the seed menu.
+
+   ![Same prompt with Done highlighted](../../images/SeedTranscribeSeedQRDoneSelectView.png)
 
 > **Tip:** Always choose **Confirm SeedQR** and scan your transcription. A single misplaced dot can make the QR unreadable.
 
@@ -52,6 +62,11 @@ You need a seed [loaded into SeedSigner](/reference/seeds/loading.md).
 **Failure:** The scanned QR does not match. Re-examine your transcription for errors and try again.
 
 ![Verification failure](../../images/SeedTranscribeSeedQRConfirmWrongSeedView.png)
+
+**Unreadable:** the QR scanned, but not as a SeedQR at all — usually a
+transcription error large enough to corrupt the encoded data.
+
+![Scanned QR was not a valid SeedQR](../../images/SeedTranscribeSeedQRConfirmInvalidQRView.png)
 
 ## Printable templates
 

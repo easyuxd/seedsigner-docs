@@ -18,11 +18,27 @@ You can display the seed words for any loaded seed and run a verification quiz t
 
 3. Review your complete seed phrase, displayed four words at a time. Use the joystick to scroll through all words.
 
-   ![Seed words display](../../images/SeedWordsView.png)
+   ![Seed words display, first page](../../images/SeedWordsView.png)
+
+   ![Seed words display, later page](../../images/SeedWordsView_2.png)
 
 4. Optionally, run the backup verification quiz to confirm your written copy matches. Select **Verify** to start, or **Skip** to return to the seed menu.
 
-   ![Backup test](../../images/SeedBackupTestView.png)
+   ![Backup verification prompt](../../images/SeedWordsBackupTestPromptView.png)
+
+   The quiz asks for specific words by position, offering four candidates each time:
+
+   ![Backup test asking for a specific word](../../images/SeedBackupTestView.png)
+
+   A wrong answer names the position and the word you picked, without revealing
+   the correct one. Choose **Review Seed Words** to see the phrase again, or
+   **Try Again** to retake that question:
+
+   ![Backup test reporting a wrong word](../../images/SeedWordsBackupTestMistakeView.png)
+
+   Pass every question and the device confirms the backup:
+
+   ![Backup verified successfully](../../images/SeedWordsBackupTestSuccessView.png)
 
 > **Warning:** Only view seed words in a completely private location. Stay away from security cameras, other people, and any recording devices. Consider shielding the screen with your hand.
 

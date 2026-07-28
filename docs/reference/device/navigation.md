@@ -35,6 +35,8 @@ This works consistently throughout the entire interface. If you ever navigate so
 
 In the top-right corner of the main menu you will see a **power icon**. Highlight it with the joystick and press any key to open the power menu, where you can power off or restart the device.
 
+![Home screen with the power icon highlighted in the top-right corner](../../images/PowerIconSelectedScreen.png)
+
 For full details on shutting down, see [Power off and restart](/reference/device/power.md).
 
 ## Next step

@@ -58,8 +58,22 @@ Because the descriptor does not contain private keys, you have more flexibility 
 
 SeedSigner can scan the wallet descriptor QR code and use it to verify that receive and change addresses actually belong to your multi-sig wallet. This is a valuable security check:
 
-1. In SeedSigner, scan the wallet descriptor QR code.
-2. SeedSigner uses the descriptor to independently derive wallet addresses.
-3. Compare these addresses to what Sparrow displays.
+1. In SeedSigner, scan the wallet descriptor QR code. If a flow needs the
+   descriptor and does not have it yet, the device prompts for it:
+
+   ![Prompt to scan the multisig wallet descriptor](../../images/LoadMultisigWalletDescriptorView.png)
+
+2. Check the summary. The **policy** and the list of **signing keys** are what you
+   are backing up — confirm the quorum and that every fingerprint is one of yours:
+
+   ![Descriptor loaded, showing policy 2 of 3 and three signing keys](../../images/MultisigWalletDescriptorView.png)
+
+3. SeedSigner uses the descriptor to independently derive wallet addresses. In the
+   [Address Explorer](/reference/keys/address-explorer.md), a descriptor source is
+   labelled with the policy rather than a script type:
+
+   ![Address explorer with a wallet descriptor source, 2 of 3 multisig](../../images/AddressExplorerAddressTypeView.png)
+
+4. Compare these addresses to what Sparrow displays.
 
 If they match, you have confirmation that your wallet is set up correctly and that Sparrow is showing you legitimate addresses.

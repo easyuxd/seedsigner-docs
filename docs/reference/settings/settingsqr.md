@@ -24,6 +24,13 @@ Use the official web generator:
 2. Point the camera at your SettingsQR.
 3. SeedSigner recognizes it as a settings payload, applies the configuration, and confirms what changed.
 
+   ![SettingsQR confirmation naming the profile applied](../../images/SettingsIngestSettingsQRView_persistent.png)
+
+   The confirmation names the profile and tells you whether the settings were
+   written to the SD card or apply only to this session:
+
+   ![SettingsQR confirmation for a session-only profile](../../images/SettingsIngestSettingsQRView_not_persistent.png)
+
 That's it — no menu digging. If an SD card is inserted, the settings also persist to the card as usual; if you run card-free, rescan after each boot.
 
 ## When it's most useful

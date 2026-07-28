@@ -6,6 +6,8 @@
 
 If your screen looks wrong out of the box, this is the place to fix it.
 
+![Hardware submenu showing Display type and Invert colors](../../images/SettingsMenuView__Hardware.png)
+
 ---
 
 ## Settings reference
@@ -23,6 +25,10 @@ If your screen looks wrong out of the box, this is the place to fix it.
 
 Select the driver that matches the LCD display in your SeedSigner build. The device needs the correct driver to communicate with the screen — choosing the wrong one will result in a blank or garbled display.
 
+![Advanced settings menu with Display type highlighted](../../images/DisplayTypeSelectView.png)
+
+![Display driver options](../../images/SettingsEntryUpdateSelectionView_display_type.png)
+
 | Driver | Resolution | Notes |
 |--------|-----------|-------|
 | **st7789 240x240** | 240 x 240 | Default. Used by the most common SeedSigner display modules. |
@@ -35,7 +41,11 @@ Select the driver that matches the LCD display in your SeedSigner build. The dev
 
 ### Color inversion
 
-Controls whether display colors are inverted. The default (Enabled) produces correct colors on most common SeedSigner display modules.
+Controls whether display colors are inverted. The default (Enabled) produces correct colors on most common SeedSigner display modules. On the device this setting is labelled **Invert colors**.
+
+![Hardware settings menu with Invert colors highlighted](../../images/InvertColorsSelectView.png)
+
+![Invert colors enabled or disabled](../../images/SettingsEntryUpdateSelectionView_color_inverted.png)
 
 If your display shows inverted or "negative" colors — for example, white text on areas that should be dark, or a generally washed-out appearance — try toggling this setting.
 

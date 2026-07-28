@@ -6,6 +6,12 @@
 
 Most users only need to adjust a few of these to match their preferred wallet software and workflow.
 
+Reach it from the home screen:
+
+![Home screen with Settings highlighted](../../images/HomeScreenSettingsSelectView.png)
+
+![Settings menu](../../images/SettingsMenuView.png)
+
 ---
 
 ## Settings reference
@@ -26,6 +32,8 @@ Most users only need to adjust a few of these to match their preferred wallet so
 
 SeedSigner can generate QR codes optimized for several popular wallet coordinators. Select yours so that exported QR codes scan reliably in your wallet app.
 
+![Settings menu with Coordinator software highlighted](../../images/SettingsMainMenuCoordinatorSoftwareSelectView.png)
+
 Supported coordinators:
 
 - BlueWallet
@@ -34,15 +42,28 @@ Supported coordinators:
 - Specter Desktop
 - Keeper
 
+This is a multi-select — enable every coordinator you use, and the export flow
+will offer you the choice each time.
+
+![Coordinator software multi-select list](../../images/SettingsEntryUpdateSelectionView_coordinators.png)
+
 > **Tip:** If you switch wallet software, come back here and update this setting so your QR codes are formatted correctly.
 
 ### Denomination display
 
 Controls whether amounts are shown in BTC or sats. The threshold determines the crossover point — amounts below the threshold display in sats for readability, while larger amounts display in BTC.
 
+![Settings menu with Denomination display highlighted](../../images/SettingsMainMenuDenominationDisplaySelectView.png)
+
+![Denomination display options](../../images/SettingsEntryUpdateSelectionView_denomination.png)
+
 ### Persistent settings
 
 This setting controls whether your configuration is written to the SD card.
+
+![Settings menu with Persistent settings highlighted](../../images/SettingsMainMenuPersistentSelectView.png)
+
+![Persistent settings: enabled or disabled](../../images/SettingsEntryUpdateSelectionView_persistent_settings.png)
 
 - **Enabled:** Settings persist across reboots. Configuration data is stored on the SD card.
 - **Disabled:** Settings reset to factory defaults every time the device powers off.
@@ -51,9 +72,22 @@ This setting controls whether your configuration is written to the SD card.
 
 > **Tip:** If you find yourself reconfiguring the same settings every time you power on, enabling persistence saves time without exposing any seed data.
 
+### Language
+
+Selects the interface language. Available languages depend on which translations
+ship with your firmware version.
+
+![Settings menu with Language highlighted](../../images/SettingsMainMenuLanguageSelectView.png)
+
+![Language selection](../../images/SettingsEntryUpdateSelectionView_locale.png)
+
 ### Hardware I/O test
 
 The I/O test walks you through each hardware component — press each button when prompted, verify the display renders correctly, and confirm the camera captures an image.
+
+![Settings menu with I/O test highlighted](../../images/SettingsMainMenuInputOutputSelectView.png)
+
+![I/O test screen](../../images/IOTestView.png)
 
 This is especially helpful when:
 
@@ -64,3 +98,13 @@ This is especially helpful when:
 ### Donation
 
 View a QR code and address to support the SeedSigner project. All development is community-funded.
+
+![Settings menu with Donate highlighted](../../images/SettingsMainMenuDonateSelectView.png)
+
+![Donation screen](../../images/DonateView.png)
+
+### Advanced
+
+Everything else lives one level down. See [Advanced settings](/reference/settings/advanced.md).
+
+![Settings menu with Advanced highlighted](../../images/SettingsMainMenuAdvancedSelectView.png)

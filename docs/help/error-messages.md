@@ -6,6 +6,8 @@
 
 ## "Unknown QR Type"
 
+![Error screen reading "Unknown QR Type: QRCode is invalid or is a data format not yet supported"](../images/ScanInvalidQRTypeView.png)
+
 **What it means:** SeedSigner scanned a QR code but doesn't recognize the format. SeedSigner expects specific QR types — PSBTs (partially signed Bitcoin transactions), SeedQR backups, and wallet descriptors. Anything else triggers this error.
 
 **How to fix it:**
@@ -19,6 +21,8 @@
 ---
 
 ## "Invalid Seed"
+
+![Error screen reporting an invalid seed](../images/SeedMnemonicInvalidView.png)
 
 **What it means:** The seed phrase you entered does not pass BIP-39 validation. BIP-39 is the standard that defines the 2,048 allowed seed words and how they combine to form a valid seed. If any word is wrong, misspelled, or out of order, validation fails.
 
@@ -41,6 +45,46 @@
 
 1. **Verify all preceding words first.** A checksum error is often caused by a mistake in one of the earlier words, not just the final one. If any word is wrong, the expected checksum changes.
 2. **Use the "Calc 12th/24th word" tool.** SeedSigner can calculate the correct final word for you. Go to **Tools > Calc 12th word** (or **Calc 24th word**), enter all the preceding words, and SeedSigner will tell you what the final word should be. Compare this to your backup.
+
+   ![Final Word Calc showing the computed final word and resulting fingerprint](../images/ToolsCalcFinalWordDoneView.png)
 3. **Check for transcription errors.** This is the most common cause. When copying a seed phrase by hand, it's easy to swap two letters, skip a word, or write a similar-looking word. Re-examine your backup carefully.
 
 > **Tip:** When you first create a seed, immediately verify it by loading it back into SeedSigner before storing your backup. This catches transcription errors right away, while you still have the original on screen.
+
+---
+
+## "Network Mismatch"
+
+![Network mismatch error showing the derivation path that does not match the current network](../images/NetworkMismatchErrorView.png)
+
+**What it means:** The derivation path in the data you scanned belongs to a
+different network than the one SeedSigner is set to. Mainnet paths use
+`m/84'/0'/0'`; testnet uses `m/84'/1'/0'`. This is the single most common setup
+failure — a device on mainnet cannot make sense of a testnet wallet, or vice
+versa.
+
+**How to fix it:**
+
+1. **Check the network setting on the device.** **Settings → Advanced → Bitcoin
+   Network** must match the wallet you are working with.
+2. **Check the coordinator.** Sparrow runs in testnet mode only when launched with
+   `-n testnet`; a normally-launched Sparrow is on mainnet.
+3. **Re-export after switching.** The xpub is network-specific, so change the
+   network first, then export again — the fingerprint stays the same but the
+   derivation path and address prefixes change.
+
+> **Tip:** If an address you expected to verify is not found, suspect the network
+> before suspecting the seed. See [Using testnet](/contribute/testnet.md).
+
+---
+
+## "Not Yet Implemented" and unexpected errors
+
+Some menu entries exist for features that a given firmware build does not carry:
+
+![Not yet implemented screen](../images/NotYetImplementedView.png)
+
+And if SeedSigner hits an internal error it shows the exception rather than
+failing silently. The details are worth photographing if you intend to report it:
+
+![Unhandled exception screen showing an error trace](../images/UnhandledExceptionView.png)

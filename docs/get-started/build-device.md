@@ -74,12 +74,21 @@ This is the security-critical phase. Do it carefully on your networked computer.
 Now bring the device to life. Make sure you have your assembled device, the flashed microSD card inserted, a micro USB cable, and any USB power source (charger, power bank, or computer port).
 
 7. **Plug in power.** Connect the cable to the **power-only port:** the one **nearest the joystick**. The other port is data-only and won't reliably power the device.
-8. **Wait for boot, then dismiss the SD-card message.** After a few seconds you'll see the splash screen, then a "you can remove the SD card now" notice. Press **any button (A, B, or C)** to clear it.
+8. **Wait for boot, then dismiss the SD-card message.** The screen stays blank for up to about 45 seconds — this is normal, and is the one moment where a working device is hard to tell from a dead one. Then the splash screen appears:
+
+   ![SeedSigner splash screen](../images/OpeningSplashView.png)
+
+   Followed by a "you can remove the SD card now" notice. Press **any button (A, B, or C)** to clear it.
+
+   ![Main menu with the remove-SD-card notice](../images/MainMenuView_RemoveSDCardToast.png)
+
 9. **You're at the main menu.** From here you can create seeds, scan QR codes, open tools, and change settings. Full detail: [First boot](/reference/device/first-boot.md).
 
-![SeedSigner main menu showing Seeds, Scan, Tools, and Settings options](../images/MainMenuView.png)
+   ![SeedSigner main menu showing Seeds, Scan, Tools, and Settings options](../images/MainMenuView.png)
 
 10. **Do the recommended first-run setup.** Set your coordinator software, decide on persistent settings, check camera rotation, and run the I/O test to confirm your build is solid. See [First-run setup](/reference/software/first-run.md).
+
+    ![Settings menu](../images/SettingsMenuView.png)
 11. **Learn the controls.** The joystick moves and highlights; keys A/B/C select; the back arrow (top-left) always returns. A two-minute primer: [Navigation](/reference/device/navigation.md).
 
 > **Tip:** For maximum security, physically remove the microSD card once the boot message appears. SeedSigner runs entirely from RAM, so it keeps working with no card inserted — and with no writable storage attached, nothing secret can ever be saved to disk.

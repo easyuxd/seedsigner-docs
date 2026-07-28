@@ -11,9 +11,12 @@ You export the xpub once, scan it into your coordinator, and from that point for
 
 ## Step-by-step
 
-1. From the loaded seed's menu, select **Export Xpub**.
+1. From the loaded seed's menu, select **Export Xpub**. The full menu offers every
+   operation available for that seed:
 
-   ![Seed menu](../../images/SeedMenuView.png)
+   ![Seed options menu](../../images/SeedOptionsView.png)
+
+   ![Seed menu with Export Xpub highlighted](../../images/SeedMenuView.png)
 
 2. Choose the **signature type**:
    - **Single Sig:** for a standard personal wallet controlled by one key.
@@ -21,15 +24,26 @@ You export the xpub once, scan it into your coordinator, and from that point for
 
    ![Signature type](../../images/SeedExportXpubSigTypeView.png)
 
+   For a multisig wallet, select **Multisig** instead:
+
+   ![Signature type with Multisig highlighted](../../images/SeedExportXpubSigTypeView_multisig.png)
+
 3. Choose the **script type** (address format):
 
    | Script type | Format | Recommended for |
    |-------------|--------|-----------------|
-   | Native SegWit | bech32 (bc1q...) | Lowest fees, widest modern support |
-   | Nested SegWit | P2SH (3...) | Compatibility with older wallets |
-   | Taproot | bech32m (bc1p...) | Advanced privacy and scripting |
+   | Native SegWit | bech32 (`bc1q…`, `tb1q…` on testnet) | Lowest fees, widest modern support |
+   | Nested SegWit | P2SH (`3…`) | Compatibility with older wallets |
+   | Taproot | bech32m (`bc1p…`) | Advanced privacy and scripting |
+
+   The device lists two further options. **Legacy** (`1…`) exists for very old
+   wallets, and **Custom Derivation** lets you type a derivation path by hand
+   when recovering a wallet that uses a non-standard one. Ignore both unless you
+   specifically need them.
 
    ![Script type](../../images/SeedExportXpubScriptTypeView.png)
+
+   ![Custom derivation path keypad](../../images/SeedExportXpubCustomDerivationView.png)
 
 4. Select your **coordinator wallet software** from the list (Sparrow, BlueWallet, Specter, etc.).
 

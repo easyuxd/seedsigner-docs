@@ -70,12 +70,17 @@ Your seed phrase **is** your wallet. Whoever holds these words controls the Bitc
 1. On SeedSigner, go to **Tools → New Seed** and pick a method:
    - **Camera:** fast, captures randomness from a photo.
    - **Dice:** most trust-minimized (50 rolls for 12 words, 99 for 24 words).
+   ![Tools menu showing the New Seed options](../images/ToolsMenuView.png)
+
 2. When prompted, choose **24 words** for long-term cold storage (12 words is also valid).
+
+   ![Mnemonic length: 12 words or 24 words](../images/SeedMnemonicLengthCalcView.png)
+
 3. Read the security warning and press **I Understand**.
 
-The full instructions for every creation method are in [Create a new seed](/reference/seeds/creation.md). If you already have a seed, [load it](/reference/seeds/loading.md) instead and skip to Step 3.
+   ![Caution: classified info warning](../images/SeedWarningView.png)
 
-![Tools menu showing the New Seed options](../images/ToolsMenuView.png)
+The full instructions for every creation method are in [Create a new seed](/reference/seeds/creation.md). If you already have a seed, [load it](/reference/seeds/loading.md) instead and skip to Step 3.
 
 > **Tip:** SeedSigner is **stateless:** the seed lives only in RAM and is erased the moment you power off. That is a security feature, and it is exactly why Step 2 (backup) is non-negotiable.
 
@@ -86,9 +91,12 @@ The full instructions for every creation method are in [Create a new seed](/refe
 Write down **every word, in order, spelled exactly.** Words display four at a time.
 
 1. Transcribe all words onto paper or a metal backup.
+
+   ![Seed words displayed four at a time](../images/SeedWordsView.png)
+
 2. Complete the on-device **backup verification quiz:** SeedSigner asks you to confirm specific words to prove your written copy is correct.
 
-![Backup verification quiz prompting for a specific seed word](../images/SeedBackupTestView.png)
+   ![Backup verification quiz prompting for a specific seed word](../images/SeedBackupTestView.png)
 
 3. Optionally, also create a [SeedQR backup](/reference/seeds/seedqr.md) so you can reload the seed in seconds later (you will use this in the recovery drill).
 
@@ -111,18 +119,29 @@ On SeedSigner, from your loaded seed's menu:
 
    | Script type | Address starts with | Choose it for |
    |---|---|---|
-   | **Native SegWit** (recommended) | `bc1q…` | Lowest fees, widest modern support |
+   | **Native SegWit** (recommended) | `bc1q…` (`tb1q…` on testnet) | Lowest fees, widest modern support |
    | Nested SegWit | `3…` | Compatibility with older wallets |
    | Taproot | `bc1p…` | Advanced privacy and scripting |
+
+   The device also lists **Legacy** and **Custom Derivation**. Ignore both here —
+   Legacy is only for very old wallets, and Custom Derivation is for recovering a
+   wallet that uses a non-standard path.
 
    ![Script type selection](../images/SeedExportXpubScriptTypeView.png)
 
 4. Select **Sparrow** as the coordinator.
 
-   ![Coordinator selection](../images/SeedExportXpubCoordinatorView.png)
+   ![Coordinator selection with Sparrow highlighted](../images/SeedExportXpubCoordinatorView.png)
 
 5. Read the privacy warning and press **I Understand**.
-6. Select **Export Xpub** to display the animated QR code.
+
+   ![Privacy leak warning](../images/SeedExportXpubWarningView.png)
+
+6. Review the xpub details — the **fingerprint** here is the value you will
+   compare against Sparrow in Step 4. Select **Export Xpub** to display the
+   animated QR code.
+
+   ![Xpub details showing fingerprint, derivation path and xpub](../images/SeedExportXpubDetailsView.png)
 
    ![Xpub QR code](../images/SeedExportXpubQRView.png)
 
@@ -144,12 +163,12 @@ This is where your wallet actually comes to life on the coordinator.
 6. Find **SeedSigner** and click **Import / Scan** (Sparrow activates your webcam).
 7. Hold SeedSigner's xpub QR (from Step 3) in front of the webcam until Sparrow reads it.
 
-Sparrow now shows the imported keystore, including a **master fingerprint** (a short code like `593c4724`) and the **derivation path** (`m/84'/0'/0'` for mainnet Native SegWit).
+Sparrow now shows the imported keystore, including a **master fingerprint** (a short code like `b5aa2761`) and the **derivation path** — `m/84'/1'/0'` on testnet, or `m/84'/0'/0'` on mainnet, for Native SegWit.
 
 8. Confirm the master fingerprint in Sparrow **matches the fingerprint shown on SeedSigner** when the seed is loaded. They should be identical.
 9. Click **Apply**. When asked for a password, click **No Password** for this guide.
 
-Your watch-only wallet is created. Open the **Receive** tab — Sparrow displays your first receiving address (starting `bc1q…`) and a QR code of that address. **Do not send funds to it yet:** verify it first.
+Your watch-only wallet is created. Open the **Receive** tab — Sparrow displays your first receiving address (starting `tb1q…` on testnet, `bc1q…` on mainnet) and a QR code of that address. **Do not send funds to it yet:** verify it first.
 
 > **Why "watch-only"?** Sparrow can see and receive, but it holds no private key and cannot spend. Spending always requires SeedSigner to sign (Step 7).
 
@@ -204,8 +223,24 @@ Browse and double-check addresses any time with SeedSigner's [Address Explorer](
 When you are ready to send Bitcoin, Sparrow builds an unsigned transaction (a **PSBT**), SeedSigner reviews and signs it, and Sparrow broadcasts it. For the dedicated walkthrough, see the [Send bitcoin](/get-started/send.md) journey; the full screenshot-by-screenshot reference is [PSBT signing](/reference/keys/psbt-signing.md). In short:
 
 1. In Sparrow, create the transaction and display it as an animated QR.
-2. On SeedSigner: **Scan PSBT** → **review recipient, amount, fee, and change carefully** → **Approve PSBT**.
-3. Scan SeedSigner's signed-QR back into Sparrow and click **Broadcast Transaction**.
+2. On SeedSigner, open your seed's menu and select **Scan PSBT**.
+
+   ![Seed menu with Scan PSBT highlighted](../images/SeedMainMenuPSBTSelectView.png)
+
+3. **Review recipient, amount, fee, and change carefully.** The overview screen
+   shows the whole transaction at a glance; **Review Details** walks each part.
+
+   ![PSBT overview showing amount, recipient, fee and change](../images/PSBTOverviewView.png)
+
+   ![PSBT arithmetic: inputs minus recipient minus fee equals change](../images/PSBTMathView.png)
+
+   ![Recipient address and amount](../images/PSBTAddressDetailsView.png)
+
+4. Approve. This is the point of no return.
+
+   ![Sign PSBT approval screen](../images/PSBTFinalizeView.png)
+
+5. Scan SeedSigner's signed-QR back into Sparrow and click **Broadcast Transaction**.
 
 > **Warning:** Bitcoin transactions are irreversible. Always verify the recipient address and amount on SeedSigner's trusted screen before approving.
 
@@ -216,13 +251,24 @@ When you are ready to send Bitcoin, Sparrow builds an unsigned transaction (a **
 A backup you have never restored is only a *hope*. Prove it works while the stakes are zero.
 
 1. **Wipe the seed from SeedSigner.** Either [discard the loaded seed](/reference/seeds/discard.md) (**Seeds → your seed → Discard**) or simply power the device off — being stateless, it forgets everything.
+
+   ![Seed menu with Discard Seed highlighted](../images/DiscardSeedSelectView.png)
+
+   ![Discard confirmation: Keep Seed or Discard](../images/DiscardSeedMainMenuView.png)
+
 2. **Reload the seed from your backup**, exactly as a real recovery would go: type the words from paper, or scan your SeedQR. See [Load an existing seed](/reference/seeds/loading.md).
+
+   ![Load a seed options](../images/LoadASeedMainMenuView.png)
+
 3. **Confirm the fingerprint matches.** On the Finalize Seed screen, the seed fingerprint must equal the one Sparrow showed in Step 4. A match means you reconstructed the *same* wallet.
+
+   ![Finalize Seed showing the journey fingerprint](../images/SeedFinalizeView_journey.png)
+
 4. **Re-verify the same receive address** (repeat Step 5). Success confirms your backup controls the funds.
 
 If recovery succeeds, your single-sig wallet is fully operational and provably recoverable. For restoring a wallet later (lost or replaced device), see the [Recover from backup](/get-started/recover.md) journey.
 
-> **Recovery reassurance:** For single-sig, the seed phrase alone is enough to recover everything — no descriptor file required. To restore into fresh wallet software, choose Single Signature + Native SegWit and import the same xpub (or seed). Knowing the **derivation path** (`m/84'/0'/0'`) speeds this up if a wallet asks.
+> **Recovery reassurance:** For single-sig, the seed phrase alone is enough to recover everything — no descriptor file required. To restore into fresh wallet software, choose Single Signature + Native SegWit and import the same xpub (or seed). Knowing the **derivation path** (`m/84'/1'/0'` on testnet, `m/84'/0'/0'` on mainnet) speeds this up if a wallet asks.
 
 ---
 
@@ -264,7 +310,11 @@ A condensed, ordered map of every action — handy for experienced users and AI 
 | 7 | Sign spend | **Scan PSBT →** review recipient/amount/fee/change **→ Approve PSBT →** show signed QR | Build tx → show QR → scan signed QR → **Broadcast** |
 | 8 | Recovery drill | Discard/power off **→** reload from backup **→** confirm fingerprint **→** re-verify address | (re-check Receive address) |
 
-**Key invariants:** the script type (Native SegWit), the network (Mainnet *or* Testnet), and the master fingerprint must be **identical** on SeedSigner and Sparrow at every step. The mainnet single-sig Native SegWit derivation path is `m/84'/0'/0'` (`m/84'/1'/0'` on testnet).
+**Key invariants:** the script type (Native SegWit), the network (Mainnet *or* Testnet), and the master fingerprint must be **identical** on SeedSigner and Sparrow at every step. The single-sig Native SegWit derivation path is `m/84'/1'/0'` on testnet and `m/84'/0'/0'` on mainnet.
+
+> **Screenshots on this page are testnet**, matching the recommendation in the
+> introduction. On testnet, addresses start `tb1q…` and amounts display in green
+> as **tSats**. On mainnet the screens are identical apart from those details.
 
 ---
 

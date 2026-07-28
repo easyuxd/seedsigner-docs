@@ -16,6 +16,10 @@ Go to **Settings → Coordinator Software** and enable the wallet(s) you plan to
 - Specter Desktop
 - Keeper
 
+![Settings menu with Coordinator software highlighted](../../images/SettingsMainMenuCoordinatorSoftwareSelectView.png)
+
+![Coordinator software multi-select list](../../images/SettingsEntryUpdateSelectionView_coordinators.png)
+
 SeedSigner adjusts its QR code output format based on the coordinator you select, so setting this correctly ensures smooth communication between your signing device and your wallet software.
 
 > **Tip:** If you're not sure which coordinator to use, Sparrow Wallet is a popular choice for desktop users. It has excellent support for SeedSigner and multisig setups.
@@ -23,6 +27,10 @@ SeedSigner adjusts its QR code output format based on the coordinator you select
 ### 2. Decide on persistent settings
 
 Go to **Settings → Persistent Settings** and choose your preference:
+
+![Settings menu with Persistent settings highlighted](../../images/SettingsMainMenuPersistentSelectView.png)
+
+![Persistent settings enabled or disabled](../../images/SettingsEntryUpdateSelectionView_persistent_settings.png)
 
 - **Enabled:** Your settings are saved to the MicroSD card and persist across reboots. Convenient if you use the same configuration every time.
 - **Disabled:** Settings reset to defaults each time you power on. Nothing is written to the SD card, which is the more secure option.
@@ -35,9 +43,17 @@ This is a tradeoff between convenience and security. If you remove the SD card a
 
 If the camera preview appears upside down, go to **Settings → Advanced → Camera Rotation** and change the rotation value. This is common depending on how your camera ribbon cable is oriented in the enclosure.
 
+![Advanced settings menu with Camera rotation highlighted](../../images/CameraRotationSelectView.png)
+
+![Camera rotation options](../../images/SettingsEntryUpdateSelectionView_camera_rotation.png)
+
 ### 4. Verify your hardware
 
 Go to **Settings → I/O Test** to confirm that the display, camera, and joystick are all working correctly. This quick test gives you confidence that your build is solid before you start handling real keys.
+
+![Settings menu with I/O test highlighted](../../images/SettingsMainMenuInputOutputSelectView.png)
+
+![I/O test screen](../../images/IOTestView.png)
 
 ## All settings
 

@@ -10,16 +10,30 @@ You need a seed [loaded into SeedSigner](/reference/seeds/loading.md).
 
 ## Open the address explorer
 
-1. From the main menu, select **Seeds** → choose your loaded seed → **Address Explorer**.
+1. From the main menu, select **Seeds**.
 
-   ![Select seed](../../images/SeedOptionSelectView.png)
+   ![Home screen with Seeds highlighted](../../images/SeedsOptionSelectView.png)
 
-   ![Address explorer](../../images/AddressExplorerSelectView.png)
+2. Choose your loaded seed.
 
-2. Choose a **script type** (address format):
-   - **Native SegWit** (bc1q...) — recommended, lowest fees
-   - **Nested SegWit** (3...) — compatible with older wallets
-   - **Taproot** (bc1p...) — advanced privacy features
+   ![In-memory seeds, one seed available](../../images/SavedSeedSelectView.png)
+
+3. Select **Address Explorer**.
+
+   ![Seed menu with Address Explorer highlighted](../../images/AddressExplorerSelectView.png)
+
+   Reaching the explorer from **Tools → Address Explorer** instead asks for the
+   source first — a loaded seed, or a scanned wallet descriptor for multisig:
+
+   ![Address explorer source selection](../../images/AddressExplorerSelectSourceView.png)
+
+4. Choose a **script type** (address format):
+   - **Native SegWit** (`bc1q…`, or `tb1q…` on testnet) — recommended, lowest fees
+   - **Nested SegWit** (`3…`) — compatible with older wallets
+   - **Taproot** (`bc1p…`) — advanced privacy features
+
+   **Legacy** and **Custom Derivation** also appear in this list. Ignore them
+   unless you are recovering a wallet that specifically needs one.
 
    ![Script type options](../../images/ScriptTypeOptions.png)
 

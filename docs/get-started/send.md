@@ -37,6 +37,10 @@ In your coordinator, create the send: enter the recipient address and amount, ch
 
 On SeedSigner, from the loaded seed's menu select **Scan PSBT** (or **Scan** from the main menu), then point the camera at the animated QR on your computer. The device reads multiple frames and reassembles the full transaction. Full detail: [PSBT signing](/reference/keys/psbt-signing.md).
 
+![Seed menu with Scan PSBT highlighted](../images/SeedMainMenuPSBTSelectView.png)
+
+![Camera view prompting to scan the PSBT](../images/SeedPSBTCameraView.png)
+
 ## Step 3: Review every detail, this is the important part
 
 SeedSigner shows you the transaction on a screen that malware on your computer **cannot** tamper with. Check all four:
@@ -48,12 +52,37 @@ SeedSigner shows you the transaction on a screen that malware on your computer *
 | **Network fee** | Reasonable for current conditions |
 | **Change address** | Change returns to **your own** wallet |
 
+The overview screen shows the shape of the whole transaction — how many inputs
+are being spent, and where the money goes:
+
+![PSBT overview: amount, recipient, fee and change](../images/PSBTOverviewView.png)
+
+**Review Details** then walks each part in turn. The arithmetic screen makes the
+fee explicit, so you can confirm inputs minus recipient minus fee equals change:
+
+![PSBT math: inputs minus recipient minus fee equals change](../images/PSBTMathView.png)
+
+![Recipient address and amount in full](../images/PSBTAddressDetailsView.png)
+
+The change screen is the one most people skip. SeedSigner re-derives the change
+address from your seed and tells you whether it really is yours — **Address
+verified!** means the change is coming home:
+
+![Change output verified as belonging to this wallet](../images/PSBTChangeDetailsView.png)
+
 > **Warning:** Bitcoin transactions are irreversible once broadcast. Always verify the recipient address on SeedSigner's screen — a compromised computer could swap the address your coordinator showed. This on-device review is the whole reason to use a signer.
 
 ## Step 4: Approve and hand the signature back
 
-1. If multiple seeds are loaded, select the correct signing seed.
+1. If multiple seeds are loaded, select the correct signing seed. Seeds that
+   cannot sign this transaction are marked with a **(?)**.
+
+   ![Select Signer, with the matching seed listed first](../images/PSBTSelectSeedView.png)
+
 2. Select **Approve PSBT**. SeedSigner adds the signature and displays a new animated QR.
+
+   ![Sign PSBT: click to approve this transaction](../images/PSBTFinalizeView.png)
+
 3. In your coordinator, choose **Scan QR** and point your webcam at SeedSigner's screen to read the signed transaction back in.
 4. Click **Broadcast Transaction** to send it to the Bitcoin network.
 

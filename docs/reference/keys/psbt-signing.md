@@ -34,6 +34,14 @@ When you want to send Bitcoin, your coordinator wallet builds an unsigned transa
    | **Network fee** | Is the fee reasonable for current conditions? |
    | **Change address** | Does change return to your own wallet? |
 
+   **Review Details** walks each part in turn:
+
+   ![PSBT math: inputs minus recipient minus fee equals change](../../images/PSBTMathView.png)
+
+   ![Recipient address and amount](../../images/PSBTAddressDetailsView.png)
+
+   ![Change output verified against your seed](../../images/PSBTChangeDetailsView.png)
+
 5. If multiple seeds are loaded, select the correct signing seed.
 
    ![Select seed](../../images/PSBTSelectSeedView.png)
@@ -51,6 +59,42 @@ When you want to send Bitcoin, your coordinator wallet builds an unsigned transa
 9. Click **Broadcast Transaction** in your coordinator to send it to the Bitcoin network.
 
 > **Warning:** Bitcoin transactions are irreversible once broadcast. Always double-check the recipient address character by character. Malware on your computer could swap addresses — this is exactly why you verify on SeedSigner's trusted screen.
+
+## Warnings you may see during review
+
+SeedSigner interrupts the review when something about the transaction deserves a
+second look. None of these mean the transaction is invalid — they mean the device
+could not confirm something on your behalf.
+
+**No change output.** The transaction sends everything, leaving nothing to come
+back. Legitimate when you are sweeping a wallet, suspicious otherwise.
+
+![No change warning](../../images/PSBTNoChangeWarningView.png)
+
+**Change address could not be verified.** SeedSigner derived your addresses and
+did not find the change address among them. Check the wallet — for multisig,
+confirm the [wallet descriptor](/reference/multisig/descriptor.md) is loaded.
+
+![Change address verification failed, single-sig](../../images/PSBTAddressVerificationFailedView_singlesig_change.png)
+
+![Change address verification failed, multisig](../../images/PSBTAddressVerificationFailedView_multisig_change.png)
+
+**Self-transfer address could not be verified.** Same check, for a transaction
+sending back to your own wallet rather than producing change.
+
+![Self-transfer verification failed, single-sig](../../images/PSBTAddressVerificationFailedView_singlesig_selftransfer.png)
+
+![Self-transfer verification failed, multisig](../../images/PSBTAddressVerificationFailedView_multisig_selftransfer.png)
+
+**Unsupported script type.** The PSBT uses an address format this firmware cannot
+sign for.
+
+![Unsupported script type warning](../../images/PSBTUnsupportedScriptTypeWarningView.png)
+
+**Signing error.** The device could not produce a signature — most often because
+the loaded seed is not one of the wallet's keys.
+
+![PSBT signing error](../../images/PSBTSigningErrorView.png)
 
 ## Troubleshooting scanning issues
 

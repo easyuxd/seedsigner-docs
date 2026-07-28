@@ -30,7 +30,10 @@ Receiving is the safe half of using a wallet: you can hand out an address freely
 
 ## Step 1: Display a receiving address in your coordinator
 
-Open your coordinator and go to the **Receive** tab. It shows a fresh receiving address (single-sig Native SegWit addresses start with `bc1q…`) and a QR code of that address. **Don't share it yet:** verify it first.
+Open your coordinator and go to the **Receive** tab. It shows a fresh receiving address and a QR code of that address. **Don't share it yet:** verify it first.
+
+Native SegWit addresses start with `bc1q…` on mainnet and `tb1q…` on testnet.
+Multisig addresses use the same prefixes but are noticeably longer.
 
 > **Tip:** Use a **fresh receiving address for each payment**. Reusing addresses links your transactions together on the public blockchain and weakens your privacy.
 
@@ -48,9 +51,20 @@ Open your coordinator and go to the **Receive** tab. It shows a fresh receiving 
 
    ![Select seed to verify](../images/AddressVerificationsMainMenuScreen.png)
 
+   If the address format is ambiguous, SeedSigner asks whether to check it as
+   single-sig or multisig:
+
+   ![Single Sig or Multisig selection for address verification](../images/AddressVerificationSigTypeView.png)
+
 4. SeedSigner derives your wallet's addresses and searches for a match. If the address is far down the list, use **Skip 10** to jump ahead.
 
    ![SeedSigner searching its derived addresses](../images/SeedAddressVerificationView.png)
+
+   The screenshots here show the **single-sig** case, which is why the device
+   reports "Single Sig - Native Segwit". Verifying a multisig address works
+   identically, except you first load the [wallet
+   descriptor](/reference/multisig/descriptor.md) and the device reports the
+   multisig policy instead.
 
 5. When it matches, you see **Success! — Address Verified**, along with whether it's a receive or change address and its index.
 

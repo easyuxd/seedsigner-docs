@@ -31,12 +31,23 @@ Because SeedSigner is **stateless**, there's nothing to "restore" on the device 
 
 ## Step 1: Load the seed from your backup
 
-- **From paper/metal:** **Seeds → Load a Seed → Enter 12/24-word seed**, then type each word (the keyboard suggests words after 2–3 letters).
+Start from **Seeds → Load a seed**:
+
+![Seeds menu with Load a seed highlighted](../images/LoadASeedMainOptionSelectView.png)
+
+![Load a seed: scan a SeedQR, or enter 12 or 24 words](../images/LoadASeedMainMenuView.png)
+
+- **From paper/metal:** **Enter 12/24-word seed**, then type each word (the keyboard suggests words after 2–3 letters).
+
+  ![Word entry keyboard with suggestions](../images/SeedMnemonicEntryView.png)
+
 - **From a SeedQR:** **Scan** from the main menu and point the camera at your SeedQR.
+
+  ![Camera view scanning a SeedQR](../images/SeedQRScan.png)
 
 Either way, you'll land on the **Finalize Seed** screen showing the seed **fingerprint**. Full detail and the BIP-39 passphrase option: [Seed loading](/reference/seeds/loading.md).
 
-![Finalize Seed screen showing the seed fingerprint](../images/SeedFinalizeView.png)
+![Finalize Seed screen showing the seed fingerprint](../images/SeedFinalizeView_journey.png)
 
 > **Warning:** If your original wallet used a **BIP-39 passphrase**, you must enter the exact same passphrase here — it's case- and space-sensitive. The same words with a different passphrase produce a *different* wallet.
 
@@ -52,11 +63,15 @@ Re-export the public key and import it into a fresh wallet in your coordinator, 
 2. In the coordinator: create a new watch-only wallet and import the xpub. Confirm the master fingerprint matches.
 3. **Multisig:** rebuilding also requires the [wallet descriptor](/reference/multisig/descriptor.md) — import it to restore the full multisig policy.
 
-> **Tip:** Knowing the **derivation path** speeds up recovery into unfamiliar wallet software. Mainnet single-sig Native SegWit is `m/84'/0'/0'` (`m/84'/1'/0'` on testnet).
+> **Tip:** Knowing the **derivation path** speeds up recovery into unfamiliar wallet software. Single-sig Native SegWit is `m/84'/1'/0'` on testnet and `m/84'/0'/0'` on mainnet.
 
 ## Step 4: Prove it worked
 
 Re-verify a receive address you recognize from the original wallet using **Tools → Verify Address** (see [Receive bitcoin](/get-started/receive.md)). A successful match confirms the restored wallet controls your funds.
+
+![Tools menu with Verify Address highlighted](../images/VerifyAddressSelectView.png)
+
+![Address verified success screen showing the address index](../images/SeedAddressVerificationSuccessView.png)
 
 ---
 

@@ -26,7 +26,7 @@ Use this when you have your seed words written on paper or stamped in metal.
    - **Key C:** move down in the suggestion list.
    - **Key B:** select the highlighted suggestion.
 
-   ![Word entry](../../images/SeedWordEnterView.png)
+   ![Word entry](../../images/SeedMnemonicEntryView.png)
 
 > **Tip:** You only need to type the first 2--3 letters of each word. The suggestion list narrows quickly, making entry much faster.
 
@@ -71,6 +71,32 @@ A BIP-39 passphrase acts as an extra word appended to your seed phrase. It trans
 - If you forget the passphrase, the funds in that wallet are permanently inaccessible.
 
 To add a passphrase, select **BIP-39 Passphrase** on the Finalize Seed screen and enter your passphrase using the on-screen keyboard.
+
+![Passphrase entry, lowercase keyboard](../../images/SeedAddPassphraseView_lowercase.png)
+
+The button in the lower-left cycles the keyboard between lowercase, uppercase,
+digits, and two pages of symbols, so any passphrase you can type on a computer
+can be entered here.
+
+![Passphrase entry, uppercase keyboard](../../images/SeedAddPassphraseView_uppercase.png)
+
+![Passphrase entry, digits keyboard](../../images/SeedAddPassphraseView_digits.png)
+
+![Passphrase entry, first symbols keyboard](../../images/SeedAddPassphraseView_symbols_1.png)
+
+![Passphrase entry, second symbols keyboard](../../images/SeedAddPassphraseView_symbols_2.png)
+
+The review screen then shows the passphrase alongside **the fingerprint it
+produces**, next to the fingerprint you had without it. Those two values differing
+is the whole point: it is the device telling you that you are now looking at a
+different wallet.
+
+![Verify Passphrase screen showing the fingerprint changing](../../images/SeedPassphraseReviewView.png)
+
+Backing out of passphrase entry asks for confirmation, so a stray press on the
+back arrow cannot silently discard what you typed:
+
+![Exit passphrase entry confirmation](../../images/SeedAddPassphraseExitDialogView.png)
 
 > **Warning:** A passphrase is case-sensitive and space-sensitive. "MyPass" and "mypass" produce completely different wallets. Write it down and store it separately from your seed words.
 

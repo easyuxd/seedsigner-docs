@@ -51,9 +51,27 @@ Paste one of your Sparrow testnet receiving addresses into the faucet, and you'l
 By default, SeedSigner operates on mainnet. To switch to testnet:
 
 1. Navigate to **Settings > Advanced > Bitcoin Network**.
+
+   ![Advanced settings menu with Bitcoin network highlighted](../images/BitcoinNetworkSelectView.png)
+
 2. Select **Testnet**.
 
-SeedSigner will now generate testnet addresses and sign testnet transactions. The device displays a visual indicator so you always know which network you're on.
+   ![Bitcoin network options with Testnet selected](../images/SettingsEntryUpdateSelectionView_network.png)
+
+   For comparison, this is the same screen on mainnet:
+
+   ![Bitcoin network options with Mainnet selected](../images/SettingsEntryUpdateSelectionView_network_mainnet.png)
+
+SeedSigner will now generate testnet addresses and sign testnet transactions.
+
+**The visual indicator.** Any screen showing an amount renders it in **green** and
+labels it **tSats** (or tBTC) rather than the usual orange sats. Addresses start
+`tb1q…` instead of `bc1q…`, and screens that name the wallet type append
+"(Testnet)". Between them you always know which network you are on:
+
+![PSBT overview on testnet, amount shown in green tSats](../images/PSBTOverviewView.png)
+
+![Address verification on testnet, labelled Single Sig - Native Segwit (Testnet)](../images/SeedAddressVerificationView.png)
 
 > **Warning:** Remember to switch SeedSigner back to mainnet when you're done testing. You don't want to accidentally generate testnet addresses for real funds.
 

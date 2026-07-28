@@ -14,13 +14,17 @@ Plug a micro USB cable into the **power-only port** on your SeedSigner. This is 
 
 After you connect power, **expect the screen to stay completely blank for around 45 seconds** on a Pi Zero v1.3 before the SeedSigner splash screen appears (the faster Pi Zero 2 W boots in roughly half that). This is normal: the entire operating system is loading from the SD card into RAM.
 
-Don't unplug it, don't press anything — just wait for the splash screen.
+Don't unplug it, don't press anything — just wait for the splash screen. This is what you are waiting for:
+
+![SeedSigner splash screen](../../images/OpeningSplashView.png)
 
 > **Tip:** A blank screen for the first minute does **not** mean the device is dead or mis-assembled. Only start troubleshooting if nothing has appeared after about 90 seconds — then see [Common issues](/help/common-issues.md#device-wont-boot).
 
 ## Dismiss the SD card message
 
 Once the boot process finishes, a message appears on screen telling you that you can safely remove the microSD card. Press **any button** (A, B, or C) to dismiss this message and continue.
+
+![Main menu with the "you can remove the SD card now" notice](../../images/MainMenuView_RemoveSDCardToast.png)
 
 ## You're at the main menu
 
@@ -31,6 +35,12 @@ After dismissing the message, you land on the main menu. From here you can creat
 ## Remove the SD card for maximum security
 
 SeedSigner's operating system loads entirely into RAM during boot. Once the SD card message appears, the card is no longer needed. You can physically eject it and set it aside.
+
+The device notices the card coming and going, and says so:
+
+![Notification that the SD card was removed](../../images/MainMenuView_SDCardStateChangeToast_removed.png)
+
+![Notification that the SD card was inserted](../../images/MainMenuView_SDCardStateChangeToast_inserted.png)
 
 Why do this? With the microSD card removed, there is **no writable storage** connected to the device. This makes it impossible for any private data (seed phrases, private keys, or anything else) to be saved to disk. Your secrets exist only in volatile memory and vanish the moment you unplug the device.
 

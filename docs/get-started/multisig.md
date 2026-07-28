@@ -31,7 +31,13 @@ A **multisig** (multi-signature) wallet requires several keys to spend — for e
 On your SeedSigner, create three separate seed phrases using any seed creation method (dice rolls, image capture, or coin flips). For each key:
 
 1. Write down the seed words on paper.
+
+   ![Seed words displayed four at a time](../images/SeedWordsView.png)
+
 2. Verify the seed by re-entering the words when prompted.
+
+   ![Backup verification quiz prompting for a specific seed word](../images/SeedBackupTestView.png)
+
 3. Optionally, create a SeedQR backup for each seed.
 
 Label your backups clearly: **Seed 1**, **Seed 2**, and **Seed 3**.
@@ -60,12 +66,32 @@ You need to scan the extended public key (xpub) from each of your three seeds in
 **On SeedSigner:**
 
 1. Make sure the correct network is selected (Mainnet for real funds, Testnet for practice).
+
+   ![Bitcoin network selection with Testnet selected](../images/SettingsEntryUpdateSelectionView_network.png)
+
 2. Go to **Seeds** and select the corresponding seed.
+
+   ![In-memory seeds, listed by fingerprint](../images/SavedSeedSelectView.png)
+
 3. Choose **Export Xpub**.
+
+   ![Seed menu with Export Xpub highlighted](../images/SeedMenuView.png)
+
 4. Select **Multisig**.
+
+   ![Signature type selection with Multisig highlighted](../images/SeedExportXpubSigTypeView_multisig.png)
+
 5. Select **Native Segwit**.
+
+   ![Script type selection](../images/SeedExportXpubScriptTypeView.png)
+
 6. Select **Sparrow**.
+
+   ![Coordinator selection with Sparrow highlighted](../images/SeedExportXpubCoordinatorView.png)
+
 7. Select **Export Xpub** to display the QR code.
+
+   ![Xpub QR code](../images/SeedExportXpubQRView.png)
 
 **Scan the QR code:**
 
@@ -85,6 +111,12 @@ Your multi-sig wallet is now created.
 ## Step 5: Back up the wallet descriptor
 
 This is critical. Before you deposit any funds, back up your wallet descriptor file. Without it, recovering your wallet from seed backups alone may be impossible.
+
+When SeedSigner has loaded the descriptor it confirms the policy and all three
+signing keys. Check that the policy reads **2 of 3** and that the three
+fingerprints match your three seeds:
+
+![Descriptor loaded, showing policy 2 of 3 and three signing key fingerprints](../images/MultisigWalletDescriptorView.png)
 
 See the full instructions in [Back up the wallet descriptor](/reference/multisig/descriptor.md).
 

@@ -35,7 +35,17 @@ SeedSigner displays the transaction details for your review. Check each screen c
 - **Change:** any amount returning to your wallet
 - **Fee:** the mining fee
 
+![Multisig PSBT overview](../../images/PSBTOverviewView_multisig.png)
+
+For a multisig wallet, the change screen only reports **Address verified!** once
+the device has the [wallet descriptor](/reference/multisig/descriptor.md) —
+without it, SeedSigner cannot prove the change address belongs to the quorum:
+
+![Multisig change output verified against the wallet descriptor](../../images/PSBTChangeDetailsView_multisig_verified.png)
+
 If everything looks correct, approve the PSBT. SeedSigner generates a signed QR code.
+
+![Sign PSBT approval screen](../../images/PSBTFinalizeView.png)
 
 **Scan the signature back into Sparrow:**
 
@@ -51,6 +61,13 @@ Repeat the same process with a different seed:
 1. In Sparrow, click **Show QR** again to display the updated PSBT.
 2. On SeedSigner, load the second seed and scan the QR from your screen.
 3. Review the transaction details on SeedSigner and approve.
+
+   On the signer-selection screen, seeds that **cannot** contribute a signature to
+   this transaction are marked with a **(?)**. Use it to confirm you are signing
+   with a genuine cosigner:
+
+   ![Select Signer, with non-cosigner seeds marked (?)](../../images/PSBTSelectSeedView.png)
+
 4. Scan the resulting signed QR back into Sparrow.
 
 After the second signature is recorded, Sparrow will show that the quorum has been met.

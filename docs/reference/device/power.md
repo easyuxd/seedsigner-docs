@@ -9,15 +9,23 @@ SeedSigner gives you two ways to power off and a clean way to restart. Because t
 This is the recommended way to shut down.
 
 1. From the main menu, use the joystick to highlight the **power icon** in the top-right corner.
+
+![Home screen with the power icon highlighted](../../images/PowerIconSelectedScreen.png)
+
 2. Press any key (A, B, or C) to open the power options menu.
 
 ![Power options menu showing Power Off and Restart choices](../../images/PowerOptionsView.png)
 
-3. Select **Power Off**.
+3. Select **Power Off**. The device shuts the software down and then tells you to
+   pull the cable — there is no separate confirmation step, and no "shutting
+   down" state to wait through.
 
-![Power off confirmation screen](../../images/PowerOffView.png)
+![Screen reading "Just Unplug It: it is safe to disconnect power at any time"](../../images/PowerOffView.png)
 
-4. Confirm when prompted. The device shuts down.
+4. Disconnect the power cable.
+
+> **Note:** Both methods end the same way — by unplugging. The menu route simply
+> stops the software first.
 
 ## Power off: Method 2: Unplug the cable
 
@@ -30,6 +38,9 @@ You can simply disconnect the micro USB power cable at any time. SeedSigner does
 If you want to clear temporary data without fully powering down and reconnecting the cable:
 
 1. From the main menu, highlight the **power icon** in the top-right corner and press any key.
+
+![Home screen with the power icon highlighted](../../images/PowerIconSelectedScreen.png)
+
 2. Select **Restart** from the power options menu.
 
 ![Restart confirmation screen](../../images/RestartView.png)

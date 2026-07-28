@@ -34,9 +34,22 @@ Everything in the other journeys assumes Sparrow on a computer, but a coordinato
 ## Step 1: Export your xpub from SeedSigner
 
 1. Make sure **BlueWallet** is enabled under **Settings > Coordinator Software** so the export uses the format BlueWallet expects.
+
+   ![Settings menu with Coordinator software highlighted](../images/SettingsMainMenuCoordinatorSoftwareSelectView.png)
+
+   ![Coordinator software list with BlueWallet enabled](../images/SettingsEntryUpdateSelectionView_coordinators.png)
+
 2. From the main menu select **Seeds**, choose your seed, then **Export Xpub**.
+
+   ![Seed menu with Export Xpub highlighted](../images/SeedMenuView.png)
+
 3. Choose **Single Sig**, keep the default **Native Segwit** script type, and select **BlueWallet** as the coordinator.
+
+   ![Coordinator selection with BlueWallet highlighted](../images/SeedExportXpubCoordinatorView_bluewallet.png)
+
 4. Review the xpub details, then SeedSigner displays the export as a QR code.
+
+   ![Xpub details showing fingerprint, derivation path and xpub](../images/SeedExportXpubDetailsView.png)
 
 This is your **extended public key:** it lets a wallet watch balances and generate addresses, but it cannot spend. Full detail: [Xpub export](/reference/keys/xpub-export.md).
 
@@ -54,6 +67,11 @@ Before sending real funds to the new wallet, prove the phone imported *your* key
 
 1. In BlueWallet, open the wallet and tap **Receive** to display an address.
 2. On SeedSigner, use the [Address Explorer](/reference/keys/address-explorer.md) (or **Scan** the address QR) to confirm the address belongs to your seed.
+
+   ![Tools menu with Verify Address highlighted](../images/VerifyAddressSelectView.png)
+
+   ![Address verified success screen showing the address index](../images/SeedAddressVerificationSuccessView.png)
+
 3. Only then send funds to it — start small.
 
 > **Warning:** This verification step is what protects you if the phone is compromised. An attacker who tampered with the import would show you *their* addresses — and SeedSigner would refuse to recognize them.
