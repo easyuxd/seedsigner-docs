@@ -43,16 +43,16 @@ Start with single-sig to learn the workflow end to end. You can graduate to [mul
 <figure class="ss-diagram ss-swimlane" aria-label="The eight steps of creating your first wallet, split between Sparrow on your networked computer and the air-gapped SeedSigner">
   <div class="ss-lane-heads">
     <span class="ss-lane-head ss-lane-head--computer">Sparrow <em>coordinator &middot; networked</em></span>
-    <span class="ss-gap-label" aria-hidden="true">&#8646; QR only</span>
+    <span class="ss-gap-label">Air gap</span>
     <span class="ss-lane-head ss-lane-head--device">SeedSigner <em>air-gapped</em></span>
   </div>
   <ol class="ss-steps">
-    <li class="ss-step ss-step--device"><span class="ss-step-num">1</span><span class="ss-lane-tag ss-lane-tag--device">SeedSigner</span><span class="ss-step-body">Create seed</span></li>
-    <li class="ss-step ss-step--device"><span class="ss-step-num">2</span><span class="ss-lane-tag ss-lane-tag--device">SeedSigner</span><span class="ss-step-body">Back up + verify seed</span></li>
-    <li class="ss-step ss-step--device"><span class="ss-step-num">3</span><span class="ss-lane-tag ss-lane-tag--device">SeedSigner</span><span class="ss-step-body">Export xpub</span><span class="ss-qr-badge"><span class="ss-sr">xpub sent to Sparrow by </span>QR<span aria-hidden="true">&nbsp;&#9668;</span></span></li>
-    <li class="ss-step ss-step--computer"><span class="ss-step-num">4</span><span class="ss-lane-tag ss-lane-tag--computer">Sparrow</span><span class="ss-step-body">Create watch-only wallet<small>Receive tab shows the address QR</small></span></li>
-    <li class="ss-step ss-step--device"><span class="ss-step-num">5</span><span class="ss-lane-tag ss-lane-tag--device">SeedSigner</span><span class="ss-step-body">Verify the receive address on the device screen</span><span class="ss-qr-badge"><span class="ss-sr">address received from Sparrow by </span>QR<span aria-hidden="true">&nbsp;&#9658;</span></span></li>
-    <li class="ss-step ss-step--computer"><span class="ss-step-num">6</span><span class="ss-lane-tag ss-lane-tag--computer">Sparrow</span><span class="ss-step-body">Receive a test payment</span></li>
+    <li class="ss-step ss-step--device"><span class="ss-step-num">1</span><span class="ss-step-body"><span class="ss-lane-tag ss-lane-tag--device">SeedSigner</span>Create seed</span></li>
+    <li class="ss-step ss-step--device"><span class="ss-step-num">2</span><span class="ss-step-body"><span class="ss-lane-tag ss-lane-tag--device">SeedSigner</span>Back up + verify seed</span></li>
+    <li class="ss-step ss-step--device"><span class="ss-step-num">3</span><span class="ss-step-body"><span class="ss-lane-tag ss-lane-tag--device">SeedSigner</span>Export xpub</span><span class="ss-qr-badge"><span class="ss-sr">xpub sent to Sparrow by </span>QR<span aria-hidden="true">&nbsp;&#9668;</span></span></li>
+    <li class="ss-step ss-step--computer"><span class="ss-step-num">4</span><span class="ss-step-body"><span class="ss-lane-tag ss-lane-tag--computer">Sparrow</span>Create watch-only wallet<small>Receive tab shows the address QR</small></span></li>
+    <li class="ss-step ss-step--device"><span class="ss-step-num">5</span><span class="ss-step-body"><span class="ss-lane-tag ss-lane-tag--device">SeedSigner</span>Verify the receive address on the device screen</span><span class="ss-qr-badge"><span class="ss-sr">address received from Sparrow by </span>QR<span aria-hidden="true">&nbsp;&#9658;</span></span></li>
+    <li class="ss-step ss-step--computer"><span class="ss-step-num">6</span><span class="ss-step-body"><span class="ss-lane-tag ss-lane-tag--computer">Sparrow</span>Receive a test payment</span></li>
     <li class="ss-step ss-step--handoff"><span class="ss-step-num">7</span><span class="ss-handoff-half ss-handoff-half--computer">Build the spend, then broadcast it</span><span class="ss-qr-badge">QR<span aria-hidden="true">&nbsp;&#8646;</span></span><span class="ss-handoff-half ss-handoff-half--device">Review + sign the PSBT</span></li>
     <li class="ss-step ss-step--span"><span class="ss-step-num">8</span><span class="ss-step-body">Recovery drill &mdash; wipe <span aria-hidden="true">&#8594;</span> reload from backup <span aria-hidden="true">&#8594;</span> re-verify the same address</span></li>
   </ol>
@@ -156,19 +156,45 @@ Leave this QR on screen for the next step. For the full reference, see [Export a
 This is where your wallet actually comes to life on the coordinator.
 
 1. Open Sparrow and go to **File → New Wallet**.
+
+   ![Sparrow's File menu with New Wallet highlighted](../images/Sparrow_FileNewWallet.png)
+
 2. Give it a descriptive name (for example, "My Single-Sig") and click **Create Wallet**.
+
+   ![Wallet Name dialog with "My Single-Sig" entered](../images/Sparrow_WalletName.png)
+
 3. Set **Policy Type** to **Single Signature**.
-4. Set **Script Type** to **Native Segwit (P2WPKH):** this **must match** the script type you exported in Step 3.
+4. Set **Script Type** to **Native Segwit (P2WPKH):** this **must match** the script type you exported in Step 3. Both are the defaults for a new wallet.
+
+   ![Sparrow wallet settings: Single Signature, Native Segwit (P2WPKH), and the four keystore import buttons](../images/Sparrow_WalletSettings.png)
+
 5. In the **Keystore** panel, click **Airgapped Hardware Wallet**.
-6. Find **SeedSigner** and click **Import / Scan** (Sparrow activates your webcam).
+6. Find **SeedSigner** in the list and click **Scan…** (Sparrow activates your webcam).
+
+   ![Sparrow's airgapped hardware wallet list, with SeedSigner and its Scan button](../images/Sparrow_AirgappedHardwareWallet.png)
+
 7. Hold SeedSigner's xpub QR (from Step 3) in front of the webcam until Sparrow reads it.
+
+   ![Sparrow's webcam view reading the xpub QR from SeedSigner's screen](../images/Sparrow_ScanKeystoreQR.png)
 
 Sparrow now shows the imported keystore, including a **master fingerprint** (a short code like `b5aa2761`) and the **derivation path** — `m/84'/1'/0'` on testnet, or `m/84'/0'/0'` on mainnet, for Native SegWit.
 
 8. Confirm the master fingerprint in Sparrow **matches the fingerprint shown on SeedSigner** when the seed is loaded. They should be identical.
+
+   ![The imported keystore in Sparrow, showing master fingerprint b5aa2761 and derivation m/84'/1'/0'](../images/Sparrow_KeystoreImported.png)
+
 9. Click **Apply**. When asked for a password, click **No Password** for this guide.
 
-Your watch-only wallet is created. Open the **Receive** tab — Sparrow displays your first receiving address (starting `tb1q…` on testnet, `bc1q…` on mainnet) and a QR code of that address. **Do not send funds to it yet:** verify it first.
+   ![Wallet Password prompt with the No Password button](../images/Sparrow_WalletPassword.png)
+
+Your watch-only wallet is created. Open the **Receive** tab — Sparrow displays a receiving address (starting `tb1q…` on testnet, `bc1q…` on mainnet) and a QR code of that address. **Do not send funds to it yet:** verify it first.
+
+![Sparrow's Receive tab showing a testnet address, its derivation path and its QR code](../images/Sparrow_ReceiveAddress.png)
+
+The **Derivation** line identifies the address: `…/0/0` is the first receive
+address, `…/0/5` the sixth. **Get Next Address** steps forward. The captures on
+this page sit at index 5, which is the address SeedSigner verifies in Step 5 —
+your own wallet will start at index 0.
 
 > **Why "watch-only"?** Sparrow can see and receive, but it holds no private key and cannot spend. Spending always requires SeedSigner to sign (Step 7).
 
@@ -222,7 +248,10 @@ Browse and double-check addresses any time with SeedSigner's [Address Explorer](
 
 When you are ready to send Bitcoin, Sparrow builds an unsigned transaction (a **PSBT**), SeedSigner reviews and signs it, and Sparrow broadcasts it. For the dedicated walkthrough, see the [Send bitcoin](/get-started/send.md) journey; the full screenshot-by-screenshot reference is [PSBT signing](/reference/keys/psbt-signing.md). In short:
 
-1. In Sparrow, create the transaction and display it as an animated QR.
+1. In Sparrow, create the transaction, click **Finalize Transaction for Signing**, then **Show QR** to display it as an animated QR.
+
+   ![Sparrow's signing bar with Show QR, Scan QR, Save, Load and Sign](../images/Sparrow_TransactionSigning.png)
+
 2. On SeedSigner, open your seed's menu and select **Scan PSBT**.
 
    ![Seed menu with Scan PSBT highlighted](../images/SeedMainMenuPSBTSelectView.png)
@@ -240,7 +269,11 @@ When you are ready to send Bitcoin, Sparrow builds an unsigned transaction (a **
 
    ![Sign PSBT approval screen](../images/PSBTFinalizeView.png)
 
-5. Scan SeedSigner's signed-QR back into Sparrow and click **Broadcast Transaction**.
+5. Scan SeedSigner's signed-QR back into Sparrow and click **Broadcast Transaction**. The signature bar fills in with the keystore that signed.
+
+   ![Sparrow's webcam view reading the signed PSBT from SeedSigner's screen](../images/Sparrow_ScanSignedPSBT.png)
+
+   ![Sparrow showing a complete signature and the Broadcast Transaction button](../images/Sparrow_BroadcastTransaction.png)
 
 > **Warning:** Bitcoin transactions are irreversible. Always verify the recipient address and amount on SeedSigner's trusted screen before approving.
 
@@ -289,7 +322,7 @@ If recovery succeeds, your single-sig wallet is fully operational and provably r
 - **Sparrow can't read the xpub / SeedSigner can't read the QR.** Lower **QR Density** in SeedSigner settings for larger modules, improve lighting, and hold the screen 4–8 inches from the webcam. More tips: [Common issues — QR scanning](/help/common-issues.md#qr-code-scanning-problems).
 - **Address verification finds no match.** The usual cause is a **mismatch:** different script type on device vs. Sparrow, or a network mismatch (Mainnet vs. Testnet). Confirm both sides use the same script type and the same network, then retry. Use **Skip 10** in case the address is simply at a higher index.
 - **Fingerprints don't match in Step 4.** You imported the wrong seed/xpub or the wrong network. Re-export from the correct seed on the correct network.
-- **Wrong network.** SeedSigner and Sparrow must agree. Switch SeedSigner via **Settings → Advanced → Bitcoin Network**; switch Sparrow via **Tools → Restart in Testnet**.
+- **Wrong network.** SeedSigner and Sparrow must agree. Switch SeedSigner via **Settings → Advanced → Bitcoin Network**; switch Sparrow via **Tools → Restart In → Testnet3**. Sparrow shows the active network in the top-right of the tab bar.
 
 > **Warning:** Always confirm Mainnet vs. Testnet **on both devices** before exporting keys or verifying addresses. A network mismatch is the single most common reason this walkthrough fails.
 

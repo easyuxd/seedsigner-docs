@@ -31,18 +31,31 @@ Treat it with care (you would not want your financial history exposed) but under
 
 ## How to export from Sparrow
 
+Sparrow prompts you for this the first time you save a multisig wallet, and shows
+the descriptor inline:
+
+![Sparrow's Backup Multisig Wallet prompt, showing the full output descriptor](../../images/Sparrow_BackupDescriptorPrompt.png)
+
+You can re-export it at any time.
+
 ### As a QR code
 
 1. In Sparrow, go to **File → Export Wallet**.
 2. Scroll down to the **Specter Desktop** format.
-3. Click **Show** to display the wallet descriptor as a QR code.
+
+   ![Sparrow's Export Wallet dialog at the Specter Desktop row](../../images/Sparrow_ExportWalletSpecter.png)
+
+3. Click **Show…** to display the wallet descriptor as a QR code.
+
+   ![The wallet descriptor displayed as a QR code](../../images/Sparrow_DescriptorQR.png)
+
 4. You can photograph this QR code for backup, or scan it directly with SeedSigner.
 
 ### As a file
 
 1. In Sparrow, go to **File → Export Wallet**.
 2. Scroll down to the **Specter Desktop** format.
-3. Click **Export File** to save a `.json` file to your computer.
+3. Click **Export File…** to save a `.json` file to your computer.
 
 ## How to store your descriptor backup
 

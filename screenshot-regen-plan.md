@@ -12,7 +12,7 @@ wrong; this says *how an agent fixes it*.
 | Code home | `docs-screenshots/` inside this repo |
 | Network | Testnet |
 | Prose reconciliation | Everything the audit names |
-| Coordinator screenshots | Deferred to a separate phase |
+| Coordinator screenshots | Deferred to Phase 5; Sparrow now done, BlueWallet still open |
 
 ---
 
@@ -266,8 +266,9 @@ source headlessly — upstream carries the same limitation. Animated QR displays
 (`SeedExportXpubQRView`, `AddressExplorerQRView`) cycle frames; upstream leaves
 them out for the same reason. Three are hardware photos and brand assets.
 
-**X-2 (the blank camera frames)** therefore remains open. Compositing a QR into
-the frame with Pillow is still the plan; `SeedQRScan.png` shows the target.
+**X-2 (the blank camera frames)** is closed by hand rather than by the manifest —
+see Phase 5. The viewports are composited, so the frames now show what the device
+is actually looking at instead of black.
 
 #### A Windows trap worth recording
 
@@ -344,13 +345,78 @@ error screen, and `ScriptTypeOptions.png` being a different View than assumed.
 
 ---
 
-## Deferred: coordinator screenshots
+### Phase 5 — Coordinator screenshots ✅ done (Sparrow)
 
-A6, A9, B10, X-1 — Sparrow and BlueWallet. Zero exist today and roughly half of
-every journey is text-only as a result. Nothing in the emulator can produce
-them; it is a separate capture project with its own tooling. Worth noting the
-testnet decision helps here: Sparrow on testnet can import the fixture xpub and
-reproduce the exact wallet the device screenshots show.
+A6, A9, B10 and X-1's Sparrow half. **16 captures**, wiring the coordinator side
+of `first-wallet`, `receive`, `send`, `multisig`, `recover`, `psbt-signing`,
+`multisig/spending` and `multisig/descriptor`. Procedure and per-file inventory:
+[docs-screenshots/COORDINATOR.md](docs-screenshots/COORDINATOR.md).
 
-Interim option if it stays deferred: illustrate the coordinator half with the
-existing `ss-*` diagram system rather than leaving it unillustrated.
+Sparrow Wallet 2.5.3, Testnet3, light theme, 1:1 pixels. The testnet decision paid
+off exactly as predicted: both wallets are the canonical fixture, so the
+coordinator screenshots and the device screenshots describe the same wallet.
+
+Three things that make the set hold together:
+
+- **Keys enter by output descriptor**, pasted into *Script Policy → Descriptor →
+  Edit…*. Sparrow derives the fingerprints and paths itself, so `b5aa2761` /
+  `m/84'/1'/0'` and the three msig fingerprints `f79a2f18 / 7b764b64 / 86442e23`
+  are computed on screen, not typed.
+- **The Receive tab was advanced to index 5**, so it shows
+  `tb1qwp75hxqf7hx5qx2gvvekarhacvf9fx0mw7p4sl` — the same address
+  `SeedAddressVerificationSuccessView.png` reports as verified. `receive.md`'s two
+  halves now agree, which also settles SS-6 visually.
+- **`send.md` shows the journey PSBT**, opened via *File → Open Transaction →
+  From Text*. Sparrow identifies the signing wallet as My Single-Sig and the
+  change output as 148,500 sats — the same numbers `PSBTMathView` renders. Its
+  inputs are synthetic, so it is unbroadcastable by construction and the Broadcast
+  button can be captured live with no risk.
+
+`Sparrow_DescriptorQR.png` was decoded with pyzbar and carries the real fixture
+descriptor with all three fingerprints — one coordinator capture that is
+machine-verifiable rather than eyeballed.
+
+Reading the real UI corrected four prose claims: SeedSigner offers **Scan…** only
+(not "Import / Scan"), the policy option is **Multi Signature HD**, the network
+switch is **Tools → Restart In → Testnet3**, and the keystore button is
+**Watch Only Wallet**.
+
+#### Still open
+
+~~**No webcam on the capture machine.**~~ **Closed.** With a camera attached, both
+keystore captures were re-shot from a real QR scan off the emulator
+(`docs-screenshots/live_emulator.py` loads the four fixture seeds), so
+`Type:` now reads **Airgapped Wallet (Seedsigner)** instead of "Watch Only
+Wallet" and the crops start above that row. The scanned tpub matches the
+descriptor-loaded one byte for byte, so no other capture moved.
+
+The mid-scan webcam frame was captured too. Sparrow's two scan entry points —
+*SeedSigner → Scan…* and *Signatures → Scan QR* — render the **same** dialog
+(901 px differ outside the video area, all of it progress-bar animation), so one
+file covers both steps.
+
+~~**Still open: the viewports.**~~ **Closed.** Both the device-side camera frames
+(X-2) and the Sparrow-side ones show a live feed that has to be composited by
+hand, and all six now are. `docs-screenshots/camera_qrs.py` renders the QR
+belonging in each, from the canonical fixture via SeedSigner's own encoders — so
+a reader who decodes one gets the real address, PSBT or xpub.
+
+| File | Viewport now shows |
+|---|---|
+| `AddressVerificationsCameraView.png` | the fixture receive address `tb1qwp75hxq…` |
+| `SeedPSBTCameraView.png` | a frame of the unsigned journey PSBT |
+| `Sparrow_ScanKeystoreQR.png` | `UR:CRYPTO-ACCOUNT/…` — the fixture xpub |
+| `Sparrow_ScanSignedPSBT.png` | `UR:CRYPTO-PSBT/…` — the signed journey PSBT |
+
+The two entropy frames (`SeedCameraEntropyView.png`, `SeedEntropyPreviewView.png`)
+carry a photograph instead, since what they capture is a scene, not a code.
+
+**BlueWallet is not covered.** `bluewallet.md` steps 2, 4 and 5 stay text-only —
+it is a mobile app with no Windows build, so it needs a phone-capture session of
+its own. A10/A11 concern the *device*-side BlueWallet screens and were already
+closed in Phase 3.
+
+**Not attempted: Sparrow's Send tab.** Composing a spend (recipient, amount, fee)
+needs a funded wallet, and funding the fixture would produce a different
+transaction from the one the device screenshots review. Continuity won; the
+transaction view stands in for the compose step.

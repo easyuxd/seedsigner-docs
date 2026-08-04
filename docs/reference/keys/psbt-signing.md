@@ -11,7 +11,11 @@ When you want to send Bitcoin, your coordinator wallet builds an unsigned transa
 
 ## Step-by-step
 
-1. In your coordinator (e.g. Sparrow), prepare the transaction and click **Show QR** or the equivalent option to display the animated PSBT QR code on your computer screen.
+1. In your coordinator (e.g. Sparrow), prepare the transaction, click **Finalize Transaction for Signing**, then **Show QR** to display the animated PSBT QR code on your computer screen.
+
+   ![Sparrow's signing bar: Show QR, Scan QR, Save Transaction, Load Transaction, Sign](../../images/Sparrow_TransactionSigning.png)
+
+   ![The unsigned transaction displayed as a QR code for the device camera](../../images/Sparrow_PSBTQR.png)
 
 2. On SeedSigner, from the loaded seed's menu, select **Scan PSBT**. (You can also select **Scan** from the main menu.)
 
@@ -54,9 +58,13 @@ When you want to send Bitcoin, your coordinator wallet builds an unsigned transa
 
 7. Return to your coordinator and click **Scan QR**. Point your computer's webcam at SeedSigner's screen to scan the signed PSBT back in.
 
+   ![Sparrow's webcam view reading the signed PSBT from SeedSigner's screen](../../images/Sparrow_ScanSignedPSBT.png)
+
 8. Your coordinator verifies the signatures. For a single-sig wallet, the transaction is now ready to broadcast. For a multi-sig wallet, repeat the signing process with additional cosigners until the required threshold is met.
 
 9. Click **Broadcast Transaction** in your coordinator to send it to the Bitcoin network.
+
+   ![Sparrow with a complete signature from the SeedSigner keystore, and the Broadcast Transaction button](../../images/Sparrow_BroadcastTransaction.png)
 
 > **Warning:** Bitcoin transactions are irreversible once broadcast. Always double-check the recipient address character by character. Malware on your computer could swap addresses — this is exactly why you verify on SeedSigner's trusted screen.
 

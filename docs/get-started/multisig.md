@@ -17,13 +17,13 @@ A **multisig** (multi-signature) wallet requires several keys to spend — for e
 
 <figure class="ss-diagram" aria-label="The five steps of setting up a 2-of-3 multisig wallet: create three seeds on SeedSigner, configure Sparrow, scan in the three xpubs, save, and back up the descriptor">
   <ol class="ss-flow">
-    <li class="ss-step ss-step--device"><span class="ss-step-num">1</span><span class="ss-step-body">Create 3 seeds on SeedSigner<small>Back up and label each one</small></span><span class="ss-chip">&times;3</span></li>
-    <li class="ss-step ss-step--computer"><span class="ss-step-num">2</span><span class="ss-step-body">Sparrow &#8594; New Wallet &#8594; Multi Signature &#8594; <strong>2 of 3</strong></span></li>
-    <li class="ss-step ss-step--device"><span class="ss-step-num">3</span><span class="ss-step-body">Export each seed's xpub (Multisig)<small>Scan into Keystore 1, 2, 3</small></span><span class="ss-chip">QR &times;3</span></li>
-    <li class="ss-step ss-step--computer"><span class="ss-step-num">4</span><span class="ss-step-body">Apply &amp; save the wallet</span></li>
-    <li class="ss-step ss-step--warn"><span class="ss-step-num">5</span><span class="ss-step-body">Back up the wallet descriptor<small><strong>Before depositing funds</strong> &mdash; seeds alone may not be enough to recover a multisig wallet</small></span></li>
+    <li class="ss-step ss-step--device"><span class="ss-step-num">1</span><span class="ss-step-body"><span class="ss-lane-tag ss-lane-tag--device">SeedSigner</span>Create 3 seeds on SeedSigner<small>Back up and label each one</small></span><span class="ss-chip">&times;3</span></li>
+    <li class="ss-step ss-step--computer"><span class="ss-step-num">2</span><span class="ss-step-body"><span class="ss-lane-tag ss-lane-tag--computer">Sparrow</span>New Wallet &#8594; Multi Signature &#8594; <strong>2 of 3</strong></span></li>
+    <li class="ss-step ss-step--device"><span class="ss-step-num">3</span><span class="ss-step-body"><span class="ss-lane-tag ss-lane-tag--device">SeedSigner</span>Export each seed's xpub (Multisig)<small>Scan into Keystore 1, 2, 3</small></span><span class="ss-chip">QR &times;3</span></li>
+    <li class="ss-step ss-step--computer"><span class="ss-step-num">4</span><span class="ss-step-body"><span class="ss-lane-tag ss-lane-tag--computer">Sparrow</span>Apply &amp; save the wallet</span></li>
+    <li class="ss-step ss-step--warn"><span class="ss-step-num">5</span><span class="ss-step-body"><span class="ss-lane-tag ss-lane-tag--computer">Sparrow</span>Back up the wallet descriptor<small><strong>Before depositing funds</strong> &mdash; seeds alone may not be enough to recover a multisig wallet</small></span></li>
   </ol>
-  <figcaption class="ss-caption"><span style="color: var(--ss-device-text);">&#9632;</span> on SeedSigner &nbsp;&middot;&nbsp; <span style="color: var(--ss-computer-text);">&#9632;</span> in Sparrow &mdash; the same two roles as single-sig, repeated across three keys.</figcaption>
+  <figcaption class="ss-caption">The same two roles as single-sig, repeated across three keys.</figcaption>
 </figure>
 
 ## Step 1: Create three private keys
@@ -48,9 +48,14 @@ Label your backups clearly: **Seed 1**, **Seed 2**, and **Seed 3**.
 
 1. Open Sparrow Wallet.
 2. Go to **File → New Wallet**.
+
+   ![Sparrow's File menu with New Wallet highlighted](../images/Sparrow_FileNewWallet.png)
+
 3. Give your wallet a descriptive name (for example, "My Multisig").
-4. Under **Policy Type**, select **Multi Signature**.
-5. Set the cosigner configuration to **2 of 3** (2 signatures required, 3 total cosigners).
+4. Under **Policy Type**, select **Multi Signature HD**. Keep **Script Type** at **Native Segwit (P2WSH)**.
+5. Drag the **Cosigners** slider so **M of N** reads **2 / 3** (2 signatures required, 3 total cosigners). That is the default.
+
+   ![Sparrow set to Multi Signature HD, Native Segwit (P2WSH), 2 of 3](../images/Sparrow_MultisigPolicy.png)
 
 ## Step 3: Export each key's xpub from SeedSigner
 
@@ -60,8 +65,13 @@ You need to scan the extended public key (xpub) from each of your three seeds in
 
 1. Click the cosigner tab (Keystore 1, 2, or 3).
 2. Click **Airgapped Hardware Wallet**.
-3. Find the SeedSigner option and click **Scan**.
+3. Find the SeedSigner option and click **Scan…**.
+
+   ![Sparrow's airgapped hardware wallet list, with SeedSigner and its Scan button](../images/Sparrow_AirgappedHardwareWallet.png)
+
 4. Sparrow activates your webcam and waits for a QR code.
+
+   ![Sparrow's webcam view reading an xpub QR from SeedSigner's screen](../images/Sparrow_ScanKeystoreQR.png)
 
 **On SeedSigner:**
 
@@ -101,16 +111,33 @@ After a successful scan, label the keystore in Sparrow (for example, "SeedSigner
 
 ## Step 4: Apply and save
 
-Once all three cosigner tabs show a successfully imported xpub:
+Once all three cosigner tabs show a successfully imported xpub, the descriptor at
+the top reads `wsh(sortedmulti(2,…))` with your three keystore names in it:
+
+![Sparrow's script policy and the three imported cosigner tabs](../images/Sparrow_MultisigKeystores.png)
 
 1. Click **Apply**.
 2. When prompted for a password, click **No Password** (for this guide).
+
+   ![Wallet Password prompt with the No Password button](../images/Sparrow_WalletPassword.png)
 
 Your multi-sig wallet is now created.
 
 ## Step 5: Back up the wallet descriptor
 
 This is critical. Before you deposit any funds, back up your wallet descriptor file. Without it, recovering your wallet from seed backups alone may be impossible.
+
+Sparrow says the same thing the moment you save a multisig wallet, and shows you
+the descriptor to back up:
+
+![Sparrow's Backup Multisig Wallet prompt, showing the full output descriptor](../images/Sparrow_BackupDescriptorPrompt.png)
+
+You can also re-export it at any time from **File → Export Wallet → Specter
+Desktop**, either as a QR code (**Show…**) or as a `.json` file (**Export File…**):
+
+![Sparrow's Export Wallet dialog at the Specter Desktop row](../images/Sparrow_ExportWalletSpecter.png)
+
+![The wallet descriptor displayed as a QR code](../images/Sparrow_DescriptorQR.png)
 
 When SeedSigner has loaded the descriptor it confirms the policy and all three
 signing keys. Check that the policy reads **2 of 3** and that the three

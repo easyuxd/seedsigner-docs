@@ -15,13 +15,13 @@ Spending is the half that requires your keys, so SeedSigner does the signing. Yo
 <figure class="ss-diagram ss-swimlane" aria-label="The four steps of sending bitcoin: build the transaction in the coordinator, scan it into SeedSigner, review every detail on the device screen, then sign and broadcast">
   <div class="ss-lane-heads">
     <span class="ss-lane-head ss-lane-head--computer">Coordinator <em>Sparrow &middot; networked</em></span>
-    <span class="ss-gap-label" aria-hidden="true">&#8646; QR only</span>
+    <span class="ss-gap-label">Air gap</span>
     <span class="ss-lane-head ss-lane-head--device">SeedSigner <em>air-gapped</em></span>
   </div>
   <ol class="ss-steps">
-    <li class="ss-step ss-step--computer"><span class="ss-step-num">1</span><span class="ss-lane-tag ss-lane-tag--computer">Coordinator</span><span class="ss-step-body">Build the transaction<small>Show it as an animated PSBT QR</small></span><span class="ss-qr-badge"><span class="ss-sr">unsigned transaction sent to SeedSigner by </span>QR<span aria-hidden="true">&nbsp;&#9658;</span></span></li>
-    <li class="ss-step ss-step--device"><span class="ss-step-num">2</span><span class="ss-lane-tag ss-lane-tag--device">SeedSigner</span><span class="ss-step-body">Scan the PSBT</span></li>
-    <li class="ss-step ss-step--device ss-step--warn"><span class="ss-step-num">3</span><span class="ss-lane-tag ss-lane-tag--device">SeedSigner</span><span class="ss-step-body">Review recipient / amount / fee / change<small>The whole reason to use a signer &mdash; check all four</small></span></li>
+    <li class="ss-step ss-step--computer"><span class="ss-step-num">1</span><span class="ss-step-body"><span class="ss-lane-tag ss-lane-tag--computer">Coordinator</span>Build the transaction<small>Show it as an animated PSBT QR</small></span><span class="ss-qr-badge"><span class="ss-sr">unsigned transaction sent to SeedSigner by </span>QR<span aria-hidden="true">&nbsp;&#9658;</span></span></li>
+    <li class="ss-step ss-step--device"><span class="ss-step-num">2</span><span class="ss-step-body"><span class="ss-lane-tag ss-lane-tag--device">SeedSigner</span>Scan the PSBT</span></li>
+    <li class="ss-step ss-step--device ss-step--warn"><span class="ss-step-num">3</span><span class="ss-step-body"><span class="ss-lane-tag ss-lane-tag--device">SeedSigner</span>Review recipient / amount / fee / change<small>The whole reason to use a signer &mdash; check all four</small></span></li>
     <li class="ss-step ss-step--handoff"><span class="ss-step-num">4</span><span class="ss-handoff-half ss-handoff-half--computer">Scan the signed QR back in &#8594; Broadcast</span><span class="ss-qr-badge"><span class="ss-sr">signature returned to the coordinator by </span>QR<span aria-hidden="true">&nbsp;&#9668;</span></span><span class="ss-handoff-half ss-handoff-half--device">Approve &#8594; the signed QR appears</span></li>
   </ol>
   <figcaption class="ss-caption">The PSBT goes in as one QR and the signature comes back as another &mdash; your keys never leave the device, and step 3 happens on a screen malware can't touch.</figcaption>
@@ -31,7 +31,15 @@ Spending is the half that requires your keys, so SeedSigner does the signing. Yo
 
 ## Step 1: Build the transaction in your coordinator
 
-In your coordinator, create the send: enter the recipient address and amount, choose a fee, and generate the transaction. Display it as an **animated PSBT QR code** (in Sparrow, **Show QR** on the transaction).
+In your coordinator, create the send: enter the recipient address and amount, choose a fee, and generate the transaction. Sparrow shows the transaction it built — inputs on the left, recipient, change and fee on the right — and names the wallet that will sign it.
+
+![Sparrow's transaction view: two inputs, recipient, change and fee, with the signing wallet selected](../images/Sparrow_TransactionReview.png)
+
+Click **Finalize Transaction for Signing**, then **Show QR** to display it as an **animated PSBT QR code**.
+
+![Sparrow's signing bar: Show QR, Scan QR, Save Transaction, Load Transaction, Sign](../images/Sparrow_TransactionSigning.png)
+
+![The unsigned transaction displayed as a QR code for the device camera](../images/Sparrow_PSBTQR.png)
 
 ## Step 2: Scan the PSBT into SeedSigner
 
@@ -84,7 +92,11 @@ verified!** means the change is coming home:
    ![Sign PSBT: click to approve this transaction](../images/PSBTFinalizeView.png)
 
 3. In your coordinator, choose **Scan QR** and point your webcam at SeedSigner's screen to read the signed transaction back in.
-4. Click **Broadcast Transaction** to send it to the Bitcoin network.
+
+   ![Sparrow's webcam view reading the signed PSBT from SeedSigner's screen](../images/Sparrow_ScanSignedPSBT.png)
+4. The signature bar fills in with the keystore that signed. Click **Broadcast Transaction** to send it to the Bitcoin network.
+
+   ![Sparrow with a complete signature from the SeedSigner keystore, and the Broadcast Transaction button](../images/Sparrow_BroadcastTransaction.png)
 
 > For a multi-sig wallet, repeat the scan-review-sign cycle with each required cosigner until the quorum is met — see [Set up multisig](/get-started/multisig.md) and [Multisig spending](/reference/multisig/spending.md).
 

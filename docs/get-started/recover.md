@@ -61,6 +61,10 @@ Re-export the public key and import it into a fresh wallet in your coordinator, 
 
 1. On SeedSigner: **Seeds → your seed → Export Xpub**, matching the original **signature type** and **script type** (single-sig Native SegWit for most wallets). See [Xpub export](/reference/keys/xpub-export.md).
 2. In the coordinator: create a new watch-only wallet and import the xpub. Confirm the master fingerprint matches.
+
+   ![Sparrow wallet settings: Single Signature, Native Segwit (P2WPKH), and the keystore import buttons](../images/Sparrow_WalletSettings.png)
+
+   ![The imported keystore in Sparrow, showing the master fingerprint and derivation path](../images/Sparrow_KeystoreImported.png)
 3. **Multisig:** rebuilding also requires the [wallet descriptor](/reference/multisig/descriptor.md) — import it to restore the full multisig policy.
 
 > **Tip:** Knowing the **derivation path** speeds up recovery into unfamiliar wallet software. Single-sig Native SegWit is `m/84'/1'/0'` on testnet and `m/84'/0'/0'` on mainnet.

@@ -50,7 +50,6 @@ SeedSigner is the **signer** in a signer-plus-coordinator setup. It holds privat
     <div class="ss-arch-spacer" aria-hidden="true"></div>
     <div class="ss-endpoint ss-endpoint--device"><span aria-hidden="true">&#8595;</span> holds <strong>private keys in RAM only</strong> &mdash; never stored on disk</div>
   </div>
-  <figcaption class="ss-caption">No cables, no wireless &mdash; only light crosses the gap: the camera reads QR codes in, the screen displays QR codes out.</figcaption>
 </figure>
 
 1. Your coordinator (such as Sparrow) builds an unsigned transaction.
@@ -92,4 +91,3 @@ New here? Head to **[Get Started](/get-started/)** and pick the path that matche
 - [SeedSigner on GitHub](https://github.com/SeedSigner/seedsigner)
 - [SeedSigner website](https://seedsigner.com)
 - [Community Telegram](https://t.me/SeedSigner)
-- [Sparrow Wallet](https://sparrowwallet.com) (recommended coordinator)

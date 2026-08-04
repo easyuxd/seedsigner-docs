@@ -11,6 +11,9 @@ Sending Bitcoin from a multi-sig wallet works similarly to single-sig, but you n
 3. Enter the destination address, the amount, and a label for your records.
 4. Click **Create Transaction**.
 5. Review the transaction details — inputs, outputs, amounts, and fees.
+
+   ![Sparrow's transaction view: inputs on the left, recipient, change and fee on the right](../../images/Sparrow_TransactionReview.png)
+
 6. Click **Finalize Transaction for Signing**.
 
 ## Step 2: Sign with the first key
@@ -52,6 +55,8 @@ If everything looks correct, approve the PSBT. SeedSigner generates a signed QR 
 1. In Sparrow, click **Scan QR**.
 2. Hold the SeedSigner screen in front of your webcam so Sparrow can read the signed QR code.
 
+   ![Sparrow's webcam view reading the signed PSBT from SeedSigner's screen](../../images/Sparrow_ScanSignedPSBT.png)
+
 The first cosigner's signature is now recorded.
 
 ## Step 3: Sign with the second key
@@ -75,6 +80,8 @@ After the second signature is recorded, Sparrow will show that the quorum has be
 ## Step 4: Broadcast the transaction
 
 With 2 of 3 signatures collected, click **Broadcast Transaction** in Sparrow. Your transaction is submitted to the Bitcoin network.
+
+![Sparrow with the signature bar complete and the Broadcast Transaction button enabled](../../images/Sparrow_BroadcastTransaction.png)
 
 > **Tip:** You can sign with any 2 of your 3 keys. It does not matter which 2 you choose — the result is the same.
 

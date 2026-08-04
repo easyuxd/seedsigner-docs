@@ -16,14 +16,14 @@ Everything in the other journeys assumes Sparrow on a computer, but a coordinato
 <figure class="ss-diagram ss-swimlane" aria-label="The five steps of using BlueWallet as a mobile coordinator: export the xpub from SeedSigner into BlueWallet as a watch-only wallet, verify a receive address on the device, then build, sign, and broadcast a transaction with two QR handoffs">
   <div class="ss-lane-heads">
     <span class="ss-lane-head ss-lane-head--computer">Coordinator <em>BlueWallet &middot; phone</em></span>
-    <span class="ss-gap-label" aria-hidden="true">&#8646; QR only</span>
+    <span class="ss-gap-label">Air gap</span>
     <span class="ss-lane-head ss-lane-head--device">SeedSigner <em>air-gapped</em></span>
   </div>
   <ol class="ss-steps">
-    <li class="ss-step ss-step--device"><span class="ss-step-num">1</span><span class="ss-lane-tag ss-lane-tag--device">SeedSigner</span><span class="ss-step-body">Export your xpub<small>Public key only &mdash; nothing secret</small></span><span class="ss-qr-badge"><span class="ss-sr">xpub sent to the phone by </span>QR<span aria-hidden="true">&nbsp;&#9668;</span></span></li>
-    <li class="ss-step ss-step--computer"><span class="ss-step-num">2</span><span class="ss-lane-tag ss-lane-tag--computer">BlueWallet</span><span class="ss-step-body">Import it as a watch-only wallet</span></li>
-    <li class="ss-step ss-step--device ss-step--warn"><span class="ss-step-num">3</span><span class="ss-lane-tag ss-lane-tag--device">SeedSigner</span><span class="ss-step-body">Verify a receive address on the device<small>Confirms the phone imported <strong>your</strong> keys</small></span></li>
-    <li class="ss-step ss-step--computer"><span class="ss-step-num">4</span><span class="ss-lane-tag ss-lane-tag--computer">BlueWallet</span><span class="ss-step-body">Build a transaction<small>Shown as an animated PSBT QR</small></span><span class="ss-qr-badge"><span class="ss-sr">unsigned transaction sent to SeedSigner by </span>QR<span aria-hidden="true">&nbsp;&#9658;</span></span></li>
+    <li class="ss-step ss-step--device"><span class="ss-step-num">1</span><span class="ss-step-body"><span class="ss-lane-tag ss-lane-tag--device">SeedSigner</span>Export your xpub<small>Public key only &mdash; nothing secret</small></span><span class="ss-qr-badge"><span class="ss-sr">xpub sent to the phone by </span>QR<span aria-hidden="true">&nbsp;&#9668;</span></span></li>
+    <li class="ss-step ss-step--computer"><span class="ss-step-num">2</span><span class="ss-step-body"><span class="ss-lane-tag ss-lane-tag--computer">BlueWallet</span>Import it as a watch-only wallet</span></li>
+    <li class="ss-step ss-step--device ss-step--warn"><span class="ss-step-num">3</span><span class="ss-step-body"><span class="ss-lane-tag ss-lane-tag--device">SeedSigner</span>Verify a receive address on the device<small>Confirms the phone imported <strong>your</strong> keys</small></span></li>
+    <li class="ss-step ss-step--computer"><span class="ss-step-num">4</span><span class="ss-step-body"><span class="ss-lane-tag ss-lane-tag--computer">BlueWallet</span>Build a transaction<small>Shown as an animated PSBT QR</small></span><span class="ss-qr-badge"><span class="ss-sr">unsigned transaction sent to SeedSigner by </span>QR<span aria-hidden="true">&nbsp;&#9658;</span></span></li>
     <li class="ss-step ss-step--handoff"><span class="ss-step-num">5</span><span class="ss-handoff-half ss-handoff-half--computer">Scan the signed QR &#8594; Broadcast</span><span class="ss-qr-badge"><span class="ss-sr">signature returned to the phone by </span>QR<span aria-hidden="true">&nbsp;&#9668;</span></span><span class="ss-handoff-half ss-handoff-half--device">Review on device &#8594; sign</span></li>
   </ol>
   <figcaption class="ss-caption">Same air-gapped pattern as the desktop journeys &mdash; only the coordinator moved into your pocket.</figcaption>

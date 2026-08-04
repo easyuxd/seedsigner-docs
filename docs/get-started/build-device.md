@@ -11,34 +11,36 @@ By the end you'll have a device sitting at the main menu, ready to create or loa
 ## The journey at a glance
 
 <figure class="ss-diagram ss-phases" aria-label="The three phases of building a SeedSigner, eleven steps total: assemble the hardware, prepare the software, then boot and learn the device">
-  <div class="ss-phase">
-    <span class="ss-phase-kicker">Phase 1</span>
-    <strong class="ss-phase-title">Hardware</strong>
-    <ol class="ss-phase-steps" start="1">
-      <li>Gather the components</li>
-      <li>Source the parts</li>
-      <li>Pick an enclosure</li>
-      <li>Assemble &mdash; no solder</li>
-    </ol>
-  </div>
-  <div class="ss-phase ss-phase--critical">
-    <span class="ss-phase-kicker">Phase 2 &middot; security-critical</span>
-    <strong class="ss-phase-title">Software</strong>
-    <ol class="ss-phase-steps" start="5">
-      <li>Download <em>and verify</em> the image</li>
-      <li>Flash the microSD card</li>
-    </ol>
-  </div>
-  <div class="ss-phase">
-    <span class="ss-phase-kicker">Phase 3</span>
-    <strong class="ss-phase-title">First boot</strong>
-    <ol class="ss-phase-steps" start="7">
-      <li>Plug in power</li>
-      <li>Dismiss the SD-card notice</li>
-      <li>Reach the main menu</li>
-      <li>Do the first-run setup</li>
-      <li>Learn the controls</li>
-    </ol>
+  <div class="ss-phase-spine">
+    <div class="ss-phase">
+      <span class="ss-phase-kicker">Phase 1</span>
+      <strong class="ss-phase-title">Hardware</strong>
+      <ol class="ss-phase-steps" start="1">
+        <li><span class="ss-pn">1</span><span>Gather the components</span></li>
+        <li><span class="ss-pn">2</span><span>Source the parts</span></li>
+        <li><span class="ss-pn">3</span><span>Pick an enclosure</span></li>
+        <li><span class="ss-pn">4</span><span>Assemble &mdash; no solder</span></li>
+      </ol>
+    </div>
+    <div class="ss-phase ss-phase--critical">
+      <span class="ss-phase-kicker">Phase 2 &middot; security-critical</span>
+      <strong class="ss-phase-title">Software</strong>
+      <ol class="ss-phase-steps" start="5">
+        <li><span class="ss-pn">5</span><span>Download <em>and verify</em> the image</span></li>
+        <li><span class="ss-pn">6</span><span>Flash the microSD card</span></li>
+      </ol>
+    </div>
+    <div class="ss-phase">
+      <span class="ss-phase-kicker">Phase 3</span>
+      <strong class="ss-phase-title">First boot</strong>
+      <ol class="ss-phase-steps" start="7">
+        <li><span class="ss-pn">7</span><span>Plug in power</span></li>
+        <li><span class="ss-pn">8</span><span>Dismiss the SD-card notice</span></li>
+        <li><span class="ss-pn">9</span><span>Reach the main menu</span></li>
+        <li><span class="ss-pn">10</span><span>Do the first-run setup</span></li>
+        <li><span class="ss-pn">11</span><span>Learn the controls</span></li>
+      </ol>
+    </div>
   </div>
   <figcaption class="ss-caption">Eleven steps, about 45 minutes of hands-on time. Phase 2 is where your security is decided &mdash; never skip image verification.</figcaption>
 </figure>

@@ -226,10 +226,11 @@ def use_mainnet():
 PRESERVED = {
     # Live camera frames. The renderer has no video source; upstream's generator
     # carries the same limitation ("Screenshot can't render live preview screens").
-    # Audit X-2 wants three of these re-shot with a QR visible in frame.
-    "AddressVerificationsCameraView.png": "live camera frame (audit X-2)",
-    "SeedPSBTCameraView.png": "live camera frame (audit X-2)",
-    "SeedCameraEntropyView.png": "live camera frame (audit X-2)",
+    # Audit X-2 is closed: the two that scan a QR now show one in frame, and it
+    # decodes to the fixture value (docs-screenshots/camera_qrs.py builds them).
+    "AddressVerificationsCameraView.png": "live camera frame; QR decodes to the fixture address",
+    "SeedPSBTCameraView.png": "live camera frame; QR decodes to the unsigned journey PSBT",
+    "SeedCameraEntropyView.png": "live camera frame; entropy comes from an arbitrary scene",
     "SeedEntropyPreviewView.png": "captured entropy image",
     "SeedQRScan.png": "camera frame with a QR in view; the X-2 quality target",
 
@@ -242,6 +243,29 @@ PRESERVED = {
     "SeedSigner_Device_and_Components.jpg": "hardware photo",
     "SeedSigner_Logo.png": "brand asset",
     "WaveShare_LCD_Hat.png": "hardware photo",
+
+    # Coordinator screens (audit A6, A9, B10, X-1). Sparrow Wallet 2.5.3 on
+    # Testnet3, driven by hand; nothing in the emulator can produce these. Both
+    # wallets are the canonical fixture, loaded as output descriptors -- see
+    # docs-screenshots/COORDINATOR.md for the exact procedure and how to redo it.
+    "Sparrow_FileNewWallet.png": "Sparrow: File menu",
+    "Sparrow_WalletName.png": "Sparrow: wallet name dialog",
+    "Sparrow_WalletSettings.png": "Sparrow: single-sig policy + keystore buttons",
+    "Sparrow_AirgappedHardwareWallet.png": "Sparrow: airgapped device list, SeedSigner",
+    "Sparrow_ScanKeystoreQR.png": "Sparrow: webcam scanning the device's xpub export",
+    "Sparrow_KeystoreImported.png": "Sparrow: imported keystore at b5aa2761",
+    "Sparrow_WalletPassword.png": "Sparrow: wallet password prompt",
+    "Sparrow_ReceiveAddress.png": "Sparrow: Receive tab at index 5",
+    "Sparrow_MultisigPolicy.png": "Sparrow: Multi Signature HD, 2 of 3",
+    "Sparrow_MultisigKeystores.png": "Sparrow: three cosigner tabs",
+    "Sparrow_BackupDescriptorPrompt.png": "Sparrow: back-up-the-descriptor prompt",
+    "Sparrow_ExportWalletSpecter.png": "Sparrow: Export Wallet, Specter Desktop",
+    "Sparrow_DescriptorQR.png": "Sparrow: descriptor QR",
+    "Sparrow_TransactionReview.png": "Sparrow: the journey PSBT",
+    "Sparrow_TransactionSigning.png": "Sparrow: Show QR / Scan QR bar",
+    "Sparrow_ScanSignedPSBT.png": "Sparrow: webcam scanning the signed PSBT back in",
+    "Sparrow_PSBTQR.png": "Sparrow: unsigned PSBT as a QR",
+    "Sparrow_BroadcastTransaction.png": "Sparrow: signed, ready to broadcast",
 }
 
 # ---------------------------------------------------------------------------
