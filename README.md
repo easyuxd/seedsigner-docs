@@ -27,7 +27,7 @@ This repository contains the **documentation website** for [SeedSigner](https://
 
 A [Docsify](https://docsify.js.org/) single-page documentation site. Docsify has **no build step**: it ships a static `index.html` that loads the Docsify runtime from a CDN, then fetches and renders the Markdown files in `docs/` client-side at request time. You edit Markdown, reload, and the site updates.
 
-- **54** Markdown files (51 content pages plus the `_sidebar`/`_navbar`/`_404` partials) and **143** images under `docs/`.
+- **54** Markdown files (51 content pages plus the `_sidebar`/`_navbar`/`_404` partials) and **203** images under `docs/`. Most of the images are **generated from the emulator** rather than hand-captured — see [docs-screenshots/](docs-screenshots/README.md).
 - Hash-based client-side routing (e.g. `/#/reference/hardware/assembly`). Pre-restructure URLs (e.g. `/#/hardware-build/assembly`) still resolve via a Docsify `alias` redirect map in `index.html`.
 - Theming, search, code-copy, pagination, image zoom, collapsible sidebar, and a scroll progress bar — all via Docsify plugins (see below).
 
@@ -101,7 +101,17 @@ Dev dependencies (see [package.json](package.json)):
 │   ├── security/               # Security model, why-multisig, physical, key storage, trade-offs
 │   ├── help/                   # Troubleshooting (common issues, errors) + FAQ, glossary, wallets, resources
 │   ├── contribute/             # Contributing guides, testnet
-│   └── images/                 # All screenshots & photos (143 files)
+│   └── images/                 # All screenshots & photos (203 files) — mostly generated, do not hand-edit
+├── docs-screenshots/           # Screenshot pipeline: renders docs/images/ from the emulator
+│   ├── fixture.py              #   The canonical testnet seed, PSBT, descriptor, addresses
+│   ├── manifest.py             #   Every screen: View + kwargs + output filename
+│   ├── generate.py             #   Driver + the --census / --links / --retire checks
+│   ├── shim.py                 #   Pi hardware mocks, app on sys.path, run_screen patch
+│   ├── live_emulator.py        #   Launches the emulator with the fixture seeds loaded (camera captures)
+│   ├── camera_qrs.py           #   Renders the QRs composited into the camera viewports
+│   └── COORDINATOR.md          #   Procedure for the hand-captured Sparrow_*.png screens
+├── screenshot-audit.md         # The 2026-07 audit: what was wrong with the image library
+├── screenshot-regen-plan.md    # How it was fixed, phase by phase
 ├── tests/                      # Playwright smoke tests
 │   ├── docs.spec.ts            #   Site smoke tests (routing, images, sidebar, aliases)
 │   └── diagrams.spec.ts        #   ss-* diagram rendering + mobile-overflow guards

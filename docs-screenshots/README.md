@@ -3,6 +3,13 @@
 Generates the device screenshots in `docs/images/` from code, so every capture is
 reproducible and every on-screen value matches the prose beside it.
 
+Three kinds of image live in the library. Most are **generated** headlessly from
+the manifest. A handful are **preserved** because nothing headless can produce
+them — the coordinator GUI ([COORDINATOR.md](COORDINATOR.md)) and the live camera
+frames, whose viewports are composited by hand from QRs built by
+[camera_qrs.py](camera_qrs.py). `--census` enforces that every file is in exactly
+one bucket.
+
 See [../screenshot-regen-plan.md](../screenshot-regen-plan.md) for why this
 exists and [../screenshot-audit.md](../screenshot-audit.md) for the gaps it
 closes.
@@ -65,6 +72,9 @@ newly rendered content.
 | `fixture.py` | The canonical seed, addresses, descriptor, network — all derived from fixed entropy |
 | `manifest.py` | Every screen: which View, what kwargs, what output filename |
 | `generate.py` | Driver and verification |
+| `live_emulator.py` | Launches the **running** emulator with the fixture seeds loaded — for anything needing a real camera |
+| `camera_qrs.py` | Renders the QRs composited into the camera viewports, from the fixture via SeedSigner's own encoders |
+| `COORDINATOR.md` | How the hand-captured `Sparrow_*.png` screens were shot, and how to redo them |
 
 Nothing here edits the emulator checkout. The app is imported read-only and the
 upstream `ScreenshotRenderer` is loaded by file path, so emulator upgrades cannot
