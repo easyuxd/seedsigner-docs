@@ -6,11 +6,11 @@ SeedSigner offers three ways to create a brand-new seed phrase. Each method capt
 
 ## Choose your method
 
-| Method | How it works | Rolls / steps | Best for |
-|--------|-------------|---------------|----------|
-| **Camera** | Captures randomness from a photograph | 1 photo | Quick seed creation |
-| **Dice** | Converts physical dice rolls into a seed | 50 (12-word) or 99 (24-word) | Maximum provable randomness |
-| **Calculate final word** | You supply 11 or 23 words; SeedSigner computes the checksum word | Manual entry + entropy | Users who select their own words |
+| Method | How it works | Rolls / steps |
+|--------|-------------|---------------|
+| **Camera** | Captures randomness from a photograph | 1 photo |
+| **Dice** | Converts physical dice rolls into a seed | 50 (12-word) or 99 (24-word) |
+| **Calculate final word** | You supply 11 or 23 words; SeedSigner computes the checksum word | Manual entry + entropy |
 
 > **Tip:** A 24-word seed provides more entropy than a 12-word seed. For long-term cold storage, 24 words is recommended. For multi-signature setups, 12-word seeds per key can be sufficient.
 
@@ -62,7 +62,7 @@ This method uses environmental entropy captured by the camera — pixel data, pr
 
 ## Method 2: Dice-based seed generation
 
-Physical dice produce true randomness that cannot be influenced by software bugs or hardware backdoors. This is the most trust-minimized method.
+Physical dice provide an external source of entropy that is independent of the device's internal random number generator. See [Dice entropy explained](/reference/seeds/dice-entropy) for more information.
 
 1. From the main menu, select **Tools**.
 2. Select **New Seed** (dice icon).
