@@ -2,7 +2,7 @@
 
 > The math behind 50 and 99 dice rolls — why those numbers, how rolls become words, and how to verify the result independently.
 
-Dice-based seed generation ([how-to here](/reference/seeds/creation.md#method-2-dice-based-seed-generation)) is SeedSigner's most trust-minimized method: the randomness comes from physical dice you can see and hold, not from code or hardware you have to trust. This page explains *why* it works.
+Dice-based seed generation ([how-to here](/reference/seeds/creation.md#method-2-dice-based-seed-generation)) uses physical dice for randomness rather than code or hardware. This page explains *why* it works.
 
 ## How much randomness is in a dice roll?
 
