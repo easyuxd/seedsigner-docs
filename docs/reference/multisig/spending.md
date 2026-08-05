@@ -61,6 +61,10 @@ The first cosigner's signature is now recorded.
 
 ## Step 3: Sign with the second key
 
+> **Warning:** Power the device off before loading the next seed. SeedSigner holds a loaded seed in [RAM only](/security/overview.md#statelessness), and a full power cycle is the most reliable way to clear it and more thorough than discarding the seed from the menu. It also keeps each signing session to a single cosigner key, so no one session ever has two keys of your quorum in memory at once.
+
+> **Tip:** Signing every key on one device is convenient, but it concentrates risk: if a flaw is ever found in that device or its software, a critical majority of your cosigners could be compromised at once. For the highest security, use a separate device from a separate vendor for each key (multi-vendor multisig) so no single vulnerability can reach your quorum threshold.
+
 Repeat the same process with a different seed:
 
 1. In Sparrow, click **Show QR** again to display the updated PSBT.

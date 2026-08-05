@@ -114,6 +114,8 @@ For more scanning tips, see [Common issues — QR code scanning problems](/help/
 
 ## For multi-signature wallets
 
-In a multi-sig setup (e.g. 2-of-3), you repeat the scan-review-sign-scan cycle for each required cosigner. Load a different seed into SeedSigner, scan the same PSBT, approve, and scan the new signature back into the coordinator. Once enough cosigners have signed, the coordinator enables the broadcast button.
+In a multi-sig setup (e.g. 2-of-3), you repeat the scan-review-sign-scan cycle for each required cosigner. Load a different seed, scan the same PSBT, approve, and scan the new signature back into the coordinator. Once enough cosigners have signed, the coordinator enables the broadcast button.
+
+> **Warning:** Power the device off between cosigners to clear the loaded seed from memory, and for the highest security use a separate device from a separate vendor for each key (multi-vendor multisig). See [Multisig spending](/reference/multisig/spending.md#step-3-sign-with-the-second-key) for why.
 
 See the [Multi-sig Spend Walkthrough](/reference/multisig/spending.md) for a detailed guide.
