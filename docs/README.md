@@ -11,7 +11,7 @@ SeedSigner is a do-it-yourself Bitcoin signing device. You assemble it from thre
 - **Air-gapped by design:** Built on the Raspberry Pi Zero v1.3, a board with **no Wi-Fi or Bluetooth hardware**. It cannot connect to a network even if compromised software tried to. Data moves only through the camera (in) and the screen (out), as QR codes.
 - **Stateless:** Your private keys exist only in volatile RAM while the device is powered on. There is no secure element, no encrypted storage, no flash memory holding secrets. Pull the plug and everything is erased. If the device cannot remember your keys, it cannot leak them.
 - **Affordable and discreet:** The bill of materials is roughly $50, all generic electronics. Nothing about the parts signals "Bitcoin" to a merchant, a courier, or anyone who sees the package.
-- **Fully open source:** Every line of Python and every hardware schematic is publicly auditable and published under the MIT license. No proprietary chips or black-box firmware control key operations.
+- **Open source software:** Every line of Python is publicly auditable and published under the MIT license.
 - **Multi-sig ready:** One device can sign for multiple keys, making multi-signature wallets practical and affordable.
 
 ## What it can do
