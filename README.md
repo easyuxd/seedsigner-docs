@@ -136,7 +136,7 @@ npm install
 npm start            # → http://localhost:3000  (alias: npm run serve)
 ```
 
-`npm start` runs `docsify serve docs`. Open `http://localhost:3000`; the site auto-reloads on save. No build/compile step exists — what you edit is what ships.
+`npm start` runs `docsify serve docs`. Open `http://localhost:3000`; the site auto-reloads on save. No build/compile step exists.
 
 ## Testing
 
@@ -181,8 +181,6 @@ Currently CI tests **Chromium only**; Firefox/WebKit/mobile projects exist but a
 
 The site is plain static files. `docs/.nojekyll` indicates it is intended to be published via **GitHub Pages serving the `docs/` folder** (Settings → Pages → Branch `main` / `/docs`). Because routing is hash-based and client-side, any static host works (GitHub Pages, Netlify, S3, etc.) — just serve the `docs/` directory.
 
-> ⚠️ **No automated deploy is configured yet.** The only workflow is CI tests; publishing is manual. See [Known gaps](#known-gaps--todos).
-
 ## Authoring & contributing
 
 Full guide: [docs/contribute/docs.md](docs/contribute/docs.md). Quick rules:
@@ -213,19 +211,12 @@ The site uses a **journey-first** information architecture: goal-based journeys 
 
 ## Known gaps & TODOs
 
-Honest list of what's incomplete or worth improving, ranked roughly by importance. Items 1–4 are the outstanding recommendations from the 2026-07 comprehensive audit (the audit's higher-ranked items — the `ss-*` diagram system and the ecosystem content gap-fill: QR scanning guide, GPG verification walkthrough, BlueWallet journey, SettingsQR / BIP-85 / message signing / dice entropy pages, Pi variant comparison, boot-time note — are done).
-
-1. **No deploy automation.** Add a GitHub Actions workflow that publishes `docs/` to GitHub Pages on every push to `main`. Today the only workflow is CI tests; publishing is manual.
-2. **Site-wide link/image crawl test.** Extend Playwright beyond the current smoke tests: walk **every** route in `_sidebar.md`, assert no 404s and no broken images on any page, and assert every entry in the `alias` redirect map resolves. This protects the IA/restructure investment against silent link rot.
-3. **Dark mode.** Add a `prefers-color-scheme: dark` override of the docsify-themeable CSS variables in `docs/index.html`. The diagram system is already fully variable-driven (`--ss-*` tokens), so diagrams inherit dark mode for free once the token block is overridden.
-4. **Lower-priority audit items:**
-   - **CDN sourcing.** Runtime deps are pinned but still loaded from jsDelivr at request time. Vendor the assets locally and/or add Subresource Integrity (SRI) hashes for stronger reproducibility/offline support.
-   - **Browser coverage.** CI tests Chromium only; the Firefox/WebKit/mobile projects exist but are commented out in `playwright.config.ts`.
-   - **Content gap — assembly photos.** `reference/hardware/assembly.md` would benefit from a "components laid out before assembly" photo. Needs a real photograph.
-   - **Translations.** The legacy SeedSigner user guide had multi-language translations; this restructured site does not yet. Contributions welcome (coordinate via a GitHub issue).
-5. **Future content idea.** An exhaustive settings reference generated from (and periodically checked against) the firmware source — exact menu paths and every option value, kept in sync per SeedSigner release.
-6. **Platform note (not an action item).** The audit's verdict was to **stay on Docsify:** revisit a migration (e.g. Astro Starlight: non-hash URLs, prerendered HTML for SEO, built-in dark mode/i18n) only if SEO or translations become priorities. Mermaid support was likewise deliberately skipped in favor of the hand-styled `ss-*` diagrams; if contributors ever need ad-hoc diagrams, it can be added with a small `markdown.renderer.code` hook in `index.html`.
-7. **Dev-dependency advisories.** `npm audit` reports advisories in the transitive `docsify-cli` tree (dev/build-time only — never shipped to the static site). Revisit when upstream updates.
+- Images for BlueWallet
+- Guides for more coordinators
+- Dark mode
+- Translations
+- Expand testing to walk every route in `_sidebar.md`
+- Exhaustive settings reference, generated from (and periodically checked against) the firmware source
 
 ## License & links
 
