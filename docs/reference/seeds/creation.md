@@ -62,7 +62,7 @@ This method uses environmental entropy captured by the camera — pixel data, pr
 
 ## Method 2: Dice-based seed generation
 
-Physical dice provide an external source of entropy that is independent of the device's internal random number generator. See [Dice entropy explained](/reference/seeds/dice-entropy) for more information.
+Physical dice provide an external source of entropy that is independent of the device itself. See [Dice entropy explained](/reference/seeds/dice-entropy) for more information.
 
 1. From the main menu, select **Tools**.
 2. Select **New Seed** (dice icon).
