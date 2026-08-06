@@ -34,7 +34,6 @@ All documentation lives in the `docs/` folder, organized by section:
 docs/
 ├── index.html            # Docsify configuration, theme CSS, diagram styles
 ├── _sidebar.md           # Sidebar navigation
-├── _navbar.md            # Top navigation
 ├── README.md             # Homepage ("What is SeedSigner?")
 ├── images/               # All images
 ├── get-started/          # Goal-based journeys (build, first wallet, send…)

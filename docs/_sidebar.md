@@ -1,4 +1,4 @@
-- [Home](/)
+- **[Home](/)**
 
 - **Get Started**
   - [What do you want to do?](/get-started/)

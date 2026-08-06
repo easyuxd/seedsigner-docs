@@ -58,7 +58,7 @@ SeedSigner is the **signer** in a signer-plus-coordinator setup. It holds privat
 4. SeedSigner displays a new QR containing the signature.
 5. Your coordinator scans that QR and broadcasts the transaction.
 
-No cables. No wireless. Just light. Popular coordinators include [Sparrow Wallet](https://sparrowwallet.com) (desktop), [Specter Desktop](https://specter.solutions) (desktop, requires a node), [BlueWallet](https://bluewallet.io) (mobile), [Nunchuk](https://nunchuk.io), and [Keeper](https://bitcoinkeeper.app) — see [Compatible wallets](/help/compatible-wallets.md).
+No cables. No wireless. Just QR codes. Popular coordinators include [Sparrow Wallet](https://sparrowwallet.com) (desktop), [Specter Desktop](https://specter.solutions) (desktop, requires a node), [BlueWallet](https://bluewallet.io) (mobile), [Nunchuk](https://nunchuk.io), and [Keeper](https://bitcoinkeeper.app) — see [Compatible wallets](/help/compatible-wallets.md).
 
 ## Who is SeedSigner for?
 

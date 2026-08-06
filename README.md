@@ -10,6 +10,7 @@ This repository contains the **documentation website** for [SeedSigner](https://
 
 - [What this is](#what-this-is)
 - [Tech stack](#tech-stack)
+- [Navigation](#navigation)
 - [Pinned dependency versions](#pinned-dependency-versions)
 - [Repository layout](#repository-layout)
 - [Local development](#local-development)
@@ -27,9 +28,10 @@ This repository contains the **documentation website** for [SeedSigner](https://
 
 A [Docsify](https://docsify.js.org/) single-page documentation site. Docsify has **no build step**: it ships a static `index.html` that loads the Docsify runtime from a CDN, then fetches and renders the Markdown files in `docs/` client-side at request time. You edit Markdown, reload, and the site updates.
 
-- **54** Markdown files (51 content pages plus the `_sidebar`/`_navbar`/`_404` partials) and **203** images under `docs/`. Most of the images are **generated from the emulator** rather than hand-captured — see [docs-screenshots/](docs-screenshots/README.md).
+- **53** Markdown files (51 content pages plus the `_sidebar`/`_404` partials) and **203** images under `docs/`. Most of the images are **generated from the emulator** rather than hand-captured — see [docs-screenshots/](docs-screenshots/README.md).
 - Hash-based client-side routing (e.g. `/#/reference/hardware/assembly`). Pre-restructure URLs (e.g. `/#/hardware-build/assembly`) still resolve via a Docsify `alias` redirect map in `index.html`.
 - Theming, search, code-copy, pagination, image zoom, collapsible sidebar, and a scroll progress bar — all via Docsify plugins (see below).
+- A **fixed top bar** holding the logo and the search field, a **permanent sidebar rail** beneath it, and a **page footer** carrying the outbound project links — see [Navigation](#navigation) for the rules these follow.
 
 ## Tech stack
 
@@ -55,7 +57,32 @@ Configured in [docs/index.html](docs/index.html):
 - **docsify-pagination:** Previous/Next links, cross-chapter.
 - **docsify-sidebar-collapse:** collapsible top-level sidebar sections.
 - **docsify-progress:** top scroll-progress bar (honors the theme color).
-- **Custom inline plugin** (`sidebarSubheadingHeadings`) — converts nested sidebar groups without a page link (e.g. *Seeds*, *Hardware*) into non-clickable subheadings. Lives in the `$docsify.plugins` array in `index.html`.
+- **Custom inline plugins**, all in the `$docsify.plugins` array in `index.html`:
+  - `navChrome` — relocates the logo, the search field and the sidebar toggle into the fixed top bar, and wires the field's keyboard shortcuts and mobile behaviour.
+  - `sidebarCurrent` — records which sidebar row is the current page (see [Navigation](#navigation)).
+  - `sidebarSubheadingHeadings` — converts nested sidebar groups without a page link (e.g. *Seeds*, *Hardware*) into non-clickable subheadings.
+
+## Navigation
+
+The nav chrome is direction **"Ledger"** with the **"Signal"** search field, from the design exploration. It is all in `docs/index.html`, in two commented blocks: *Sidebar states* near the top and *Navigation chrome* below the diagram styles.
+
+**The top bar holds exactly two things** — the way home (logo) and the way to search. It is fixed at 64px (56px on mobile), so `topMargin: 80` is set in the Docsify config to keep anchor jumps clear of it. The search field is 480×44 with a neutral grey glyph and an orange focus ring, and takes `⌘K` / `Ctrl K` or `/`. Below 768px the field drops out of the bar as a full-width row behind a search button, and the sidebar becomes a drawer over a dimmed scrim.
+
+**Website / GitHub / Community live in the page footer**, not the bar — which is why `loadNavbar` is off and there is no `_navbar.md`.
+
+**The sidebar has three states, each carried by a different device** so no two can be confused:
+
+| State | Signal | Means |
+|---|---|---|
+| hover / focus | soft grey field behind the row | you can click this |
+| selected | orange label + a 2px orange rule at its left edge | you are here |
+| expanded | the chevron, and nothing else | this is open |
+
+Two rules follow. Orange marks exactly two rows — the current page and the top-level section containing it; an expanded section that does *not* contain your page stays ink. And the grey field is only ever hover, so it can sit on a selected row without competing: identity lives in the colour and the rule, never in a fill. This is the same law the `ss-*` diagrams follow (see [Contributing to docs](docs/contribute/docs.md)). A single 1em unit sets the rhythm — between categories, inside an expanded category, and between subgroups.
+
+> **Selected state does not use Docsify's `.active`.** Docsify sets `.active` on the current route's row, but `docsify-sidebar-collapse` reuses it for *"the section you last clicked open"* and moves it there — so expanding a section stole the highlight from the page you were on. The `sidebarCurrent` plugin snapshots Docsify's meaning at `doneEach`, the one moment `.active` is authoritative, into `.ss-here` and `.ss-here-within`; all "you are here" styling keys off those. `.active` is left alone because the collapse plugin needs it to drive expansion.
+
+> **Do not cache DOM nodes across Docsify hooks here.** `docsify-progress` runs `body.innerHTML = body.innerHTML + …` in its own `mounted` hook, and installs itself first — that re-parses the whole body, silently detaching anything captured earlier and destroying Docsify's own drawer bindings. Look elements up at the moment of use and delegate listeners from `document`.
 
 ## Pinned dependency versions
 
@@ -83,10 +110,9 @@ Dev dependencies (see [package.json](package.json)):
 ```
 .
 ├── docs/                       # The published site (served root)
-│   ├── index.html              # Docsify config, theme, CDN script tags, custom plugin, alias redirects
+│   ├── index.html              # Docsify config, theme, nav chrome & sidebar states, CDN tags, custom plugins, alias redirects
 │   ├── README.md               # Site HOMEPAGE content (route "/") — NOT this file
 │   ├── _sidebar.md             # Sidebar navigation (mirror new pages here)
-│   ├── _navbar.md              # Top navbar links
 │   ├── _404.md                 # Custom not-found page
 │   ├── .nojekyll               # Tells GitHub Pages to serve files as-is
 │   ├── get-started/            # Journeys: build-device, first-wallet, receive, send, recover, multisig, bluewallet (+ landing README)
