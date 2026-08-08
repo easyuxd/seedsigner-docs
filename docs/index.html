@@ -1134,7 +1134,15 @@
       }
       .ss-topbar__actions { display: flex; }
       :root { --sidebar-padding: 0 20px 40px; }
-      .sidebar { top: var(--ss-nav-h-sm); }
+      .sidebar {
+        top: var(--ss-nav-h-sm);
+        /* iOS Safari bleeds .ss-scrim's backdrop-filter through fixed
+           siblings above it regardless of z-index; forcing the drawer onto
+           its own compositing layer stops it from being blurred too. */
+        -webkit-transform: translateZ(0);
+        transform: translateZ(0);
+        isolation: isolate;
+      }
       /* Search drops out of the bar as a full-width row */
       .ss-topbar .search {
         position: absolute;

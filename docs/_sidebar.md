@@ -30,6 +30,7 @@
   - **Seeds**
     - [Seed creation](/reference/seeds/creation.md)
     - [Dice entropy explained](/reference/seeds/dice-entropy.md)
+    - [Image entropy explained](/reference/seeds/image-entropy.md)
     - [Seed loading](/reference/seeds/loading.md)
     - [SeedQR backup](/reference/seeds/seedqr.md)
     - [Seed verification](/reference/seeds/verification.md)

@@ -67,9 +67,10 @@ You will do each step once, in order. Steps 1–5 get you to a verified receive 
 
 Your seed phrase **is** your wallet. Whoever holds these words controls the Bitcoin.
 
-1. On SeedSigner, go to **Tools → New Seed** and pick a method:
-   - **Camera:** fast, captures randomness from a photo.
-   - **Dice:** most trust-minimized (50 rolls for 12 words, 99 for 24 words).
+1. On SeedSigner, go to **Tools** and pick a method:
+   - **New Seed → Camera:** fast, captures randomness from a photo.
+   - **New Seed → Dice:** most trust-minimized (50 rolls for 12 words, 99 for 24 words).
+   - **Calc 12th/24th word:** you supply 11 or 23 words yourself; SeedSigner computes the checksum word.
    ![Tools menu showing the New Seed options](../images/ToolsMenuView.png)
 
 2. When prompted, choose **24 words** for long-term cold storage (12 words is also valid).

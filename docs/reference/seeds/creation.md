@@ -18,7 +18,7 @@ SeedSigner offers three ways to create a brand-new seed phrase. Each method capt
 
 ## Method 1: Camera-based seed generation
 
-This method uses environmental entropy captured by the camera — pixel data, preview frames, the Pi's serial number, and the elapsed uptime in milliseconds are all mixed together.
+This method uses environmental entropy captured by the camera — pixel data, preview frames, the Pi's serial number, and the elapsed uptime in milliseconds are all mixed together. See [Image entropy explained](/reference/seeds/image-entropy) for more information.
 
 1. From the main menu, select **Tools**.
 
@@ -28,7 +28,7 @@ This method uses environmental entropy captured by the camera — pixel data, pr
 
    ![Tools menu showing New Seed options for camera and dice](../../images/ToolsMenuView.png)
 
-3. Point the camera at a random, moving scene (trees, clouds, traffic). Press any key to capture.
+3. Point the camera at any well-lit scene — what you photograph matters far less than that it is lit. **Tap** a key to capture; don't hold it down.
 
    ![Camera viewfinder capturing environmental entropy](../../images/SeedCameraEntropyView.png)
 
