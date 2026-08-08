@@ -1,8 +1,6 @@
 # Image entropy explained
 
-> Take a photo, get a seed phrase. Here's what the camera is really collecting, why almost any photo will do, and the one mistake worth avoiding.
-
-Camera-based seed generation ([how-to here](/reference/seeds/creation.md#method-1-camera-based-seed-generation)) turns a single photograph into a BIP-39 seed phrase. This page explains *why* it works, and the two capture habits that keep it working.
+> Take a photo, get a seed phrase. [Camera-based seed generation](/reference/seeds/creation.md#method-1-camera-based-seed-generation) turns a single photograph into a BIP-39 seed phrase.
 
 > **Warning:** Every measurement on this page comes from a single source: an [AI-assisted analysis](https://kdmukai-bot.github.io/seedsigner-ai-analysis/image-entropy/) published by SeedSigner's lead developer. By its own statement it is not an independent audit, not a certification, and not an official SeedSigner project publication, and no third party has yet reproduced its figures. The raw camera data is published so that anyone can check the work, but until someone does, treat these numbers as the best available evidence rather than settled fact. Nothing here is a security guarantee.
 
@@ -17,9 +15,7 @@ SeedSigner builds the seed as a running SHA-256 chain, folding in four inputs in
 | 3 | **Live preview frames** | A rolling window of up to **50 frames at 240 × 240**, captured while you aim the camera. |
 | 4 | **The final photograph** | One full-resolution capture at **480 × 480**. |
 
-Each step hashes the previous digest together with the new data, so the final digest depends on all four. But the code's own comment calls the first two "modest entropy". The security of this method rests on inputs 3 and 4.
-
-The resulting 256-bit digest becomes the seed: all 256 bits for a 24-word phrase, or the first 128 bits for a 12-word phrase. From there it's the same path as dice. A checksum is appended, the bits are split into 11-bit groups, and each group indexes one of the 2,048 BIP-39 words.
+Each step hashes the previous digest together with the new data, so the final digest depends on all four. The resulting 256-bit digest becomes the seed: all 256 bits for a 24-word phrase, or the first 128 bits for a 12-word phrase. From there it's the same path as dice. A checksum is appended, the bits are split into 11-bit groups, and each group indexes one of the 2,048 BIP-39 words.
 
 > **Note:** SHA-256 always emits 256 bits, however much data goes in. Once 256 bits of genuine unpredictability have gone into the chain, everything beyond that is extraneous. It still changes the result, but it can't make the seed harder to attack. So 256 bits is a **threshold**, not a score to beat, and a big margin just means the threshold was cleared with room to spare.
 
