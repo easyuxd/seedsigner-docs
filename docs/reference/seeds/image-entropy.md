@@ -1,6 +1,6 @@
 # Image entropy explained
 
-> Take a photo, get a seed phrase. [Camera-based seed generation](/reference/seeds/creation.md#method-1-camera-based-seed-generation) turns a single photograph into a BIP-39 seed phrase.
+> Take a photo, get a seed phrase. [Camera-based seed generation](/reference/seeds/creation.md#method-1-camera-based-seed-generation) turns your camera's live view and the photo you take into a BIP-39 seed phrase.
 
 > **Warning:** Every measurement on this page comes from a single source: an [AI-assisted analysis](https://kdmukai-bot.github.io/seedsigner-ai-analysis/image-entropy/) published by SeedSigner's lead developer. By its own statement it is not an independent audit, not a certification, and not an official SeedSigner project publication, and no third party has yet reproduced its figures. The raw camera data is published so that anyone can check the work, but until someone does, treat these numbers as the best available evidence rather than settled fact. Nothing here is a security guarantee.
 
