@@ -1225,6 +1225,19 @@
         unrepresentable — no engine can blur, tint, or intercept a region the
         element does not cover.
 
+        That geometry is what makes the blur below safe to keep, and it is
+        load-bearing: backdrop-filter paints only inside its own border box,
+        so a scrim that stops at the drawer's edge cannot frost the drawer no
+        matter how the engine orders the two layers. Do not stretch this back
+        across the viewport to "cover" the area behind the drawer — that area
+        is never visible, and covering it is precisely what caused the bug.
+
+        visibility (rather than opacity alone) gates the closed state: some
+        WebKit builds keep applying backdrop-filter at opacity 0, which would
+        frost the whole page permanently. Hiding the element stops it being
+        painted at all. The 0s visibility transition is delayed by the length
+        of the fade so the scrim stays painted while it fades out.
+
         `left` is animated on the same curve as docsify's drawer slide so the
         two edges travel together.
       */
@@ -1233,19 +1246,27 @@
         position: fixed;
         inset: var(--ss-nav-h-sm) 0 0 0;
         z-index: 20;
+        visibility: hidden;
         opacity: 0;
         pointer-events: none;
-        background: rgba(30, 38, 46, .44);
-        transition: opacity .22s ease, left .25s ease-out;
+        background: rgba(30, 38, 46, .36);
+        -webkit-backdrop-filter: blur(3px);
+        backdrop-filter: blur(3px);
+        transition: opacity .22s ease, left .25s ease-out, visibility 0s linear .22s;
       }
       body.close .ss-scrim {
         left: var(--sidebar-width, 17rem);
+        visibility: visible;
         opacity: 1;
         pointer-events: auto;
+        transition: opacity .22s ease, left .25s ease-out, visibility 0s linear 0s;
       }
     }
     @media (prefers-reduced-motion: reduce) {
+      /* body.close .ss-scrim is listed too: it sets its own transition, and
+         outranks a bare .ss-scrim selector here on specificity. */
       .ss-scrim,
+      body.close .ss-scrim,
       .ss-topbar .search .input-wrap,
       .ss-topbar .sidebar-toggle-button span { transition: none; }
     }
