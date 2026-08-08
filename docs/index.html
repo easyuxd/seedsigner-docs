@@ -1134,15 +1134,7 @@
       }
       .ss-topbar__actions { display: flex; }
       :root { --sidebar-padding: 0 20px 40px; }
-      .sidebar {
-        top: var(--ss-nav-h-sm);
-        /* iOS Safari bleeds .ss-scrim's backdrop-filter through fixed
-           siblings above it regardless of z-index; forcing the drawer onto
-           its own compositing layer stops it from being blurred too. */
-        -webkit-transform: translateZ(0);
-        transform: translateZ(0);
-        isolation: isolate;
-      }
+      .sidebar { top: var(--ss-nav-h-sm); }
       /* Search drops out of the bar as a full-width row */
       .ss-topbar .search {
         position: absolute;
@@ -1221,7 +1213,21 @@
         top: 6px;
         transform: rotate(-45deg);
       }
-      /* body.close is docsify's "drawer open" state on narrow viewports */
+      /*
+        body.close is docsify's "drawer open" state on narrow viewports.
+
+        The scrim is sized to the content *beside* the drawer rather than to
+        the whole viewport. Overlapping the drawer and relying on z-index to
+        stay under it is what broke on iOS Safari: the scrim painted over the
+        drawer, so the nav was both dimmed and swallowing its own taps (the
+        dismiss handler matches .ss-scrim, so every tap on a link closed the
+        menu instead of following it). Non-overlapping geometry makes that
+        unrepresentable — no engine can blur, tint, or intercept a region the
+        element does not cover.
+
+        `left` is animated on the same curve as docsify's drawer slide so the
+        two edges travel together.
+      */
       .ss-scrim {
         display: block;
         position: fixed;
@@ -1229,12 +1235,11 @@
         z-index: 20;
         opacity: 0;
         pointer-events: none;
-        background: rgba(30, 38, 46, .36);
-        -webkit-backdrop-filter: blur(3px);
-        backdrop-filter: blur(3px);
-        transition: opacity .22s ease;
+        background: rgba(30, 38, 46, .44);
+        transition: opacity .22s ease, left .25s ease-out;
       }
       body.close .ss-scrim {
+        left: var(--sidebar-width, 17rem);
         opacity: 1;
         pointer-events: auto;
       }
