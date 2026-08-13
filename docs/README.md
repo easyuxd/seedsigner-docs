@@ -1,5 +1,7 @@
 # SeedSigner
 
+<p class="ss-docstatus" data-ss-docstatus></p>
+
 > Open-source, air-gapped Bitcoin signing device built from off-the-shelf hardware for around $50.
 
 SeedSigner is a do-it-yourself Bitcoin signing device. You assemble it from three inexpensive, general-purpose components, flash an open-source operating system onto a microSD card, and you have a fully functional tool to **generate seed phrases, export public keys, and sign transactions — all without ever connecting to a network.** It communicates exclusively through QR codes, using a camera to read and a screen to display.

@@ -112,6 +112,47 @@
       border-bottom: 2px solid #f6851b;
       padding-bottom: 0.3em;
     }
+    /* === Documentation status ==========================================
+       The dateline under the Home page H1: which SeedSigner release the
+       docs were written against, and when a human last read them. Values
+       live in the SS_DOCS_STATUS constant below; the docsStatus plugin
+       fills the empty slot in docs/README.md.
+
+       The pill deliberately does not reuse .ss-chip: that class belongs to
+       the diagram system and takes its outline from a lane's currentColor,
+       which has no meaning here. Standalone means a future diagram tweak
+       cannot silently restyle the home page. Colours still flow through
+       the --ss-* tokens, so a future dark mode overrides one block.
+       ==================================================================== */
+    .markdown-section .ss-docstatus {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 0.5rem;
+      /* Sits nearer the title than the deck, so it reads as part of the
+         heading block; the top value is clearance from the h1's 2px rule,
+         which it would otherwise touch. */
+      margin: 0.9rem 0 1.6rem;
+    }
+    /* JS did not run: show nothing rather than an empty gap */
+    .markdown-section .ss-docstatus:empty { display: none; }
+    .markdown-section .ss-docstatus__version {
+      padding: 0.12rem 0.45rem;
+      border-radius: 4px;
+      background: var(--ss-diagram-bg);
+      /* box-shadow, not border, so the outline costs no layout (as .ss-qr-badge) */
+      box-shadow: 0 0 0 1px var(--ss-device-accent);
+      color: var(--ss-device-accent-strong);
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      white-space: nowrap;
+    }
+    .markdown-section .ss-docstatus__note {
+      font-size: 0.82rem;
+      line-height: 1.4;
+      color: var(--ss-diagram-muted);
+    }
     .markdown-section table {
       display: table;
       width: 100%;
@@ -1402,6 +1443,23 @@
   </footer>
   <div class="ss-scrim"></div>
   <script>
+    /*
+      Documentation status — the single source of truth for the pill at the
+      top of the home page. Bump both fields together when you review the
+      docs against a new SeedSigner release; see "Documentation status" in
+      the repository README.
+
+      Nothing here is fetched or computed. The date means "a human read
+      these pages against this release", which only a human can assert:
+      displaying whatever GitHub currently calls latest would claim a
+      compatibility nobody verified. Leaving this stale is a true
+      statement; auto-advancing it is not.
+    */
+    var SS_DOCS_STATUS = {
+      version: 'v0.8.7',
+      reviewed: 'August 2026',
+    };
+
     window.$docsify = {
       name: '<img src="images/SeedSigner_Logo.png" alt="SeedSigner" />',
       /*
@@ -1708,6 +1766,28 @@
               li.classList.remove('folder');
               li.classList.add('sidebar-subheading');
             });
+          });
+        },
+        /*
+          Fills the documentation-status slot from SS_DOCS_STATUS above. The
+          slot only exists in docs/README.md, so this is a no-op on every
+          other route and needs no route matching. The node is looked up at
+          the moment of use rather than cached, for the docsify-progress
+          reason described above, and assigning innerHTML makes a repeat
+          run on the same route harmless.
+
+          The visually-hidden prefix gives screen readers the whole
+          sentence — "Written for SeedSigner v0.8.7. Documentation last
+          reviewed August 2026." — which the pill alone does not say.
+        */
+        function docsStatus(hook) {
+          hook.doneEach(function () {
+            var slot = document.querySelector('[data-ss-docstatus]');
+            if (!slot) return;
+            slot.innerHTML =
+              '<span class="ss-sr">Written for </span>' +
+              '<span class="ss-docstatus__version">SeedSigner ' + SS_DOCS_STATUS.version + '</span>' +
+              '<span class="ss-docstatus__note">Documentation last reviewed ' + SS_DOCS_STATUS.reviewed + '</span>';
           });
         }
       ]

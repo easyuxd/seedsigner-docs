@@ -45,6 +45,17 @@ test('no broken images on the homepage', async ({ page }) => {
   expect(await brokenImages(page, '.markdown-section')).toEqual([]);
 });
 
+test('homepage shows a populated documentation status', async ({ page }) => {
+  // The pill is filled by the docsStatus plugin, not by the Markdown, so the
+  // realistic failure is a silently empty slot rather than a wrong version.
+  // Matching the shape instead of the literal version keeps this test off the
+  // list of things to edit on every release bump.
+  await page.goto('/');
+  const version = page.locator('.markdown-section .ss-docstatus__version');
+  await expect(version).toBeVisible();
+  await expect(version).toHaveText(/^SeedSigner v\d+\.\d+\.\d+$/);
+});
+
 test('an internal route renders its content', async ({ page }) => {
   await page.goto('/#/reference/hardware/assembly');
   await expect(page.locator('.markdown-section h1').first()).toHaveText(

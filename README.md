@@ -106,6 +106,23 @@ Dev dependencies (see [package.json](package.json)):
 | docsify-cli | ^4.4.4 | Local + CI dev server (`docsify serve`) |
 | @types/node | ^25.5.2 | Types for the Playwright config |
 
+## Documentation status
+
+The home page carries an outlined pill under the title — `SeedSigner v0.8.7` · *Documentation last reviewed August 2026* — so a reader can tell which release the docs describe and how current they are. It answers the question a user has when a screenshot does not match their screen: are the docs behind, or is their firmware?
+
+Both values come from one object in [docs/index.html](docs/index.html), and that object is the only place to edit them:
+
+```js
+var SS_DOCS_STATUS = {
+  version: 'v0.8.7',
+  reviewed: 'August 2026',
+};
+```
+
+Bump the two fields **together**, and only after actually reading the docs against that release. The date asserts that a human reviewed these pages — not that a commit landed — so advancing it without a review pass makes the page lie. A stale value is still a true statement; an auto-advanced one is not, which is why the version is never fetched from the GitHub releases API. A review pass means re-checking screenshots, menu paths, and settings names in `docs/reference/` and `docs/get-started/` against the running firmware.
+
+> **Version mentions in prose are not part of this.** "Since version 0.4.5" in [components.md](docs/reference/hardware/components.md), [sourcing.md](docs/reference/hardware/sourcing.md) and [faq.md](docs/help/faq.md), and "since v0.7.0" in [image-entropy.md](docs/reference/seeds/image-entropy.md), record *when a behaviour landed* — not what the docs are compatible with. They stay hardcoded and stay correct as the pill advances.
+
 ## Repository layout
 
 ```
