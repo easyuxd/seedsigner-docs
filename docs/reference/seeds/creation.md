@@ -62,7 +62,7 @@ This method uses environmental entropy captured by the camera — pixel data, pr
 
 ## Method 2: Dice-based seed generation
 
-Physical dice provide an external source of entropy that is independent of the device itself. See [Dice entropy explained](/reference/seeds/dice-entropy) for more information.
+Physical dice provide an external source of entropy that is independent of the device itself. See [Dice entropy explained](/reference/seeds/dice-entropy.md) for more information.
 
 1. From the main menu, select **Tools**.
 2. Select **New Seed** (dice icon).
@@ -75,7 +75,7 @@ Physical dice provide an external source of entropy that is independent of the d
 
    ![Dice seed length](../../images/SeedMnemonicLengthDiceView.png)
 
-4. Roll a standard six-sided die. On the screen, press the **joystick** in the direction of the number you rolled (1--6). Repeat for every roll.
+4. Roll an ordinary, undamaged six-sided die with a thorough tumble. On the screen, press the **joystick** in the direction of the number you rolled (1–6). Repeat for every roll.
 
    ![Dice entry](../../images/ToolsDiceEntropyEntryView.png)
 
@@ -86,7 +86,7 @@ Physical dice provide an external source of entropy that is independent of the d
 6. Read the security warning and press **I Understand**.
 7. Write down all seed words and complete the backup verification.
 
-> **Tip:** Use a casino-grade die for the best randomness. Roll on a flat, hard surface. Curious why it's exactly 50 or 99 rolls, or how to independently verify the result? See [Dice entropy explained](/reference/seeds/dice-entropy.md).
+> **Warning:** Keep every roll private and enter each result as it lands. Do not skip, reroll, or rearrange results.
 
 ---
 
